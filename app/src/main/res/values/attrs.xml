@@ -31,4 +31,14 @@
             <enum name="fast" value="5" />
         </attr>
     </declare-styleable>
+
+    <!-- 垂直居中TextView -->
+    <declare-styleable name="CenterTextView">
+        <attr name="android:text" />
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:textStyle" />
+    </declare-styleable>
+
+
 </resources>

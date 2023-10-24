@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".thumb.ThumbActivity" />
         <activity android:name=".gradient.GradientActivity" />
-
+        <activity android:name=".vertical.CenterActivity" />
 
     </application>
 

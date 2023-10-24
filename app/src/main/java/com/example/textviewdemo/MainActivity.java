@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.textviewdemo.gradient.GradientActivity;
 import com.example.textviewdemo.thumb.ThumbActivity;
+import com.example.textviewdemo.vertical.CenterActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onTest2(View v) {
         startActivity(new Intent(this, GradientActivity.class));
+    }
+
+    /**
+     * 垂直居中TextView
+     * @param v
+     */
+    public void onTest3(View v) {
+        startActivity(new Intent(this, CenterActivity.class));
     }
 
 }
