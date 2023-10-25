@@ -24,6 +24,7 @@
         <activity android:name=".thumb.ThumbActivity" />
         <activity android:name=".gradient.GradientActivity" />
         <activity android:name=".vertical.CenterActivity" />
+        <activity android:name=".gradient_vertical.GradientVerticalActivity" />
 
     </application>
 
