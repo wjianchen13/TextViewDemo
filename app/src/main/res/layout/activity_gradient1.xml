@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.example.textviewdemo.gradient1.MarqueeView
+        android:id="@+id/marquee_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#abc"
+        android:singleLine="true"
+        app:textColor="#333"
+        android:textSize="30sp" />
+
+    <com.example.textviewdemo.gradient1.MarqueeView
+        android:id="@+id/marquee_horizontal_muti"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        android:background="#abc"
+        android:singleLine="true"
+        app:textColor="#333"
+        android:textSize="30sp" />
+
+    <com.example.textviewdemo.gradient1.MarqueeView
+        android:id="@+id/marquee_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        android:background="#abc"
+        android:singleLine="true"
+        app:textColor="#333"
+        android:textSize="30sp" />
+
+    <com.example.textviewdemo.gradient1.MarqueeView
+        android:id="@+id/marquee_vertical_muti"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        android:background="#abc"
+        android:singleLine="true"
+        app:textColor="#333"
+        android:textSize="30sp" />
+
+</LinearLayout>

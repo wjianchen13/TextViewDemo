@@ -25,6 +25,8 @@
         <activity android:name=".gradient.GradientActivity" />
         <activity android:name=".vertical.CenterActivity" />
         <activity android:name=".gradient_vertical.GradientVerticalActivity" />
+        <activity android:name=".gradient1.GradientActivity1" />
+
 
     </application>
 

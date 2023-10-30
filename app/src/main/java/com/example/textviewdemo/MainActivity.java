@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.textviewdemo.gradient.GradientActivity;
+import com.example.textviewdemo.gradient1.GradientActivity1;
 import com.example.textviewdemo.gradient_vertical.GradientVerticalActivity;
 import com.example.textviewdemo.thumb.ThumbActivity;
 import com.example.textviewdemo.vertical.CenterActivity;
@@ -50,5 +51,20 @@ public class MainActivity extends AppCompatActivity {
     public void onTest4(View v) {
         startActivity(new Intent(this, GradientVerticalActivity.class));
     }
+
+    /**
+     * 渐变TextView
+     * @param v
+     */
+    public void onTest5(View v) {
+        startActivity(new Intent(this, GradientActivity1.class));
+    }
+
+
+
+
+
+
+
 
 }
