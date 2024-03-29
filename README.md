@@ -7,7 +7,10 @@
 TextView文滚动显示
 https://www.jianshu.com/p/d96cc3422f44
 
+Android 实现水平、垂直方向文字跑马灯效果
+https://blog.csdn.net/weixin_53324308/article/details/130427159
 
+https://github.com/AndroidMsky/RandomTextView
 
 
 

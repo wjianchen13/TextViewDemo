@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="TextView demo" />
+        android:text="TextView Shader基础使用" />
 
     <Button
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="生成缩略图"
+        android:text="canvas 基础测试"
         android:onClick="onTest1"/>
 
     <Button
@@ -29,7 +29,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="字体渐变动画"
+        android:text="Bitmap生成测试"
         android:onClick="onTest2"/>
 
     <Button
@@ -38,7 +38,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="垂直居中TextView"
+        android:text="BitmapShader 测试"
         android:onClick="onTest3"/>
 
     <Button
@@ -47,7 +47,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="垂直居中+渐变TextView"
+        android:text="LinearGradient Span基础使用"
         android:onClick="onTest4"/>
 
     <Button
@@ -56,7 +56,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="渐变TextView"
+        android:text="BitmapShader Span测试"
         android:onClick="onTest5"/>
 
     <Button
@@ -65,7 +65,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="TextView Shader测试"
+        android:text=""
         android:onClick="onTest6"/>
 
 </LinearLayout>

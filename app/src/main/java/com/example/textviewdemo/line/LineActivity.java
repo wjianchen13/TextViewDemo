@@ -1,12 +1,16 @@
-package com.example.textviewdemo.gradient1;
+package com.example.textviewdemo.line;
 
 import static com.example.textviewdemo.gradient1.MarqueeView.SCROLL_BT;
 import static com.example.textviewdemo.gradient1.MarqueeView.SCROLL_RL;
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.textviewdemo.R;
 
-public class GradientActivity1 extends AppCompatActivity {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.textviewdemo.R;
+import com.example.textviewdemo.gradient1.MarqueeView;
+
+public class LineActivity extends AppCompatActivity {
 
     private MarqueeView marquee_horizontal;
     private MarqueeView marquee_horizontal_muti;
@@ -33,7 +37,7 @@ public class GradientActivity1 extends AppCompatActivity {
         marquee_horizontal_muti.setFocusableInTouchMode(true);
         marquee_horizontal_muti.setSpeed(1, (float) 5);
         marquee_horizontal_muti.setScrollType(SCROLL_RL);
-        marquee_horizontal_muti.setText("水平跑马灯多行。。");
+        marquee_horizontal_muti.setText("水平跑马灯多行。。。水平跑马灯多行。。。水平跑马灯多行。。。水平跑马灯多行。。。水平跑马灯多行。。。水平跑马灯多行。。。水平跑马灯多行。。。水平跑马灯多行。。。水平跑马灯多行。。。水平跑马灯多行。。。");
 
         marquee_vertical.setFocusable(true);
         marquee_vertical.setFocusableInTouchMode(true);

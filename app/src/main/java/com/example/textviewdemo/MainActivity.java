@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.textviewdemo.gradient.GradientActivity;
 import com.example.textviewdemo.gradient1.GradientActivity1;
 import com.example.textviewdemo.gradient_vertical.GradientVerticalActivity;
+import com.example.textviewdemo.shader.ShaderActivity;
 import com.example.textviewdemo.thumb.ThumbActivity;
 import com.example.textviewdemo.vertical.CenterActivity;
 
@@ -60,7 +61,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, GradientActivity1.class));
     }
 
-
+    /**
+     * TextView 自动换行测试
+     * @param v
+     */
+    public void onTest6(View v) {
+        startActivity(new Intent(this, ShaderActivity.class));
+    }
 
 
 
