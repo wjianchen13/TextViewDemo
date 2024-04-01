@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * TextView 自动换行测试
+     * TextView Shader测试，字体颜色渐变
      * @param v
      */
     public void onTest6(View v) {

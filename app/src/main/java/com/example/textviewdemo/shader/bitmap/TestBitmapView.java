@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader;
+package com.example.textviewdemo.shader.bitmap;
 
 
 import android.content.Context;
@@ -72,9 +72,9 @@ public class TestBitmapView extends TextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawBitmap(bmp, mMatrix, mPaint);
-        canvas.translate(0, 300);
-        canvas.drawBitmap(scaledBitmap, mMatrix, mPaint);
+//        canvas.drawBitmap(bmp, mMatrix, mPaint);
+//        canvas.translate(0, 300);
+//        canvas.drawBitmap(scaledBitmap, mMatrix, mPaint);
 //        getPaint().setColor(Color.BLUE);
 //        canvas.drawCircle(0,0,100, getPaint());
 

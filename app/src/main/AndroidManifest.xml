@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".BaseApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -27,12 +28,14 @@
         <activity android:name=".gradient_vertical.GradientVerticalActivity" />
         <activity android:name=".gradient1.GradientActivity1" />
         <activity android:name=".shader.ShaderActivity" />
-        <activity android:name=".shader.TestViewActivity" />
-        <activity android:name=".shader.TestViewActivity2" />
-        <activity android:name=".shader.ShaderActivity1" />
-        <activity android:name=".shader.BitmapShaderActivity" />
-        <activity android:name=".shader.LinearGradientSpanActivity" />
-        <activity android:name=".shader.BitmapShaderSpanActivity" />
+        <activity android:name=".shader.canvas.TestViewActivity" />
+        <activity android:name=".shader.bitmap.TestViewActivity2" />
+        <activity android:name=".shader.bitmapshader.BitmapShaderActivity" />
+        <activity android:name=".shader.lineargradientspan.LinearGradientSpanActivity" />
+        <activity android:name=".shader.bitmapshaderspan.BitmapShaderSpanActivity" />
+        <activity android:name=".shader.mix.MixSpanActivity" />
+        <activity android:name=".shader.shaderanim.BitmapShaderAnimActivity" />
+
 
 
     </application>

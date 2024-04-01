@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader;
+package com.example.textviewdemo.shader.bitmap;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.thumb.ThumbActivity;
 
-public class TestViewActivity extends AppCompatActivity {
+/**
+ * Bitmap生成测试
+ */
+public class TestViewActivity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_view);
+        setContentView(R.layout.activity_test_view2);
     }
 
     /**

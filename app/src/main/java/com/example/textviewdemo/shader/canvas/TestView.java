@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader;
+package com.example.textviewdemo.shader.canvas;
 
 
 import android.content.Context;
@@ -15,13 +15,13 @@ import androidx.annotation.Nullable;
 import com.example.textviewdemo.thumb.Utils;
 
 /**
- * name: TestCanvasView
- * desc: 测试画布操作
+ * name: TranslateView
+ * desc: 画布位移操作
  * author:
  * date: 2018-07-05 20:00
  * remark:
  */
-public class TestCanvasView extends TextView {
+public class TestView extends TextView {
 
     private int[] colors = {0xFFFF2B22, 0xFFFF7F22, 0xFFEDFF22, 0xFF22FF22, 0xFF22F4FF, 0xFF2239FF, 0xFF5400F7};
     private LinearGradient mLinearGradient;
@@ -33,12 +33,12 @@ public class TestCanvasView extends TextView {
 
     private int mTranslate;
 
-    public TestCanvasView(Context context) {
+    public TestView(Context context) {
         super(context);
     }
 
     // 3.在构造函数中初始化
-    public TestCanvasView(Context context, @Nullable AttributeSet attrs) {
+    public TestView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
         initPaint();
@@ -49,7 +49,7 @@ public class TestCanvasView extends TextView {
         getPaint().setShader(mLinearGradient);
         BitmapShader shader;
     }
-    public TestCanvasView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public TestView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

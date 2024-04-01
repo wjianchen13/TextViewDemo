@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader;
+package com.example.textviewdemo.shader.bitmapshaderspan;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,7 +14,9 @@ import android.text.style.UpdateAppearance;
 
 import androidx.annotation.ColorInt;
 
+import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.bitmapshaderspan.BitmapShaderSpanActivity;
 import com.example.textviewdemo.thumb.Utils;
 
 public class BitmapShaderSpan extends CharacterStyle
@@ -49,7 +51,7 @@ public class BitmapShaderSpan extends CharacterStyle
         this.mColors = colors;
         this.mMaxWidth = maxWidth;
         mMatrix = new Matrix();
-        bmp = BitmapFactory.decodeResource(BitmapShaderSpanActivity.mActivity.getResources(), R.drawable.ic_test_shader3);
+        bmp = BitmapFactory.decodeResource(BaseApp.getInstance().getResources(), R.drawable.ic_test_shader3);
 //        Bitmap.createBitmap()
         mShader = new BitmapShader(bmp, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
     }

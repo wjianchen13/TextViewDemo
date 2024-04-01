@@ -14,7 +14,7 @@
         android:text="Canvas 测试"
         android:layout_marginTop="10dp" />
 
-    <com.example.textviewdemo.shader.TestView
+    <com.example.textviewdemo.shader.canvas.TestView
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_marginTop="10dp"

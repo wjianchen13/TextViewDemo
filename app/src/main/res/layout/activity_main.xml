@@ -65,7 +65,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="TextView Shader测试"
+        android:text="TextView Shader测试,字体颜色渐变"
         android:onClick="onTest6"/>
 
 </LinearLayout>

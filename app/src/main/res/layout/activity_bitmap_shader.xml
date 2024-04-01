@@ -14,7 +14,7 @@
         android:text="BitmapShader 测试"
         android:layout_marginTop="10dp" />
 
-    <com.example.textviewdemo.shader.BitmapShaderView
+    <com.example.textviewdemo.shader.bitmapshader.BitmapShaderView
         android:id="@+id/bsv_test"
         android:layout_width="match_parent"
         android:textSize="30sp"

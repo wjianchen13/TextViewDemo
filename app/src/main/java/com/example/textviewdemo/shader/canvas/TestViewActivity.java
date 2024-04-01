@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader;
+package com.example.textviewdemo.shader.canvas;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,18 +7,14 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.gradient.GradientActivity;
-import com.example.textviewdemo.gradient1.GradientActivity1;
-import com.example.textviewdemo.gradient_vertical.GradientVerticalActivity;
 import com.example.textviewdemo.thumb.ThumbActivity;
-import com.example.textviewdemo.vertical.CenterActivity;
 
-public class ShaderActivity1 extends AppCompatActivity {
+public class TestViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shader1);
+        setContentView(R.layout.activity_test_view);
     }
 
     /**
@@ -26,8 +22,7 @@ public class ShaderActivity1 extends AppCompatActivity {
      * @param v
      */
     public void onTest1(View v) {
-
+        startActivity(new Intent(this, ThumbActivity.class));
     }
-
 
 }

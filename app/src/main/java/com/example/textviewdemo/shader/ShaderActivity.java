@@ -7,6 +7,13 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.bitmap.TestViewActivity2;
+import com.example.textviewdemo.shader.bitmapshader.BitmapShaderActivity;
+import com.example.textviewdemo.shader.bitmapshaderspan.BitmapShaderSpanActivity;
+import com.example.textviewdemo.shader.canvas.TestViewActivity;
+import com.example.textviewdemo.shader.lineargradientspan.LinearGradientSpanActivity;
+import com.example.textviewdemo.shader.mix.MixSpanActivity;
+import com.example.textviewdemo.shader.shaderanim.BitmapShaderAnimActivity;
 
 public class ShaderActivity extends AppCompatActivity {
 
@@ -57,11 +64,19 @@ public class ShaderActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * 字体Span混合测试 GradientSpan BitmapShaderSpan
      * @param v
      */
     public void onTest6(View v) {
+        startActivity(new Intent(this, MixSpanActivity.class));
+    }
 
+    /**
+     * BitmapShader Span 动画
+     * @param v
+     */
+    public void onTest7(View v) {
+        startActivity(new Intent(this, BitmapShaderAnimActivity.class));
     }
 
 

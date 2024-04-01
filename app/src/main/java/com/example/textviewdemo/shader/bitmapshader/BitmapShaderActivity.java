@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader;
+package com.example.textviewdemo.shader.bitmapshader;
 
 import android.os.Bundle;
 import android.view.View;

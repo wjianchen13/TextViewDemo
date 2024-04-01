@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader;
+package com.example.textviewdemo.shader.lineargradientspan;
 
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
