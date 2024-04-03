@@ -23,7 +23,9 @@
         android:textSize="30sp"
         android:layout_marginTop="10dp"
         android:background="#ff00ff00"
-
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:gravity="start"
         />
 
 <!--    android:textAlignment="viewStart"
@@ -45,7 +47,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="刷新测试"
+        android:text="test2"
         android:onClick="onTest2"/>
 
 </LinearLayout>

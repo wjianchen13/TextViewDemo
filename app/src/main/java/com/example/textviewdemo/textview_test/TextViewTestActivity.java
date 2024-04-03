@@ -39,20 +39,49 @@ public class TextViewTestActivity extends AppCompatActivity {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
         };
         sContent.append(" ");
-//        sContent.append(ShaderUtils.getGradientText(this, "wo xiang qu daAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", colors, sContent.length(), 800)); // 18  32
+        sContent.append(ShaderUtils.getGradientText(this, "wo xiang qu da", colors, sContent.length(), 800)); // 18  32
+//        sContent.append(ShaderUtils.getColorText(this, "wo xiang qu daAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", R.color.color_6200EE)); // 18  32
 
-        sContent.append(ShaderUtils.getGradientText(this, "wo xiang daAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", colors, sContent.length(), 800)); // 18  32
+//        sContent.append(ShaderUtils.getGradientText(this, "wo xiang da", colors, sContent.length(), 800)); // 18  32
         sContent.append(" ");
-        sContent.append(ShaderUtils.getColorText(this, "可以 le hai", R.color.color_6200EE));
+        sContent.append(ShaderUtils.getColorText(this, "可以", R.color.color_6200EE));
         sContent.append(" ");
         sContent.append(ShaderUtils.getGradientText(this, "wo xiang", colors, sContent.length(), 800)); // 43 51
         sContent.append(" ");
         sContent.append(ShaderUtils.getColorText(this, "dehua1AA AA", R.color.color_6200EE));
-        sContent.append(" ");
-        sContent.append(ShaderUtils.getGradientText(this, "ABCDEFGHIJKLMN", colors, sContent.length(), 800)); // 64 75
+        sContent.append("    ");
+        sContent.append(ShaderUtils.getGradientText(this, "AB", colors, sContent.length(), 800)); // 64 75
 
         tvTest.setText(sContent);
 //        tvTest.setText("hello ni hao ya!! wo xiang qu da 可以 le hai 我 xing de hua ");
+    }
+
+    /**
+     * 单独测试阿语
+     * @param v
+     */
+    public void onTest2(View v) {
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(ShaderUtils.getGradientText(this, "wo xiang qu da", colors, sContent.length(), 800)); // 18  32
+//        sContent.append(ShaderUtils.getColorText(this, "wo xiang qu daAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", R.color.color_6200EE)); // 18  32
+
+//        sContent.append(ShaderUtils.getGradientText(this, "wo xiang da", colors, sContent.length(), 800)); // 18  32
+        sContent.append(" ");
+        sContent.append(ShaderUtils.getColorText(this, "可以", R.color.color_6200EE));
+        sContent.append(" ");
+        sContent.append(ShaderUtils.getGradientText(this, "wo xiang", colors, sContent.length(), 800)); // 43 51
+        sContent.append(" ");
+        sContent.append(ShaderUtils.getColorText(this, "dehua1AA AA", R.color.color_6200EE));
+        sContent.append("    ");
+        sContent.append(ShaderUtils.getGradientText(this, "AB", colors, sContent.length(), 800)); // 64 75
+
+        tvTest.setText(sContent);
     }
 
 }
