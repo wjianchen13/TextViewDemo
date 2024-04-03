@@ -9,6 +9,7 @@ import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.bitmap.TestBitmapView;
 
@@ -60,6 +61,27 @@ public class BitmapShaderSpanActivity extends AppCompatActivity {
     public void onTest2(View v) {
         tvTest.invalidate();
     }
+
+    /**
+     * 测试动态生成Bitmap，用在BitmapShader
+     * @param v
+     */
+    public void onTest3(View v) {
+        String str = getString(R.string.span_test);
+        SpannableStringBuilder giftComeSb = new SpannableStringBuilder(str);
+        @ColorInt int[] colors = new int[]{ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)};
+        String select = "you";
+        int entrantSt = str.indexOf(select);
+        int entrantEd = entrantSt + select.length();
+        giftComeSb.setSpan(new BitmapShaderSpan1("img ", select,
+                        colors, 30, 0),
+                entrantSt, entrantEd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tvTest.setText(giftComeSb);
+    }
+
 
     @Override
     protected void onDestroy() {

@@ -12,6 +12,8 @@ import android.text.style.StyleSpan;
 
 import androidx.core.content.ContextCompat;
 
+import com.example.textviewdemo.textview_test.GradientSpan;
+
 public class ShaderUtils {
 
     public static void log(String str) {
@@ -21,14 +23,26 @@ public class ShaderUtils {
     /**
      * 获得指定内容大小和颜色字符串
      */
-    public static SpannableString getGradientText(Context context, String txt, int colorId) {
+    public static SpannableString getGradientText(Context context, String txt, int[] colors, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);
         if (context != null && !TextUtils.isEmpty(spanString)) {
-            spanString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, colorId)), 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            GradientSpan span = new GradientSpan("", txt, colors, maxWidth);
+            spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;
     }
 
+    /**
+     * 获得指定内容大小和颜色字符串
+     */
+    public static SpannableString getSizeText(Context context, String txt, int sizeId) {
+        SpannableString spanString = new SpannableString(txt);
+        if (context != null && !TextUtils.isEmpty(spanString)) {
+            AbsoluteSizeSpan span = new AbsoluteSizeSpan(context.getResources().getDimensionPixelOffset(sizeId));
+            spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return spanString;
+    }
 
     /**
      * 获得指定内容大小和颜色字符串

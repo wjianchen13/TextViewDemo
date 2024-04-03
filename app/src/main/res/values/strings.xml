@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">TextViewDemo</string>
 
-    <string name="span_test">Are you ok?</string>
+    <string name="span_test">you ok?</string>
 </resources>

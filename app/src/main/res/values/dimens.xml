@@ -1,0 +1,9 @@
+<resources>
+
+    <dimen name="common_toolbar_height">48dp</dimen>
+
+    <dimen name="dp_19">19sp</dimen>
+    <dimen name="dp_25">25sp</dimen>
+    <dimen name="dp_20">20sp</dimen>
+
+</resources>

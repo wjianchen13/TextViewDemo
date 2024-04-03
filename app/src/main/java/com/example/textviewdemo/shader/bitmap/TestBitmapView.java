@@ -10,11 +10,14 @@ import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
+import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.thumb.Utils;
 
@@ -38,6 +41,10 @@ public class TestBitmapView extends TextView {
     private Paint mPaint;
 
     private int mTranslate;
+    private Bitmap bmpNew;
+
+    private int[] svip6Color;
+    private int[] svip7Color;
 
     private Bitmap scaledBitmap;
 
@@ -49,6 +56,13 @@ public class TestBitmapView extends TextView {
     public TestBitmapView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
+        svip6Color = new int[]{ContextCompat.getColor(BaseApp.getInstance(), R.color.cffff2f2f),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffd2a96b),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffbf37ff)};
+        svip7Color = new int[]{ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)};
         initPaint();
     }
 
@@ -64,6 +78,8 @@ public class TestBitmapView extends TextView {
         int height = bmp.getHeight();
         scaledBitmap = Bitmap.createScaledBitmap(bmp, width / 2, height / 2, true);
         int scaledWidth = scaledBitmap.getWidth();
+//        bmpNew = Bitmap.createBitmap(svip6Color, 100, 300, Bitmap.Config.ARGB_8888);
+        bmpNew = createGradientBitmap(132, 100, svip7Color);
     }
     public TestBitmapView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -72,11 +88,24 @@ public class TestBitmapView extends TextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-//        canvas.drawBitmap(bmp, mMatrix, mPaint);
-//        canvas.translate(0, 300);
-//        canvas.drawBitmap(scaledBitmap, mMatrix, mPaint);
+        canvas.drawBitmap(bmp, mMatrix, mPaint);
+        canvas.translate(0, 200);
+        canvas.drawBitmap(scaledBitmap, mMatrix, mPaint);
+        canvas.translate(0, 100);
+        canvas.drawBitmap(bmpNew, mMatrix, mPaint);
+
 //        getPaint().setColor(Color.BLUE);
 //        canvas.drawCircle(0,0,100, getPaint());
 
+    }
+
+    public Bitmap createGradientBitmap(int width, int height, int[] colors) {
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        LinearGradient linearGradient = new LinearGradient(0, 0, width, 0, colors, null, Shader.TileMode.CLAMP);
+        paint.setShader(linearGradient);
+        canvas.drawRect(0, 0, width, height, paint);
+        return bitmap;
     }
 }

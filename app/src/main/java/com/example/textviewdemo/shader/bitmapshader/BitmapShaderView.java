@@ -48,7 +48,7 @@ public class BitmapShaderView extends TextView {
 
     private void initPaint() {
         mPaint = getPaint();
-        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_test_shader3);
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_test_shader2);
         mShader = new BitmapShader(bmp, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         mPaint.setShader(mShader);
     }
@@ -60,7 +60,7 @@ public class BitmapShaderView extends TextView {
     protected void onDraw(Canvas canvas) {
         int w = getWidth();
         int h = getHeight();
-
+        canvas.drawRect(0, 0, w, 20, mPaint);
 //        mPaint.setTextSize(100.0f);
 //        mPaint.setColor(RED);
 //        mPaint.setTypeface(Typeface.DEFAULT_BOLD);

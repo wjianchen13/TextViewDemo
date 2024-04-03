@@ -10,8 +10,11 @@ import com.example.textviewdemo.gradient.GradientActivity;
 import com.example.textviewdemo.gradient1.GradientActivity1;
 import com.example.textviewdemo.gradient_vertical.GradientVerticalActivity;
 import com.example.textviewdemo.shader.ShaderActivity;
+import com.example.textviewdemo.textview_test.TextViewTestActivity;
 import com.example.textviewdemo.thumb.ThumbActivity;
 import com.example.textviewdemo.vertical.CenterActivity;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +72,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, ShaderActivity.class));
     }
 
-
+    /**
+     * TextView 测试
+     * @param v
+     */
+    public void onTest7(View v) {
+        startActivity(new Intent(this, TextViewTestActivity.class));
+    }
 
 
 

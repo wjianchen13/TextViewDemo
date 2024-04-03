@@ -12,5 +12,5 @@ https://blog.csdn.net/weixin_53324308/article/details/130427159
 
 https://github.com/AndroidMsky/RandomTextView
 
-
-
+获取某个字符在TextView中的位置(坐标)
+https://www.jianshu.com/p/fb534a09fbe1
