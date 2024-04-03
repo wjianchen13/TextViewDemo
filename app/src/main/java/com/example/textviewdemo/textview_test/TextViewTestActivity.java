@@ -31,7 +31,7 @@ public class TextViewTestActivity extends AppCompatActivity {
      */
     public void onTest1(View v) {
         SpannableStringBuilder sContent = new SpannableStringBuilder();
-        sContent.append(ShaderUtils.getSizeText(this, "hello ni hao ya!!yayaya", R.dimen.dp_20));
+        sContent.append(ShaderUtils.getSizeText(this, "hello ni hao ya!!", R.dimen.dp_20));
         int[] colors = new int[] {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
@@ -39,9 +39,15 @@ public class TextViewTestActivity extends AppCompatActivity {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
         };
         sContent.append(" ");
-        sContent.append(ShaderUtils.getGradientText(this, "wo xiang qu da", colors, 200));
+        sContent.append(ShaderUtils.getGradientText(this, "wo xiang qu da", colors, sContent.length(), 800));
         sContent.append(" ");
-        sContent.append(ShaderUtils.getColorText(this, "可以 le hai 我 xing de hua ", R.color.color_6200EE));
+        sContent.append(ShaderUtils.getColorText(this, "可以 le hai", R.color.color_6200EE));
+        sContent.append(" ");
+        sContent.append(ShaderUtils.getGradientText(this, "wo xiang", colors, sContent.length(), 800));
+        sContent.append(" ");
+        sContent.append(ShaderUtils.getColorText(this, "dehua1AA AA", R.color.color_6200EE));
+        sContent.append(" ");
+        sContent.append(ShaderUtils.getGradientText(this, "wo xiang111", colors, sContent.length(), 800));
         tvTest.setText(sContent);
 //        tvTest.setText("hello ni hao ya!! wo xiang qu da 可以 le hai 我 xing de hua ");
     }

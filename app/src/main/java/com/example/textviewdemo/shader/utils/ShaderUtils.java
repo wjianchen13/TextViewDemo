@@ -2,6 +2,10 @@ package com.example.textviewdemo.shader.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -23,10 +27,10 @@ public class ShaderUtils {
     /**
      * 获得指定内容大小和颜色字符串
      */
-    public static SpannableString getGradientText(Context context, String txt, int[] colors, int maxWidth) {
+    public static SpannableString getGradientText(Context context, String txt, int[] colors, int startIndex, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);
         if (context != null && !TextUtils.isEmpty(spanString)) {
-            GradientSpan span = new GradientSpan("", txt, colors, maxWidth);
+            GradientSpan span = new GradientSpan(txt, colors, startIndex, maxWidth);
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;
@@ -85,5 +89,21 @@ public class ShaderUtils {
         return Bitmap.createScaledBitmap(src, dstWidth, dstHeight, filter);
     }
 
+    /**
+     * 根据传入的尺寸和图片，生成新的Bitmap
+     * @param width
+     * @param height
+     * @param colors
+     * @return
+     */
+    public static Bitmap createGradientBitmap(int width, int height, int[] colors) {
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        LinearGradient linearGradient = new LinearGradient(0, 0, width, 0, colors, null, Shader.TileMode.CLAMP);
+        paint.setShader(linearGradient);
+        canvas.drawRect(0, 0, width, height, paint);
+        return bitmap;
+    }
 
 }
