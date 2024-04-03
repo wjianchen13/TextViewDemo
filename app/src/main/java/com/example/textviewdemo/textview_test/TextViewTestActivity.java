@@ -68,12 +68,12 @@ public class TextViewTestActivity extends AppCompatActivity {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
         };
-        sContent.append(ShaderUtils.getGradientText(this, "wo xiang qu da", colors, sContent.length(), 800)); // 18  32
+        sContent.append(ShaderUtils.getGradientText(this, "سجل معركة الفريق", colors, sContent.length(), 800)); // 18  32
 //        sContent.append(ShaderUtils.getColorText(this, "wo xiang qu daAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", R.color.color_6200EE)); // 18  32
 
 //        sContent.append(ShaderUtils.getGradientText(this, "wo xiang da", colors, sContent.length(), 800)); // 18  32
         sContent.append(" ");
-        sContent.append(ShaderUtils.getColorText(this, "可以", R.color.color_6200EE));
+        sContent.append(ShaderUtils.getColorText(this, "可以aaaaaaa", R.color.color_6200EE));
         sContent.append(" ");
         sContent.append(ShaderUtils.getGradientText(this, "wo xiang", colors, sContent.length(), 800)); // 43 51
         sContent.append(" ");

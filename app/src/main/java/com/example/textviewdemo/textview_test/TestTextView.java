@@ -37,6 +37,8 @@ import com.example.textviewdemo.thumb.Utils;
  * 需要处理的问题
  * 1.最后要一个时单独的渐变Span
  * 2.最后只有一个字符的渐变Span
+ * 3.阿语模式下当渐变是第一个的时候，取index = 0 等于控件宽度
+ *
  *
  * GradientSpan应该是会自动计算padding的，所以传入的left和right不需要添加paddingStart和paddingEnd
  *
@@ -45,13 +47,23 @@ import com.example.textviewdemo.thumb.Utils;
  *         android:textAlignment="viewStart"
  *         android:textDirection="locale"
  *         android:gravity="start"
+ *
+ * 纯阿语 如果是同一行
+ * get(1)       942 -55
+ * get(0)       997
+ * get(end)   436
+ *
+ * 纯英文
+ * get(1)       316
+ * get(0)       997
+ * get(end)   810
  */
 public class TestTextView extends AppCompatTextView {
 
     private Context mContext;
     private IGradientSpan[] mSpans;
 
-    private boolean isAr = false;
+    private boolean isAr = true;
 
     public TestTextView(Context context) {
         super(context);
@@ -283,16 +295,25 @@ public class TestTextView extends AppCompatTextView {
                     }
                 }
 
-            } else if(startIndex < endIndex) {
-                rectF.left = layout.getPrimaryHorizontal(startIndex - 1);//字符左边x坐标(相对于TextView)
+            } else if(startIndex < endIndex) { // 阿语模式下当渐变是第一个的时候，取index = 0 等于控件宽度
+                rectF.left = layout.getPrimaryHorizontal(start);//字符左边x坐标(相对于TextView) 997
+//                CharSequence text = getText();
+//                if(text != null && startIndex - 1 >= 0 && startIndex - 1 < text.length()) {
+//                    Character c = text.charAt(startIndex - 1);
+//                    if(c != null && getPaint() != null) {
+//                        rectF.left = left - getPaint().measureText(String.valueOf(c));
+//                    }
+//                }
+                rectF.left= 0;
                 // RTL模式下，当最后一个是渐变SPAN，计算最后一个字符右侧到左侧的距离时，会自动获取右侧下一个空白字符，
                 // 如果此时span是在最右侧，会导致获取的是下一行空白字符的坐标，导致left比right大，需要判断一下，如果
                 // 这个span位于最后一个，把右侧坐标设置成TextView的宽度
-                float right = layout.getPrimaryHorizontal(endIndex + 1);//字符右边x坐标(相对于TextView)
+                float right = layout.getPrimaryHorizontal(endIndex + 1);//字符右边x坐标(相对于TextView) 436
                 if(right < rectF.left) {
                     right = getWidth() - getPaddingStart() - getPaddingEnd();
                 }
                 rectF.right = right;
+//                rectF.right = 997;
             } else {
                 rectF.left = getPaddingEnd();//字符左边x坐标(相对于TextView)
                 rectF.right = getWidth() - getPaddingStart();//字符右边x坐标(相对于TextView)
