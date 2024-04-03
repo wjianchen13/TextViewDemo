@@ -18,9 +18,17 @@
         android:id="@+id/tv_test"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
         android:textSize="30sp"
         android:layout_marginTop="10dp"
-        android:background="#ff00ff00" />
+        android:background="#ff00ff00"
+
+        />
+
+<!--    android:textAlignment="viewStart"
+    android:textDirection="locale"
+    android:gravity="start"-->
 
     <Button
         android:layout_width="match_parent"

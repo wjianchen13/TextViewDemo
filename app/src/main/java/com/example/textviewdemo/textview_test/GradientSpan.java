@@ -84,10 +84,10 @@ public class GradientSpan extends CharacterStyle implements UpdateAppearance, IG
                     ContextCompat.getColor(BaseApp.getInstance(), R.color.black)
             };
         }
-        if(end > start && mColors != null) {
-            int width = (int)(end - start);
-            if(width > mMaxWidth)
-                width = mMaxWidth;
+        if(mColors != null) {
+            int width = (int)Math.abs(end - start);
+//            if(width > mMaxWidth)
+//                width = mMaxWidth;
             bmp = ShaderUtils.createGradientBitmap(width, mCreateBitmapHeight, mColors);
             mShader = new BitmapShader(bmp, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         }
