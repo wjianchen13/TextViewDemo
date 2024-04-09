@@ -57,6 +57,48 @@ import com.example.textviewdemo.thumb.Utils;
  * get(1)       316
  * get(0)       997
  * get(end)   810
+ *
+ * 阿语模式下，通过 getPrimaryHorizontal()获取的是字符右侧到控件左侧的距离
+ * 1.阿语和英语混合的情况下 getPrimaryHorizontal(0) = 997 lastIndex = 170，测试文本："سجل AAمعركة BBالفريقCC" 结论，
+ * 计算的是字符右侧到控件左边的距离，所以计算最后要一个字符到左侧的距离需要getPrimaryHorizontal(lastIndex) - 最后一个字符的宽度
+ * getPrimaryHorizontal(index) 获取到的是第index字符到控件左边的距离
+ * 2.纯阿语的情况下，layout.getPrimaryHorizontal(0) = 997 layout.getPrimaryHorizontal(lastIndex) = 561
+ *
+ * 3.纯英语的情况下，layout.getPrimaryHorizontal(0) = 997  layout.getPrimaryHorizontal(1) = 115 第一个字符在左边  layout.getPrimaryHorizontal(lastIndex) = 495
+ * 如果渐变span后面还有其他字符串，第0个也是直接指到控件最右侧，
+ * 假设span前面还有字符，那layout.getPrimaryHorizontal(lastIndex) = 前面字符左侧到控件左侧的距离
+ * 假设span后面还有字符，那layout.getPrimaryHorizontal(0) = 控件宽度，也会包括后面的字符
+ * 如果是存英文，layout.getPrimaryHorizontal()获取到的是字符左侧距离控件左侧的距离
+ *
+ * 如果在同一行的情况下，处理的细节参考上面1 2 3
+ * 4 中情况 需要处理
+ * 需要判断该字符串是否在一行的开始位置
+ * 是否在一行的结束位置
+ * 是否既是开始，又是结束
+ * 既不是开始，又不是结束
+ * span 分 一个字符 2 个 和3个
+ *
+ * 流程
+ *
+ * 单行
+ * 1.既是行首也是行尾
+ *      直接交换 start 和 end
+ * 2.如果在行首，不在行尾， 不能用start，因为这样会包括span后面的非span区域
+ *      走下面区分长度，计算顺序
+ * 3.如果在行尾，不在行首，不能用end，因为这样会包括其那面的非span区域
+ *      走下面区分长度，计算顺序
+ * 4.如果在中间，start和end都可以使用
+ *      直接交换 start 和 end
+ *
+ * 区分长度，计算顺序
+ * 计算一行的长度，区分
+ * 有换行符的另外处理
+ * 1 length = 1 这个应该就是单独一行
+ * 2. length = 2计算end=index+1 start=end-getPaint().measureText
+ * 3.length 大于等于3
+ *
+ * 多行
+ * 直接start = 0 end = width
  */
 public class TestTextView extends AppCompatTextView {
 
@@ -219,7 +261,7 @@ public class TestTextView extends AppCompatTextView {
 //                        int start = content.indexOf(spanStr);
                         int start = gradientSpan.getStartIndex();
                         int end = start + spanStr.length(); // 不包括
-                        GradientInfo rectF = getTextViewSelectionBottomY1(start, end);
+                        GradientInfo rectF = getTextViewSelectionBottomY1(start, end, spanStr);
                         getPaint().setColor(Color.parseColor("#ff0000"));
                         gradientSpan.onDrawBefore(rectF.left, rectF.right);
 
@@ -245,13 +287,17 @@ public class TestTextView extends AppCompatTextView {
      * @return 返回的是相对坐标
      * @parms tv
      * @parms index 字符下标
+     * @param str span 的显示内容
      * 为了预防阿语模式下最后一个是渐变的Span，采取传入的startIndex = startIndex + 1 endIndex = endIndex - 1
      * 如果startIndex == endIndex + 1 只有一个字符
      * 如果startIndex == endIndex 2个字符
      * 如果startIndex > endIndex 大于2个字符
      * 其他不处理
      */
-    private GradientInfo getTextViewSelectionBottomY1(int start, int end) {
+    private GradientInfo getTextViewSelectionBottomY1(int start, int end, String str) {
+        if(TextUtils.isEmpty(str) || str.length() == 0 || start < 0) {
+            return null;
+        }
         int startIndex = start + 1;
         int endIndex = end - 1;
         Layout layout = getLayout();
@@ -259,72 +305,126 @@ public class TestTextView extends AppCompatTextView {
         Rect bound = new Rect();
         int startLine = layout.getLineForOffset(startIndex);//获取字符在第几行
         int endLine = layout.getLineForOffset(endIndex);
+        int lineStartIndex = layout.getLineStart(startLine); // 当前行开始字符的index
+        int lineEndIndex = layout.getLineEnd(startLine); // 当前行结束字符的index 开区间
+        int count = lineEndIndex - lineStartIndex - 1;
         layout.getLineBounds(startLine, bound);//获取该行的Bound区域
-        if(startLine != endLine) { // 换行,绘制区域是TextView的宽度
+        CharSequence text = getText();
+        if(TextUtils.isEmpty(text)) {
             rectF.left = 0;//字符左边x坐标(相对于TextView)
             rectF.top = bound.top;//字符顶部y坐标(相对于TextView的坐标)
             rectF.right = getWidth() - getPaddingStart() - getPaddingEnd();//字符右边x坐标(相对于TextView)
             rectF.bottom = bound.bottom;//字符底部y坐标(相对于TextView的坐标)
             rectF.sLineNum = startLine;
             rectF.eLineNum = endLine;
+            return rectF;
+        }
+        rectF.top = bound.top;//字符顶部y坐标(相对于TextView的坐标)
+        rectF.bottom = bound.bottom;//字符底部y坐标(相对于TextView的坐标)
+        rectF.sLineNum = startLine;
+        rectF.eLineNum = endLine;
+        if(startLine != endLine) { // 换行,绘制区域是TextView的宽度
+            rectF.left = 0;//字符左边x坐标(相对于TextView)
+            rectF.right = getWidth() - getPaddingStart() - getPaddingEnd();//字符右边x坐标(相对于TextView)
         } else { // 同一行
-            if(startIndex == endIndex + 1) { // 需要取当前字符后一个字符的距离
-                rectF.left = layout.getPrimaryHorizontal(startIndex);
-                CharSequence text = getText();
-                if(text != null && startIndex - 1 >= 0 && startIndex - 1 < text.length()) {
-                    Character c = text.charAt(startIndex - 1);
-                    if(c != null && getPaint() != null) {
-                        rectF.right = rectF.left + getPaint().measureText( String.valueOf(c));
+            // layout.getPrimaryHorizontal(0)
+            // getText().toString().charAt()
+            if(lineStartIndex == start && lineEndIndex == end) { // span在行首，也在行尾
+                float gradientStart = layout.getPrimaryHorizontal(start);
+                float gradientEnd = layout.getPrimaryHorizontal(end); // span右侧到控件左侧距离
+                rectF.left = gradientStart < gradientEnd ? gradientStart : gradientEnd;
+                rectF.right = gradientStart < gradientEnd ? gradientEnd : gradientStart;
+            } else if(lineStartIndex == start && lineEndIndex != end) { // span位于一行的开始，但不是在一行的结尾,如果有rtl，直接可以使用start和end对调
+                boolean isContainsRtl = isContainsRtl(lineStartIndex, lineEndIndex);
+                if(isContainsRtl) { // 有阿语，从右向左
+                    float[] space = getSpaceInfo(start, end + 1);
+                    if(space != null && space.length >= 2) {
+                        rectF.left = space[0];//字符左边x坐标(相对于TextView)
+                        rectF.right = space[1]; //
+                    }
+                } else { // 从左向右
+                    float[] space = getSpaceInfo(1, end + 1);
+                    if(space != null && space.length >= 2) {
+                        rectF.left = space[0] - getPaint().measureText(String.valueOf(text.charAt(0)));//字符左边x坐标(相对于TextView)
+                        rectF.right = space[1]; //
                     }
                 }
-            } else if(startIndex == endIndex) {
-                float center = layout.getPrimaryHorizontal(startIndex);
-                CharSequence text = getText();
-                if(text != null && startIndex - 1 >= 0 && startIndex - 1 < text.length()) {
-                    Character lc = text.charAt(startIndex - 1);
-                    if(lc != null && getPaint() != null) {
-                        rectF.left = center - getPaint().measureText( String.valueOf(lc));
+            } else if(lineStartIndex != start && lineEndIndex == end) { // span不在行首，在行尾,不能使用end，可以使用start
+                boolean isContainsRtl = isContainsRtl(lineStartIndex, lineEndIndex);
+                if(isContainsRtl) { // 有阿语，从右向左
+                    float[] space = getSpaceInfo(start, end + 1);
+                    if(space != null && space.length >= 2) {
+                        rectF.left = space[0];//字符左边x坐标(相对于TextView)
+                        rectF.right = space[1]; //
                     }
-                    Character rc = text.charAt(startIndex);
-                    if(rc != null && getPaint() != null) {
-                        rectF.right = center + getPaint().measureText( String.valueOf(rc));
-                        int width = getWidth() - getPaddingStart() - getPaddingEnd();
-                        if(width < rectF.right) {
-                            rectF.right = width;
-                        }
+                } else { // 从左向右
+                    float[] space = getSpaceInfo(start, end);
+                    if(space != null && space.length >= 2) {
+                        rectF.left = space[0];//字符左边x坐标(相对于TextView)
+                        String endStr = "";
+                        if(end <= text.length())
+                            endStr = String.valueOf(text.charAt(end - 1));
+                        rectF.right = space[1] + getPaint().measureText(endStr); //
                     }
                 }
-
-            } else if(startIndex < endIndex) { // 阿语模式下当渐变是第一个的时候，取index = 0 等于控件宽度
-                rectF.left = layout.getPrimaryHorizontal(start);//字符左边x坐标(相对于TextView) 997
-//                CharSequence text = getText();
-//                if(text != null && startIndex - 1 >= 0 && startIndex - 1 < text.length()) {
-//                    Character c = text.charAt(startIndex - 1);
-//                    if(c != null && getPaint() != null) {
-//                        rectF.left = left - getPaint().measureText(String.valueOf(c));
-//                    }
-//                }
-                rectF.left= 0;
-                // RTL模式下，当最后一个是渐变SPAN，计算最后一个字符右侧到左侧的距离时，会自动获取右侧下一个空白字符，
-                // 如果此时span是在最右侧，会导致获取的是下一行空白字符的坐标，导致left比right大，需要判断一下，如果
-                // 这个span位于最后一个，把右侧坐标设置成TextView的宽度
-                float right = layout.getPrimaryHorizontal(endIndex + 1);//字符右边x坐标(相对于TextView) 436
-                if(right < rectF.left) {
-                    right = getWidth() - getPaddingStart() - getPaddingEnd();
+            } else if(lineStartIndex != start && lineEndIndex != end){ // span位于中间 start 和 end 都可以用
+                boolean isContainsRtl = isContainsRtl(lineStartIndex, lineEndIndex);
+                if(isContainsRtl) { // 有阿语，从右向左
+                    float[] space = getSpaceInfo(start, end + 1);
+                    if(space != null && space.length >= 2) {
+                        rectF.left = space[0];//字符左边x坐标(相对于TextView)
+                        rectF.right = space[1]; //
+                    }
+                } else { // 从左向右
+                    float[] space = getSpaceInfo(start, end);
+                    if(space != null && space.length >= 2) {
+                        rectF.left = space[0];//字符左边x坐标(相对于TextView)
+                        String endStr = "";
+                        if(end <= text.length())
+                            endStr = String.valueOf(text.charAt(end - 1));
+                        rectF.right = space[1] + getPaint().measureText(endStr); //
+                    }
                 }
-                rectF.right = right;
-//                rectF.right = 997;
-            } else {
-                rectF.left = getPaddingEnd();//字符左边x坐标(相对于TextView)
-                rectF.right = getWidth() - getPaddingStart();//字符右边x坐标(相对于TextView)
             }
-
-            rectF.top = bound.top;//字符顶部y坐标(相对于TextView的坐标)
-            rectF.bottom = bound.bottom;//字符底部y坐标(相对于TextView的坐标)
-            rectF.sLineNum = startLine;
-            rectF.eLineNum = endLine;
         }
         return rectF;
+    }
+
+    /**
+     * 是否包含从右向左的字符,如果不包含，显示的英文的位置需要特别处理
+     * @param start 某一行开始的index 包含
+     * @param end 某一行结束的index 不包含
+     * @return
+     */
+    private boolean isContainsRtl(int start, int end) {
+        for(int i = start; i < end; i ++) {
+            Layout layout = getLayout();
+            CharSequence text = getText();
+            if(layout != null && layout.isRtlCharAt(i) && text != null && ' ' != text.charAt(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 获取某段字符串的左边和右边距离
+     * @return
+     */
+    private float[] getSpaceInfo(int start, int end) {
+        float left = getWidth();
+        float right = 0;
+        Layout layout = getLayout();
+        if(layout != null) {
+            for (int i = start; i < end; i ++) {
+                float space = layout.getPrimaryHorizontal(i);
+                if(left > space)
+                    left = space;
+                if(right < space)
+                    right = space;
+            }
+        }
+        return new float[]{left, right};
     }
 
 }

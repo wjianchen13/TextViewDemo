@@ -97,6 +97,10 @@ public class ShaderUtils {
      * @return
      */
     public static Bitmap createGradientBitmap(int width, int height, int[] colors) {
+        if(width == 0)
+            width = 100;
+        if(height == 0)
+            height = 100;
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
