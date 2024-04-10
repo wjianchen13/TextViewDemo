@@ -369,11 +369,20 @@ public class TestTextView extends AppCompatTextView {
                 }
             } else if(lineStartIndex != start && lineEndIndex != end){ // span位于中间 start 和 end 都可以用
                 boolean isContainsRtl = isContainsRtl(lineStartIndex, lineEndIndex);
-                if(isContainsRtl) { // 有阿语，从右向左
-                    float[] space = getSpaceInfo(start, end + 1);
+                if(isContainsRtl) { // 有阿语，从右向左 有阿语和无阿语他们的方向也不一致，取start + 1 到 end - 1的距离，然后左右各加上start和end的最大宽度。
+                    float[] space = getSpaceInfo(start + 1, end);
                     if(space != null && space.length >= 2) {
-                        rectF.left = space[0];//字符左边x坐标(相对于TextView)
-                        rectF.right = space[1]; //
+                        String startStr = "";
+                        if(end <= text.length())
+                            startStr = String.valueOf(text.charAt(start));
+                        float startWidth = getPaint().measureText(startStr);
+                        String endStr = "";
+                        if(end <= text.length())
+                            endStr = String.valueOf(text.charAt(end));
+                        float endWidth = getPaint().measureText(endStr);
+                        float width = Math.max(startWidth, endWidth);
+                        rectF.left = space[0] - width;//字符左边x坐标(相对于TextView)
+                        rectF.right = space[1] + width; //
                     }
                 } else { // 从左向右
                     float[] space = getSpaceInfo(start, end);

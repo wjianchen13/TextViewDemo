@@ -39,7 +39,7 @@ public class TextViewTestActivity extends AppCompatActivity {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
         };
         sContent.append(" ");
-        sContent.append(ShaderUtils.getGradientText(this, "wo xiang qu da", colors, sContent.length(), 800)); // 18  32
+        sContent.append(ShaderUtils.getGradientText(this, "سجل ABمعركة BBالفريقCC", colors, sContent.length(), 800)); // 18  32
 //        sContent.append(ShaderUtils.getColorText(this, "wo xiang qu daAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", R.color.color_6200EE)); // 18  32
 
 //        sContent.append(ShaderUtils.getGradientText(this, "wo xiang da", colors, sContent.length(), 800)); // 18  32
@@ -48,7 +48,7 @@ public class TextViewTestActivity extends AppCompatActivity {
         sContent.append(" ");
         sContent.append(ShaderUtils.getGradientText(this, "wo xiang", colors, sContent.length(), 800)); // 43 51
         sContent.append(" ");
-        sContent.append(ShaderUtils.getColorText(this, "dehua1AA AA", R.color.color_6200EE));
+        sContent.append(ShaderUtils.getColorText(this, "سجل معركة الفريق", R.color.color_6200EE));
         sContent.append("    ");
         sContent.append(ShaderUtils.getGradientText(this, "AB", colors, sContent.length(), 800)); // 64 75
 
