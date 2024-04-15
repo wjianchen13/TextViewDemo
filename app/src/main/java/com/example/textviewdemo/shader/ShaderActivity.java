@@ -13,7 +13,7 @@ import com.example.textviewdemo.shader.bitmapshaderspan.BitmapShaderSpanActivity
 import com.example.textviewdemo.shader.canvas.TestViewActivity;
 import com.example.textviewdemo.shader.lineargradientspan.LinearGradientSpanActivity;
 import com.example.textviewdemo.shader.mix.MixSpanActivity;
-import com.example.textviewdemo.shader.shaderanim.BitmapShaderAnimActivity;
+import com.example.textviewdemo.shader.utils.shaderanim.BitmapShaderAnimActivity;
 
 public class ShaderActivity extends AppCompatActivity {
 

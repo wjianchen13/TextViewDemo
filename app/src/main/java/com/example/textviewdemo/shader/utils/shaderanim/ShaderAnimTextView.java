@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.shaderanim;
+package com.example.textviewdemo.shader.utils.shaderanim;
 
 
 import android.animation.Animator;
@@ -15,9 +15,8 @@ import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
 
-import com.example.textviewdemo.shader.shaderanim.interfaces.IAnimSpan;
+import com.example.textviewdemo.shader.utils.shaderanim.interfaces.IAnimSpan;
 import com.example.textviewdemo.thumb.Utils;
 
 /**
@@ -122,7 +121,7 @@ public class ShaderAnimTextView extends TextView implements TextWatcher {
                 }
             });
             ValueAnimator.setFrameDelay(50L);
-            mAnimator.setDuration(15000);
+            mAnimator.setDuration(2000);
             mAnimator.setRepeatCount(ValueAnimator.INFINITE);
             mAnimator.setRepeatMode(ValueAnimator.RESTART);
             mAnimator.setInterpolator(new LinearInterpolator());

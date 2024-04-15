@@ -61,7 +61,7 @@ public class GradientSpan extends CharacterStyle implements UpdateAppearance, IG
         if(tp != null && mShader != null) {
             mMatrix.setTranslate(mTranslate, 0);
             mShader.setLocalMatrix(mMatrix);
-            tp.setShader(mShader);        //这里注意这里画出来的渐变色会受TextView的字体色的透明度影响
+            tp.setShader(mShader);        // 这里注意这里画出来的渐变色会受TextView的字体色的透明度影响
         }
     }
 

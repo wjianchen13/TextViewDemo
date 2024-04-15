@@ -1,18 +1,15 @@
-package com.example.textviewdemo.shader.shaderanim;
+package com.example.textviewdemo.shader.utils.shaderanim;
 
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.bitmap.TestBitmapView;
-import com.example.textviewdemo.shader.bitmapshaderspan.BitmapShaderSpan;
 
 /**
  * BitmapShader Span测试
@@ -41,15 +38,23 @@ public class BitmapShaderAnimActivity extends AppCompatActivity {
         String str = getString(R.string.span_test);
         SpannableStringBuilder giftComeSb = new SpannableStringBuilder(str);
 //        giftComeSb.getSpans()
-        @ColorInt int[] colors = new int[]{ContextCompat.getColor(this, R.color.cfffad962),
+        @ColorInt int[] colors = new int[]{ContextCompat.getColor(this, R.color.cffff2f2f),
                 ContextCompat.getColor(this, R.color.cffe5ae65),
-                ContextCompat.getColor(this, R.color.cffff9d69)};
+                ContextCompat.getColor(this, R.color.cff80ff00)};
         String select = "you";
         int entrantSt = str.indexOf(select);
         int entrantEd = entrantSt + select.length();
         BitmapShaderAnimSpan animSpan = new BitmapShaderAnimSpan("img ", select, 30,
                 colors, 0);
         giftComeSb.setSpan(animSpan, entrantSt, entrantEd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        String select1 = "me";
+        int entrantSt1 = str.indexOf(select1);
+        int entrantEd1 = entrantSt1 + select1.length();
+        BitmapShaderAnimSpan animSpan1 = new BitmapShaderAnimSpan("img ", select1, 30,
+                colors, 0);
+        giftComeSb.setSpan(animSpan1, entrantSt1, entrantEd1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
         tvTest.setText(giftComeSb);
         tvTest.startAnim();
 //        tvTest.getText()

@@ -21,7 +21,7 @@ import com.example.textviewdemo.thumb.Utils;
  * name: TestTextView
  * desc: 测试TextView，比如获取某个字符串在TextView中的位置
  * 左右渐变的方案
- * 切换到阿拉伯语测试，需要把isAr设置成true
+ * 切换到阿拉伯语测试，需要把isAr设置成true，否则显示有问题
  *
  *
  * 参考文档
@@ -105,7 +105,7 @@ public class TestTextView extends AppCompatTextView {
     private Context mContext;
     private IGradientSpan[] mSpans;
 
-    private boolean isAr = true;
+    private boolean isAr = false;
 
     public TestTextView(Context context) {
         super(context);

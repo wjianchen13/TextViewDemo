@@ -1,12 +1,8 @@
-package com.example.textviewdemo.shader.shaderanim;
+package com.example.textviewdemo.shader.utils.shaderanim;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
-import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
@@ -14,13 +10,12 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.UpdateAppearance;
-import android.view.animation.LinearInterpolator;
 
 import androidx.annotation.ColorInt;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.shaderanim.interfaces.IAnimSpan;
+import com.example.textviewdemo.shader.utils.shaderanim.interfaces.IAnimSpan;
 import com.example.textviewdemo.shader.utils.ShaderUtils;
 import com.example.textviewdemo.thumb.Utils;
 

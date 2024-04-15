@@ -288,7 +288,7 @@ public class MarqueeView extends TextView {
                 }
             });
             ValueAnimator.setFrameDelay(50L);
-            mAnimator.setDuration(1000);
+            mAnimator.setDuration(10000);
             mAnimator.setRepeatCount(ValueAnimator.INFINITE);
             mAnimator.setRepeatMode(ValueAnimator.RESTART);
             mAnimator.setInterpolator(new LinearInterpolator());
@@ -315,9 +315,9 @@ public class MarqueeView extends TextView {
         switch (direction) {
             case leftToRight:
                 if (translateAnimate) {
-                    mLinearGradient = new LinearGradient(0f, 0f, getMeasuredWidth() * 2, 0f, colors, null, Shader.TileMode.CLAMP);
+                    mLinearGradient = new LinearGradient(0f, 0f, getMeasuredWidth() * 1, 0f, colors, null, Shader.TileMode.CLAMP);
                 } else {
-                    mLinearGradient = new LinearGradient(0f, 0f, getMeasuredWidth() * 2, 0f, startColor, endColor, Shader.TileMode.CLAMP);
+                    mLinearGradient = new LinearGradient(0f, 0f, getMeasuredWidth() * 1, 0f, startColor, endColor, Shader.TileMode.CLAMP);
                 }
                 break;
             case topToBottom:

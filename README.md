@@ -3,6 +3,10 @@
 ## 字体渐变功能
 ## 垂直显示TextView，滚动效果
 
+## 渐变Gradient 测试在textview_test中 TextView需要修改isAr
+## span动画在shader/utils/shaderanim中
+
+
 # 参考资料
 TextView文滚动显示
 https://www.jianshu.com/p/d96cc3422f44

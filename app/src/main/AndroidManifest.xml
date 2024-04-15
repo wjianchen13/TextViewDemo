@@ -34,7 +34,7 @@
         <activity android:name=".shader.lineargradientspan.LinearGradientSpanActivity" />
         <activity android:name=".shader.bitmapshaderspan.BitmapShaderSpanActivity" />
         <activity android:name=".shader.mix.MixSpanActivity" />
-        <activity android:name=".shader.shaderanim.BitmapShaderAnimActivity" />
+        <activity android:name=".shader.utils.shaderanim.BitmapShaderAnimActivity" />
         <activity android:name=".textview_test.TextViewTestActivity" />
         <activity android:name=".random_text.RandomTextActivity" />
 

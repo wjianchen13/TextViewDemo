@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.shaderanim.interfaces;
+package com.example.textviewdemo.shader.utils.shaderanim.interfaces;
 
 /**
  * 公共的动画接口
