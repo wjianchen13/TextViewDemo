@@ -1,11 +1,9 @@
 package com.example.textviewdemo.gradientanimspan;
 
-import com.example.textviewdemo.textview_test.IGradientSpan;
-
 /**
  * 公共的动画接口
  */
-public interface IGradientAnimSpan extends IGradientSpan {
+public interface IGradientAnimSpan extends IGradientSpan1 {
 
     void onAnim(int progress);
 

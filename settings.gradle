@@ -3,6 +3,17 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/google/'}
+        maven { url 'https://maven.aliyun.com/repository/public/'}
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/'}
+
+        maven { url "https://jitpack.io" }
+        maven { url 'https://mirrors.huaweicloud.com/repository/maven/' }
+        maven { url "http://lib.gcssloop.com/repository/gcssloop-central/"
+            allowInsecureProtocol true}
+        maven { url 'http://maven.faceunity.com/repository/maven-public/'
+            allowInsecureProtocol true}
+        maven { url "https://s01.oss.sonatype.org/content/groups/public" }
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +21,17 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/google/'}
+        maven { url 'https://maven.aliyun.com/repository/public/'}
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/'}
+
+        maven { url "https://jitpack.io" }
+        maven { url 'https://mirrors.huaweicloud.com/repository/maven/' }
+        maven { url "http://lib.gcssloop.com/repository/gcssloop-central/"
+            allowInsecureProtocol true}
+        maven { url 'http://maven.faceunity.com/repository/maven-public/'
+            allowInsecureProtocol true}
+        maven { url "https://s01.oss.sonatype.org/content/groups/public" }
     }
 }
 rootProject.name = "TextViewDemo"

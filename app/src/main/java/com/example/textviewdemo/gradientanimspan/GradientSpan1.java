@@ -14,10 +14,11 @@ import androidx.core.content.ContextCompat;
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.utils.ShaderUtils;
+import com.example.textviewdemo.textview_test.GradientInfo;
 import com.example.textviewdemo.textview_test.IGradientSpan;
 import com.example.textviewdemo.thumb.Utils;
 
-public class GradientSpan1 extends CharacterStyle implements UpdateAppearance, IGradientSpan {
+public class GradientSpan1 extends CharacterStyle implements UpdateAppearance, IGradientSpan1 {
 
     /**
      * 动态创建Bitmap的高度
@@ -41,6 +42,11 @@ public class GradientSpan1 extends CharacterStyle implements UpdateAppearance, I
     private Matrix mMatrix;
 
     protected float mTranslate;
+
+    /**
+     * 当前span 的渐变信息
+     */
+    protected GradientInfo mGradientInfo;
 
     /**
      * 渐变span
@@ -74,11 +80,17 @@ public class GradientSpan1 extends CharacterStyle implements UpdateAppearance, I
 
     /**
      * 准备绘制
-     * @param start
-     * @param end
+     * @param info
      */
     @Override
-    public void onDrawBefore(float start, float end) {
+    public void onDrawBefore(GradientInfo info) {
+        this.mGradientInfo = info;
+        float start = 0;
+        float end = 10;
+        if(info != null) {
+            start = info.left;
+            end = info.right;
+        }
         this.mTranslate = start;
         if(mColors == null) {
             mColors = new int[] {
@@ -103,6 +115,11 @@ public class GradientSpan1 extends CharacterStyle implements UpdateAppearance, I
     @Override
     public int getStartIndex() {
         return mStartIndex;
+    }
+
+    @Override
+    public GradientInfo getGradientInfo() {
+        return mGradientInfo;
     }
 }
 

@@ -38,6 +38,9 @@
         <activity android:name=".textview_test.TextViewTestActivity" />
         <activity android:name=".random_text.RandomTextActivity" />
         <activity android:name=".gradientanimspan.GradientAnimSpanActivity" />
+        <activity android:name=".gradientanimspan.GradientAnimSpanActivity1" />
+        <activity android:name=".gradientanimspan.GradientAnimSpanActivity2" />
+        <activity android:name=".gradientanimspan.test3.GradientAnimSpanActivity3" />
 
     </application>
 

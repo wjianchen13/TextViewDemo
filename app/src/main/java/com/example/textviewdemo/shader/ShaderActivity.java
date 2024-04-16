@@ -80,14 +80,4 @@ public class ShaderActivity extends AppCompatActivity {
         startActivity(new Intent(this, BitmapShaderAnimActivity.class));
     }
 
-    /**
-     * 支持渐变，动画TextView，使用BitmapShader
-     * @param v
-     */
-    public void onTest8(View v) {
-        startActivity(new Intent(this, GradientAnimSpanActivity.class));
-    }
-
-
-
 }

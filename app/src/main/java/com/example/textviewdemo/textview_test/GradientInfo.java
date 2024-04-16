@@ -2,6 +2,8 @@ package com.example.textviewdemo.textview_test;
 
 /**
  * 渐变信息
+ * 显示区域
+ * 显示行号
  */
 public class GradientInfo {
 

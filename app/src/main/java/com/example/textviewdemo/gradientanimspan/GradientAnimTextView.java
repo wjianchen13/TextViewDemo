@@ -33,11 +33,22 @@ import com.example.textviewdemo.thumb.Utils;
  * 2.渐变span使用Shader动态更新，绘制文字，通过颜色数组，动态生成BitmapShader，然后平移BitmapShader实现字体渐变
  * 3.isAr在测试的时候使用，用到项目，每次使用isRtl标志进行设置，测试的时候要根据实际的语言修改标志，RTL的时候需要改成true
  * 4.
+ *
+ * 需要测试的项目
+ * 1.超长显示。。。
+ * 2.超长滚动
+ * 3. RecyclerView使用
+ *
+ * detach事停止动画
+ * 不显示时停止动画 显示时重新开始
+ * 可能出现的异常捕获
+ *
+ *
  */
 public class GradientAnimTextView extends AppCompatTextView {
 
     private Context mContext;
-    private IGradientSpan[] mGradientSpans;
+    private IGradientSpan1[] mGradientSpans;
     private IGradientAnimSpan[] mGradientAnimSpans;
 
     private boolean isAr = false;
@@ -53,6 +64,11 @@ public class GradientAnimTextView extends AppCompatTextView {
      * 是否开始了动画，开始了动画说明已经初始化了span的信息
      */
     private boolean isStartAnim;
+
+    /**
+     * 显示计算的span区域
+     */
+    private boolean isShowTest = true;
 
     public GradientAnimTextView(Context context) {
         super(context);
@@ -85,10 +101,14 @@ public class GradientAnimTextView extends AppCompatTextView {
         stopAnim();
     }
 
+    public void setContent(CharSequence text) {
+        isStartAnim = false;
+        stopAnim();
+        setText(text);
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
-//        getLine();
-        CharSequence c = getText();
         if (!isStartAnim) {
             if (!isAr) {
                 initSpans(canvas);
@@ -100,29 +120,29 @@ public class GradientAnimTextView extends AppCompatTextView {
                 isStartAnim = true;
             }
         }
-        String str = c.toString();
-        int index = str.indexOf("xing", 1);
-//        RectF rectF = getTextViewSelectionBottomY(index);
-//        getPaint().setColor(Color.parseColor("#ff0000"));
-//        canvas.drawRect(rectF, getPaint());
-        super.onDraw(canvas);
 
+        // 显示测试的span区域
+        if (!isAr) {
+            drawTestBitmap(canvas);
+        } else {
+            drawTestArBitmap(canvas);
+        }
+        super.onDraw(canvas);
     }
 
     private void initSpans(Canvas canvas) {
-
         CharSequence text = getText();
         if(TextUtils.isEmpty(text) || canvas == null)
             return ;
         if(text != null && text instanceof SpannedString) {
             SpannedString sb = (SpannedString)text;
-            mGradientSpans = sb.getSpans(0, sb.length(), IGradientSpan.class);
+            mGradientSpans = sb.getSpans(0, sb.length(), IGradientSpan1.class);
             mGradientAnimSpans = sb.getSpans(0, sb.length(), IGradientAnimSpan.class);
         }
 
         if(mGradientSpans != null && mGradientSpans.length > 0) {
             for(int i = 0; i < mGradientSpans.length; i ++) {
-                IGradientSpan gradientSpan = mGradientSpans[i];
+                IGradientSpan1 gradientSpan = mGradientSpans[i];
                 if(gradientSpan != null) {
                     String spanStr = gradientSpan.getSpanText();
                     if (spanStr != null) {
@@ -131,16 +151,40 @@ public class GradientAnimTextView extends AppCompatTextView {
                         int start = gradientSpan.getStartIndex();
                         int end = start + spanStr.length(); // 不包括
                         GradientInfo rectF = getTextViewSelectionBottomY(start, end);
-                        getPaint().setColor(Color.parseColor("#ff0000"));
-                        gradientSpan.onDrawBefore(rectF.left, rectF.right);
+                        gradientSpan.onDrawBefore(rectF);
 
+//                        Bitmap bitmap = gradientSpan.getGradientBitmap();
+//                        if(bitmap != null) {
+//                            canvas.save(); // 这里只是在一定的偏移绘制出原来的Bitmap，方便对比效果
+//                            canvas.translate(rectF.left + getPaddingStart(), Utils.dip2px(mContext, 38 + rectF.sLineNum * 45));
+////                          canvas.drawRect(rectF, getPaint());
+////                          canvas.drawBitmap(gradientSpan.getGradientBitmap(), new Matrix(), getPaint());
+//
+//                            canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()), new RectF(0, 0, bitmap.getWidth(), 50), getPaint());
+//                            canvas.restore();
+//                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    private void drawTestBitmap(Canvas canvas) {
+        if(canvas == null || !isShowTest)
+            return ;
+        if(mGradientSpans != null && mGradientSpans.length > 0) {
+            for(int i = 0; i < mGradientSpans.length; i ++) {
+                IGradientSpan1 gradientSpan = mGradientSpans[i];
+                if(gradientSpan != null) {
+                    String spanStr = gradientSpan.getSpanText();
+                    if (spanStr != null) {
+                        GradientInfo rectF = gradientSpan.getGradientInfo();
+                        getPaint().setColor(Color.parseColor("#ff0000"));
                         Bitmap bitmap = gradientSpan.getGradientBitmap();
                         if(bitmap != null) {
                             canvas.save(); // 这里只是在一定的偏移绘制出原来的Bitmap，方便对比效果
                             canvas.translate(rectF.left + getPaddingStart(), Utils.dip2px(mContext, 38 + rectF.sLineNum * 45));
-//                          canvas.drawRect(rectF, getPaint());
-//                          canvas.drawBitmap(gradientSpan.getGradientBitmap(), new Matrix(), getPaint());
-
                             canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()), new RectF(0, 0, bitmap.getWidth(), 50), getPaint());
                             canvas.restore();
                         }
@@ -148,7 +192,6 @@ public class GradientAnimTextView extends AppCompatTextView {
                 }
             }
         }
-
     }
 
 
@@ -209,13 +252,13 @@ public class GradientAnimTextView extends AppCompatTextView {
             return ;
         if(text != null && text instanceof SpannedString) {
             SpannedString sb = (SpannedString)text;
-            mGradientSpans = sb.getSpans(0, sb.length(), IGradientSpan.class);
+            mGradientSpans = sb.getSpans(0, sb.length(), IGradientSpan1.class);
             mGradientAnimSpans = sb.getSpans(0, sb.length(), IGradientAnimSpan.class);
         }
 
         if(mGradientSpans != null && mGradientSpans.length > 0) {
             for(int i = 0; i < mGradientSpans.length; i ++) {
-                IGradientSpan gradientSpan = mGradientSpans[i];
+                IGradientSpan1 gradientSpan = mGradientSpans[i];
                 if(gradientSpan != null) {
                     String spanStr = gradientSpan.getSpanText();
                     if (spanStr != null) {
@@ -224,16 +267,39 @@ public class GradientAnimTextView extends AppCompatTextView {
                         int start = gradientSpan.getStartIndex();
                         int end = start + spanStr.length(); // 不包括
                         GradientInfo rectF = getTextViewSelectionBottomY1(start, end, spanStr);
-                        getPaint().setColor(Color.parseColor("#ff0000"));
-                        gradientSpan.onDrawBefore(rectF.left, rectF.right);
+                        gradientSpan.onDrawBefore(rectF);
 
+//                        Bitmap bitmap = gradientSpan.getGradientBitmap();
+//                        if(bitmap != null) {
+//                            canvas.save(); // 这里只是在一定的偏移绘制出原来的Bitmap，方便对比效果
+//                            canvas.translate(rectF.left + getPaddingEnd(), Utils.dip2px(mContext, 38 + rectF.sLineNum * 45));
+////                          canvas.drawRect(rectF, getPaint());
+////                          canvas.drawBitmap(gradientSpan.getGradientBitmap(), new Matrix(), getPaint());
+//
+//                            canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()), new RectF(0, 0, bitmap.getWidth(), 50), getPaint());
+//                            canvas.restore();
+//                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void drawTestArBitmap(Canvas canvas) {
+        if(canvas == null || !isShowTest)
+            return ;
+        if(mGradientSpans != null && mGradientSpans.length > 0) {
+            for(int i = 0; i < mGradientSpans.length; i ++) {
+                IGradientSpan1 gradientSpan = mGradientSpans[i];
+                if(gradientSpan != null) {
+                    String spanStr = gradientSpan.getSpanText();
+                    if (spanStr != null) {
+                        GradientInfo rectF = gradientSpan.getGradientInfo();
+                        getPaint().setColor(Color.parseColor("#ff0000"));
                         Bitmap bitmap = gradientSpan.getGradientBitmap();
                         if(bitmap != null) {
                             canvas.save(); // 这里只是在一定的偏移绘制出原来的Bitmap，方便对比效果
                             canvas.translate(rectF.left + getPaddingEnd(), Utils.dip2px(mContext, 38 + rectF.sLineNum * 45));
-//                          canvas.drawRect(rectF, getPaint());
-//                          canvas.drawBitmap(gradientSpan.getGradientBitmap(), new Matrix(), getPaint());
-
                             canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()), new RectF(0, 0, bitmap.getWidth(), 50), getPaint());
                             canvas.restore();
                         }
@@ -450,7 +516,6 @@ public class GradientAnimTextView extends AppCompatTextView {
             mAnimator.cancel();
             mAnimator = null;
         }
-        isAnim = false;
     }
 
 }
