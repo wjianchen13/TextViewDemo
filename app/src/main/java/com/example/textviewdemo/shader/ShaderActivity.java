@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.gradientanimspan.GradientAnimSpanActivity;
 import com.example.textviewdemo.shader.bitmap.TestViewActivity2;
 import com.example.textviewdemo.shader.bitmapshader.BitmapShaderActivity;
 import com.example.textviewdemo.shader.bitmapshaderspan.BitmapShaderSpanActivity;
@@ -77,6 +78,14 @@ public class ShaderActivity extends AppCompatActivity {
      */
     public void onTest7(View v) {
         startActivity(new Intent(this, BitmapShaderAnimActivity.class));
+    }
+
+    /**
+     * 支持渐变，动画TextView，使用BitmapShader
+     * @param v
+     */
+    public void onTest8(View v) {
+        startActivity(new Intent(this, GradientAnimSpanActivity.class));
     }
 
 

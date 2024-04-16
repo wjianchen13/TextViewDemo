@@ -77,5 +77,13 @@
         android:text="BitmapShader Span 动画"
         android:onClick="onTest7"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="支持渐变，动画TextView，使用BitmapShader"
+        android:onClick="onTest8"/>
 
 </LinearLayout>

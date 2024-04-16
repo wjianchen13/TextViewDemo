@@ -37,6 +37,7 @@
         <activity android:name=".shader.utils.shaderanim.BitmapShaderAnimActivity" />
         <activity android:name=".textview_test.TextViewTestActivity" />
         <activity android:name=".random_text.RandomTextActivity" />
+        <activity android:name=".gradientanimspan.GradientAnimSpanActivity" />
 
     </application>
 
