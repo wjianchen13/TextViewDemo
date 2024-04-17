@@ -27,6 +27,7 @@
         <activity android:name=".vertical.CenterActivity" />
         <activity android:name=".gradient_vertical.GradientVerticalActivity" />
         <activity android:name=".gradient1.GradientActivity1" />
+        <activity android:name=".gradient2.GradientActivity2" />
         <activity android:name=".shader.ShaderActivity" />
         <activity android:name=".shader.canvas.TestViewActivity" />
         <activity android:name=".shader.bitmap.TestViewActivity2" />

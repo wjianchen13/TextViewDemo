@@ -37,7 +37,8 @@ import com.example.textviewdemo.thumb.Utils;
  * 需要测试的项目
  * 1.超长显示。。。
  * 2.超长滚动
- * 3. RecyclerView使用
+ * 3.RecyclerView使用
+ *
  *
  * detach事停止动画
  * 不显示时停止动画 显示时重新开始

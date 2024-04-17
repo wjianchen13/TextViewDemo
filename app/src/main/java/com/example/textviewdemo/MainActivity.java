@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.textviewdemo.gradient.GradientActivity;
 import com.example.textviewdemo.gradient1.GradientActivity1;
+import com.example.textviewdemo.gradient2.GradientActivity2;
 import com.example.textviewdemo.gradient_vertical.GradientVerticalActivity;
 import com.example.textviewdemo.gradientanimspan.GradientAnimSpanActivity;
 import com.example.textviewdemo.random_text.RandomTextActivity;
@@ -98,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, GradientAnimSpanActivity.class));
     }
 
-
+    /**
+     * 渐变TextView 首尾相接
+     * @param v
+     */
+    public void onTest10(View v) {
+        startActivity(new Intent(this, GradientActivity2.class));
+    }
 
 }

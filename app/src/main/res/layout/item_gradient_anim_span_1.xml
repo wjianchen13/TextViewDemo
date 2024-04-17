@@ -17,4 +17,5 @@
         android:textDirection="locale"
         android:gravity="start"
         />
+
 </LinearLayout>
