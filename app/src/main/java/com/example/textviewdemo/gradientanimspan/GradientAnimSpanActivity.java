@@ -33,7 +33,7 @@ public class GradientAnimSpanActivity extends AppCompatActivity {
      * @param v
      */
     public void onTest2(View v) {
-
+        startActivity(new Intent(this, GradientAnimSpanActivity2.class));
     }
 
     /**

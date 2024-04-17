@@ -22,40 +22,52 @@ import com.example.textviewdemo.shader.utils.ShaderUtils;
  */
 public class GradientAnimSpanActivity2 extends AppCompatActivity {
 
-    private GradientAnimTextView tvTest;
+    private GradientAnimTextView tvTest1;
+    private GradientAnimTextView tvTest2;
+    private GradientAnimTextView tvTest3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gradient_anim_span2);
-        tvTest = findViewById(R.id.tv_test);
+        tvTest1 = findViewById(R.id.tv_test1);
+        tvTest2 = findViewById(R.id.tv_test2);
+        tvTest3 = findViewById(R.id.tv_test3);
     }
 
     /**
-     * 渐变测试 IGradientSpan
+     * 滚动+渐变
+     * 测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用
      * @param v
      */
     public void onTest1(View v) {
+        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
+        tvTest1.setText(str);
+    }
+
+    /**
+     * 不滚动+渐变 scroll方式
+     * @param v
+     */
+    public void onTest2(View v) {
+        String str = "不滚动+渐变";
+        tvTest2.setText(str);
+    }
+
+    /**
+     * 不滚动+渐变 normal方式
+     * @param v
+     */
+    public void onTest3(View v) {
         SpannableStringBuilder sContent = new SpannableStringBuilder();
-        sContent.append(getSizeText(this, "hello ni hao ya!!", R.dimen.dp_20));
         int[] colors = new int[] {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
         };
-        sContent.append(" ");
         sContent.append(getGradientAnimText(this, "سجل ABمعركة BBالفريقCC", colors, sContent.length(), 1800)); // 18  32
-
-        sContent.append(" ");
-        sContent.append(getColorText(this, "可以", R.color.color_6200EE));
-        sContent.append(" ");
-        sContent.append(getGradientText(this, "wo xiang", colors, sContent.length(), 1800)); // 43 51
-        sContent.append(" ");
-        sContent.append(getColorText(this, "سجل معركة الفريق", R.color.color_6200EE));
-        sContent.append("    ");
-        sContent.append(getGradientText(this, "AB", colors, sContent.length(), 1800)); // 64 75
-        tvTest.setText(sContent);
+        tvTest3.setContent(sContent);
     }
 
     /**
@@ -91,26 +103,6 @@ public class GradientAnimSpanActivity2 extends AppCompatActivity {
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;
-    }
-
-    /**
-     * 渐变动画测试 IGradientAnimSpan
-     * @param v
-     */
-    public void onTest2(View v) {
-        SpannableStringBuilder sContent = new SpannableStringBuilder();
-        int[] colors = new int[] {
-                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
-                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
-                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
-                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
-        };
-        sContent.append(ShaderUtils.getColorText(this, "AAA", R.color.color_6200EE));
-        sContent.append(" ");
-        sContent.append(getGradientAnimText(this, "سجل معركة الفريق", colors, sContent.length(), 1800)); // 64 75
-        sContent.append(" ");
-        sContent.append(ShaderUtils.getColorText(this, "BBB", R.color.color_6200EE));
-        tvTest.setText(sContent);
     }
 
     /**

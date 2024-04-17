@@ -10,10 +10,10 @@
 
     <com.example.textviewdemo.gradient2.MarqueeView2
         android:id="@+id/marquee_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:background="#abc"
+        android:background="#1fff0000"
         app:textColor="#333"
         android:textSize="30sp" />
 

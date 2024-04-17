@@ -26,7 +26,7 @@ public class GradientActivity2 extends AppCompatActivity {
         marquee_horizontal.setFocusableInTouchMode(true);
         marquee_horizontal.setSpeed(1, (float) 5);
 //        marquee_horizontal.setScrollType(SCROLL_RL);
-        marquee_horizontal.setText("水平跑马灯单行1水平跑马灯单行2");
+        marquee_horizontal.setText("水平跑马灯单行1水平跑马灯单行2水平跑马灯单行3");
 
 /*        marquee_horizontal_muti.setFocusable(true);
         marquee_horizontal_muti.setFocusableInTouchMode(true);

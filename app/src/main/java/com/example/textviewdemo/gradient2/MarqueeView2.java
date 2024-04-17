@@ -145,7 +145,7 @@ public class MarqueeView2 extends AppCompatTextView {
         if(paint != null) {
             String text = getText().toString();
             mTextWidth = paint.measureText(text);
-            if(mTextWidth < getMeasuredWidth()) { // 不滚动
+            if(mTextWidth <= getMeasuredWidth()) { // 不滚动
                 scrollType = SCROLL_NO;
             } else { // 滚动
                 scrollType = SCROLL_RL;
@@ -254,7 +254,7 @@ public class MarqueeView2 extends AppCompatTextView {
                 }
             });
             ValueAnimator.setFrameDelay(50L);
-            mAnimator.setDuration(10000);
+            mAnimator.setDuration(3000);
             mAnimator.setRepeatCount(ValueAnimator.INFINITE);
             mAnimator.setRepeatMode(ValueAnimator.RESTART);
             mAnimator.setInterpolator(new LinearInterpolator());

@@ -60,5 +60,12 @@
         <attr name="lineSpace" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="GradientAnimTextView">
+        <attr name="text_color" format="color|reference" />
+        <attr name="mode" format="enum">
+            <enum name="normal" value="0" /> <!-- 正常模式 -->
+            <enum name="scroll" value="1" /> <!-- 滚动模式 -->
+        </attr>
+    </declare-styleable>
 
 </resources>
