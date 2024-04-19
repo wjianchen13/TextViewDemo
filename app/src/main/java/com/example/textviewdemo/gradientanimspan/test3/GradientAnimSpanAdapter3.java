@@ -17,16 +17,16 @@ import java.util.List;
  */
 public class GradientAnimSpanAdapter3 extends BaseMultiItemQuickAdapter<TestBean, BaseViewHolder> {
 
-    public static final int TYPE_NORMAL = 0;//普通类型
-    public static final int TYPE_SECTION = 1;//特殊类型
+    public static final int TYPE_TEXT = 0; // 普通类型
+    public static final int TYPE_GRADIENT = 1; // 渐变类型
 
     private Context mContext;
 
     public GradientAnimSpanAdapter3(Context context, List<TestBean> list) {
         super(list);
         this.mContext = context;
-        addItemType(TYPE_NORMAL, R.layout.item_gradient_anim_span_1);
-        addItemType(TYPE_SECTION, R.layout.item_gradient_anim_span_2);
+        addItemType(TYPE_TEXT, R.layout.item_gradient_anim_text);
+        addItemType(TYPE_GRADIENT, R.layout.item_gradient_anim_span_2);
     }
 
     @Override
@@ -35,12 +35,12 @@ public class GradientAnimSpanAdapter3 extends BaseMultiItemQuickAdapter<TestBean
             return;
         }
         log("=============================> item: " + item.getContent());
-        if (item.getItemType() == TYPE_NORMAL) {
+        if (item.getItemType() == TYPE_GRADIENT) {
             GradientAnimTextView tvTest = helper.getView(R.id.tv_name);
-            tvTest.setContent(item.getsContent());
-        } else if (item.getItemType() == TYPE_SECTION) {
+//            tvTest.setContent(item.getsContent());
+            tvTest.setText(item.getContent());
+        } else if (item.getItemType() == TYPE_TEXT) {
             helper.setText(R.id.tv_name, item.getContent());
-            startAnim1(helper.getView(R.id.imgv_test));
         }
     }
 

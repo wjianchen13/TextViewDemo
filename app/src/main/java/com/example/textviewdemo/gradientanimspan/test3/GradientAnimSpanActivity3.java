@@ -1,6 +1,7 @@
 package com.example.textviewdemo.gradientanimspan.test3;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -37,6 +38,8 @@ public class GradientAnimSpanActivity3 extends AppCompatActivity {
             ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
     };
 
+    private int i = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +50,23 @@ public class GradientAnimSpanActivity3 extends AppCompatActivity {
     }
 
     private void initData() {
+        i = 0;
         mList = new ArrayList<>();
-        mList.add(getTest1());
-        mList.add(getTest2());
+        mList.add(getTextBean());
+        mList.add(getTest3());
+//        mList.add(getTest2());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
+        mList.add(getTextBean());
     }
 
     private void initRv() {
@@ -57,7 +74,22 @@ public class GradientAnimSpanActivity3 extends AppCompatActivity {
         manager.setOrientation(RecyclerView.VERTICAL);
         rvGradientAnim.setLayoutManager(manager);
         GradientAnimSpanAdapter3 adapter = new GradientAnimSpanAdapter3(this, mList);
+        rvGradientAnim.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                outRect.top = 20;
+                outRect.bottom = 20;
+            }
+        });
         rvGradientAnim.setAdapter(adapter);
+    }
+
+    private TestBean getTextBean() {
+        TestBean bean = new TestBean();
+        bean.setContent("测试数据: " + (i ++));
+        bean.setItemType(GradientAnimSpanAdapter3.TYPE_TEXT);
+        return bean;
     }
 
     private TestBean getTest1() {
@@ -70,6 +102,7 @@ public class GradientAnimSpanActivity3 extends AppCompatActivity {
         sContent.append(" ");
         sContent.append(getColorText(this, "可以", R.color.color_6200EE));
         sContent.append(" ");
+        bean.setItemType(GradientAnimSpanAdapter3.TYPE_GRADIENT);
         bean.setsContent(sContent);
         return bean;
     }
@@ -82,7 +115,15 @@ public class GradientAnimSpanActivity3 extends AppCompatActivity {
         sContent.append(" ");
         sContent.append(getColorText(this, "可以", R.color.color_6200EE));
         sContent.append(" ");
+        bean.setItemType(GradientAnimSpanAdapter3.TYPE_GRADIENT);
         bean.setsContent(sContent);
+        return bean;
+    }
+
+    private TestBean getTest3() {
+        TestBean bean = new TestBean();
+        bean.setItemType(GradientAnimSpanAdapter3.TYPE_GRADIENT);
+        bean.setContent("渐变，渐变动画列表使用 渐变，渐变动画列表使用1");
         return bean;
     }
 

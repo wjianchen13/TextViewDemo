@@ -77,4 +77,14 @@
         android:text="BitmapShader Span 动画"
         android:onClick="onTest7"/>
 
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="LinearGradient 测试"
+        android:onClick="onTest8"/>
+
 </LinearLayout>

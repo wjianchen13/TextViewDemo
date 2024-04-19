@@ -44,4 +44,12 @@ public class GradientAnimSpanActivity extends AppCompatActivity {
         startActivity(new Intent(this, GradientAnimSpanActivity3.class));
     }
 
+    /**
+     * 生命周期测试
+     * @param v
+     */
+    public void onTest4(View v) {
+        startActivity(new Intent(this, GradientAnimSpanActivity4.class));
+    }
+
 }
