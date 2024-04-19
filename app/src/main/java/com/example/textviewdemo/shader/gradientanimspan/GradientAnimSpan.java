@@ -22,6 +22,18 @@ public class GradientAnimSpan extends GradientSpan1
         super(text, colors, startIndex, maxWidth);
     }
 
+    public void setGradientColor(@ColorInt int[] color) {
+        if(color.length > 0) {
+            mColors = new int[color.length * 2 - 1];
+            int i = 0;
+            for (int c : color) {
+                mColors[i] = c;
+                mColors[2 * color.length - 2 - i] = c;
+                i ++;
+            }
+        }
+    }
+
     @Override
     public void onAnim(int progress) {
         if(mProgress != progress) {

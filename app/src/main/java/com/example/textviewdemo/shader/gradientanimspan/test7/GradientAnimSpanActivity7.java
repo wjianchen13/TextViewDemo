@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
@@ -12,6 +13,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradientanimspan.GradientAnimSpan;
 import com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView;
@@ -24,48 +26,76 @@ import com.example.textviewdemo.shader.gradientanimspan.test5.RainbowScrollTextV
 public class GradientAnimSpanActivity7 extends AppCompatActivity {
 
     private GradientAnimTextView tvTest1;
+    private GradientAnimTextView tvTest2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gradient_anim_span7);
         tvTest1 = findViewById(R.id.tv_test1);
+        tvTest2 = findViewById(R.id.tv_test2);
     }
 
     /**
-     * 彩虹滚动
+     * 显示省略号 带动画
      * @param v
      */
     public void onTest1(View v) {
         String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
-        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
-        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
-        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
-        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-//        tvTest1.setText(str, true, color1, color2, color3, color4);
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(getGradientAnimText(this, str, colors, sContent.length(), 1800)); // 18  32
+        tvTest1.setContent(sContent);
     }
 
     /**
-     * 非彩虹滚动
+     * 显示省略号 不带动画
      * @param v
      */
     public void onTest2(View v) {
         String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
-//        tvTest1.setText(str, false);
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(getGradientText(this, str, colors, sContent.length(), 1800)); // 18  32
+        tvTest1.setContent(sContent);
     }
 
 
     /**
-     * 彩虹不滚动
+     * 富文本
      * @param v
      */
     public void onTest3(View v) {
-        String str = "测试滚动和渐变同时存在";
-        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
-        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
-        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
-        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-//        tvTest1.setText(str, true, color1, color2, color3, color4);
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        sContent.append(getSizeText(this, "hello ni hao ya!!", R.dimen.dp_20));
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(" ");
+        sContent.append(getGradientAnimText(this, "سجل ABمعركة BBالفريقCC", colors, sContent.length(), 1800)); // 18  32
+
+        sContent.append(" ");
+        sContent.append(getColorText(this, "可以", R.color.color_6200EE));
+        sContent.append(" ");
+        sContent.append(getGradientAnimText(this, "wo xiang", colors, sContent.length(), 1800)); // 43 51
+        sContent.append(" ");
+        sContent.append(getColorText(this, "سجل معركة الفريق", R.color.color_6200EE));
+        sContent.append("    ");
+        sContent.append(getGradientText(this, "AB", colors, sContent.length(), 1800)); // 64 75
+        tvTest2.setContent(sContent);
     }
 
     /**

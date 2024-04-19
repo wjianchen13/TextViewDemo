@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="#1fff0000"
+            android:textSize="30sp"
 
             android:maxLines="1"
             android:ellipsize="end"
@@ -34,7 +35,7 @@
             android:layout_marginTop="10dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="彩虹滚动"
+            android:text="显示省略号 带动画"
             android:onClick="onTest1" />
 
         <Button
@@ -43,8 +44,19 @@
             android:layout_marginTop="10dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="非彩虹滚动"
+            android:text="显示省略号 不带动画"
             android:onClick="onTest2" />
+
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
+            android:id="@+id/tv_test2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#1fff0000"
+            android:textSize="30sp"
+
+            app:mode="span"
+            />
 
         <Button
             android:layout_width="match_parent"
@@ -52,7 +64,7 @@
             android:layout_marginTop="10dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="彩虹不滚动"
+            android:text="富文本"
             android:onClick="onTest3" />
 
         <Button

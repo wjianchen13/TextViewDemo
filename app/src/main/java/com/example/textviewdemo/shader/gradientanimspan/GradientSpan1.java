@@ -33,7 +33,7 @@ public class GradientSpan1 extends CharacterStyle implements UpdateAppearance, I
 
     private int mMaxWidth;
     protected int mWidth;
-    private int[] mColors;
+    protected int[] mColors;
 
     private Bitmap bmp;
     private BitmapShader mShader;
@@ -56,10 +56,15 @@ public class GradientSpan1 extends CharacterStyle implements UpdateAppearance, I
      */
     public GradientSpan1(String text, @ColorInt int[] colors, int startIndex, int maxWidth) {
         this.mText = text;
-        this.mColors = colors;
+//        this.mColors = colors;
         this.mStartIndex = startIndex;
         this.mMaxWidth = maxWidth;
         mMatrix = new Matrix();
+        setGradientColor(colors);
+    }
+
+    public void setGradientColor(@ColorInt int[] color) {
+        mColors = color;
     }
 
     @Override

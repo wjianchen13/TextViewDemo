@@ -456,7 +456,7 @@ public class GradientAnimTextView extends AppCompatTextView {
                 }
             });
             ValueAnimator.setFrameDelay(50L);
-            mAnimator.setDuration(2000);
+            mAnimator.setDuration(5000);
             mAnimator.setRepeatCount(ValueAnimator.INFINITE);
             mAnimator.setRepeatMode(ValueAnimator.RESTART);
             mAnimator.setInterpolator(new LinearInterpolator());
