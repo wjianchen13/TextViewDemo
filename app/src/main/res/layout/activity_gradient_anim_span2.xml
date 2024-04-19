@@ -17,7 +17,7 @@
             android:text="GradientAnimTextView 测试"
             android:layout_marginTop="10dp" />
 
-        <com.example.textviewdemo.gradientanimspan.GradientAnimTextView
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
             android:id="@+id/tv_test1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:text="滚动+渐变"
             android:onClick="onTest1" />
 
-        <com.example.textviewdemo.gradientanimspan.GradientAnimTextView
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
             android:id="@+id/tv_test2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
             android:text="不滚动+渐变 scroll方式"
             android:onClick="onTest2"/>
 
-        <com.example.textviewdemo.gradientanimspan.GradientAnimTextView
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
             android:id="@+id/tv_test3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
             android:text="不滚动+渐变 normal方式"
             android:onClick="onTest3"/>
 
-        <com.example.textviewdemo.gradientanimspan.GradientAnimTextView
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
             android:id="@+id/tv_test4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
             android:text="超长显示 ..."
             android:onClick="onTest4"/>
 
-        <com.example.textviewdemo.gradientanimspan.GradientAnimTextView
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
             android:id="@+id/tv_test5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

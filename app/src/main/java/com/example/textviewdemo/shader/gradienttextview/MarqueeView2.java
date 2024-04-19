@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradient2;
+package com.example.textviewdemo.shader.gradienttextview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -11,7 +11,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader;
-import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;

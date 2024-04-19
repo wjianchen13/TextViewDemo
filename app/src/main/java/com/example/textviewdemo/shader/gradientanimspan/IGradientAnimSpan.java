@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradientanimspan;
+package com.example.textviewdemo.shader.gradientanimspan;
 
 /**
  * 公共的动画接口

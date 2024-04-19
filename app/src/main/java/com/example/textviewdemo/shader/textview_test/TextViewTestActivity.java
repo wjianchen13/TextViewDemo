@@ -1,4 +1,4 @@
-package com.example.textviewdemo.textview_test;
+package com.example.textviewdemo.shader.textview_test;
 
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;

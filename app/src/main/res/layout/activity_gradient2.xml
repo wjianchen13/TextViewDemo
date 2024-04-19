@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.example.textviewdemo.gradient2.MarqueeView2
+    <com.example.textviewdemo.shader.gradienttextview.MarqueeView2
         android:id="@+id/marquee_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

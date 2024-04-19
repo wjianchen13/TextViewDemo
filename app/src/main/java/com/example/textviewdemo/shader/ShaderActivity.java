@@ -7,14 +7,16 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.gradientanimspan.GradientAnimSpanActivity;
 import com.example.textviewdemo.shader.bitmap.TestViewActivity2;
 import com.example.textviewdemo.shader.bitmapshader.BitmapShaderActivity;
 import com.example.textviewdemo.shader.bitmapshaderspan.BitmapShaderSpanActivity;
 import com.example.textviewdemo.shader.canvas.TestViewActivity;
+import com.example.textviewdemo.shader.gradientanimspan.GradientAnimSpanActivity;
+import com.example.textviewdemo.shader.gradienttextview.GradientActivity2;
 import com.example.textviewdemo.shader.lineargradient.LinearGradientActivity;
 import com.example.textviewdemo.shader.lineargradientspan.LinearGradientSpanActivity;
 import com.example.textviewdemo.shader.mix.MixSpanActivity;
+import com.example.textviewdemo.shader.textview_test.TextViewTestActivity;
 import com.example.textviewdemo.shader.utils.shaderanim.BitmapShaderAnimActivity;
 
 public class ShaderActivity extends AppCompatActivity {
@@ -88,5 +90,30 @@ public class ShaderActivity extends AppCompatActivity {
     public void onTest8(View v) {
         startActivity(new Intent(this, LinearGradientActivity.class));
     }
+
+    /**
+     * TextView 测试
+     * @param v
+     */
+    public void onTest9(View v) {
+        startActivity(new Intent(this, TextViewTestActivity.class));
+    }
+
+    /**
+     * 渐变TextView 首尾相接
+     * @param v
+     */
+    public void onTest10(View v) {
+        startActivity(new Intent(this, GradientActivity2.class));
+    }
+
+    /**
+     * 支持渐变，动画TextView，使用BitmapShader
+     * @param v
+     */
+    public void onTest11(View v) {
+        startActivity(new Intent(this, GradientAnimSpanActivity.class));
+    }
+
 
 }

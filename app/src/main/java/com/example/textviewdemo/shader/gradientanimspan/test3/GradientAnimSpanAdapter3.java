@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradientanimspan.test3;
+package com.example.textviewdemo.shader.gradientanimspan.test3;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.view.animation.LinearInterpolator;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.gradientanimspan.GradientAnimTextView;
+import com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView;
 
 import java.util.List;
 

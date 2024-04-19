@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradientanimspan;
+package com.example.textviewdemo.shader.gradientanimspan;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.gradientanimspan.test3.GradientAnimSpanActivity3;
-import com.example.textviewdemo.gradientanimspan.test5.GradientAnimSpanActivity5;
+import com.example.textviewdemo.shader.gradientanimspan.test3.GradientAnimSpanActivity3;
+import com.example.textviewdemo.shader.gradientanimspan.test5.GradientAnimSpanActivity5;
 
 /**
  * 支持渐变，动画TextView，使用BitmapShader

@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradientanimspan;
+package com.example.textviewdemo.shader.gradientanimspan;
 
 
 import android.animation.Animator;
@@ -27,7 +27,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.textview_test.GradientInfo;
+import com.example.textviewdemo.shader.textview_test.GradientInfo;
 import com.example.textviewdemo.thumb.Utils;
 
 /**

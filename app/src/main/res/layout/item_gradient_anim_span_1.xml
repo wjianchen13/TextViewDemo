@@ -6,7 +6,7 @@
     android:layout_marginTop="1dp"
     android:orientation="vertical">
 
-    <com.example.textviewdemo.gradientanimspan.GradientAnimTextView
+    <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

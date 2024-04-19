@@ -27,7 +27,7 @@
         <activity android:name=".vertical.CenterActivity" />
         <activity android:name=".gradient_vertical.GradientVerticalActivity" />
         <activity android:name=".gradient1.GradientActivity1" />
-        <activity android:name=".gradient2.GradientActivity2" />
+        <activity android:name=".shader.gradienttextview.GradientActivity2" />
         <activity android:name=".shader.ShaderActivity" />
         <activity android:name=".shader.canvas.TestViewActivity" />
         <activity android:name=".shader.bitmap.TestViewActivity2" />
@@ -37,14 +37,14 @@
         <activity android:name=".shader.mix.MixSpanActivity" />
         <activity android:name=".shader.utils.shaderanim.BitmapShaderAnimActivity" />
         <activity android:name=".shader.lineargradient.LinearGradientActivity" />
-        <activity android:name=".textview_test.TextViewTestActivity" />
+        <activity android:name=".shader.textview_test.TextViewTestActivity" />
         <activity android:name=".random_text.RandomTextActivity" />
-        <activity android:name=".gradientanimspan.GradientAnimSpanActivity" />
-        <activity android:name=".gradientanimspan.GradientAnimSpanActivity1" />
-        <activity android:name=".gradientanimspan.GradientAnimSpanActivity2" />
-        <activity android:name=".gradientanimspan.test3.GradientAnimSpanActivity3" />
-        <activity android:name=".gradientanimspan.GradientAnimSpanActivity4" />
-        <activity android:name=".gradientanimspan.test5.GradientAnimSpanActivity5" />
+        <activity android:name=".shader.gradientanimspan.GradientAnimSpanActivity" />
+        <activity android:name=".shader.gradientanimspan.GradientAnimSpanActivity1" />
+        <activity android:name=".shader.gradientanimspan.GradientAnimSpanActivity2" />
+        <activity android:name=".shader.gradientanimspan.test3.GradientAnimSpanActivity3" />
+        <activity android:name=".shader.gradientanimspan.GradientAnimSpanActivity4" />
+        <activity android:name=".shader.gradientanimspan.test5.GradientAnimSpanActivity5" />
 
 
     </application>

@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradientanimspan.test3;
+package com.example.textviewdemo.shader.gradientanimspan.test3;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.gradientanimspan.GradientAnimSpan;
-import com.example.textviewdemo.gradientanimspan.GradientSpan1;
+import com.example.textviewdemo.shader.gradientanimspan.GradientAnimSpan;
+import com.example.textviewdemo.shader.gradientanimspan.GradientSpan1;
 
 import java.util.ArrayList;
 import java.util.List;

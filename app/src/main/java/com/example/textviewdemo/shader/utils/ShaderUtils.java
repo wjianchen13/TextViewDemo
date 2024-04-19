@@ -16,7 +16,7 @@ import android.text.style.StyleSpan;
 
 import androidx.core.content.ContextCompat;
 
-import com.example.textviewdemo.textview_test.GradientSpan;
+import com.example.textviewdemo.shader.textview_test.GradientSpan;
 
 public class ShaderUtils {
 

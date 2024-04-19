@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradient2;
+package com.example.textviewdemo.shader.gradienttextview;
 
 import android.os.Bundle;
 

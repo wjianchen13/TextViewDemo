@@ -17,7 +17,7 @@
             android:text="渐变滚动和非渐变滚动兼容"
             android:layout_marginTop="10dp" />
 
-        <com.example.textviewdemo.gradientanimspan.test5.RainbowTextView
+        <com.example.textviewdemo.shader.gradientanimspan.test5.RainbowTextView
             android:id="@+id/tv_test1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

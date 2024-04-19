@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradientanimspan;
+package com.example.textviewdemo.shader.gradientanimspan;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.utils.ShaderUtils;
 
 /**
  * 渐变，渐变动画基础测试

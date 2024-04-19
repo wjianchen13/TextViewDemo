@@ -1,8 +1,8 @@
-package com.example.textviewdemo.gradientanimspan;
+package com.example.textviewdemo.shader.gradientanimspan;
 
 import android.graphics.Bitmap;
 
-import com.example.textviewdemo.textview_test.GradientInfo;
+import com.example.textviewdemo.shader.textview_test.GradientInfo;
 
 public interface IGradientSpan1 {
 

@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradientanimspan.test3;
+package com.example.textviewdemo.shader.gradientanimspan.test3;
 
 import android.text.SpannableStringBuilder;
 

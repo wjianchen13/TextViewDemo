@@ -1,4 +1,4 @@
-package com.example.textviewdemo.gradientanimspan.test5;
+package com.example.textviewdemo.shader.gradientanimspan.test5;
 
 import static android.view.Gravity.CENTER;
 
