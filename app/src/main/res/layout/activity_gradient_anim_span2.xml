@@ -21,7 +21,6 @@
             android:id="@+id/tv_test1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
             android:textSize="30sp"
@@ -32,6 +31,7 @@
             android:textDirection="locale"
             android:gravity="start"
 
+            android:singleLine="true"
             app:mode="scroll"
             />
 
@@ -41,38 +41,13 @@
             android:layout_marginTop="10dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="滚动+渐变"
+            android:text="滚动模式 滚动+渐变 xml设置"
             android:onClick="onTest1" />
 
         <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
-            android:id="@+id/tv_test5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:paddingEnd="20dp"
-            android:textSize="30sp"
-            android:layout_marginTop="10dp"
-            android:background="#1fff0000"
-
-            android:textAlignment="viewStart"
-            android:textDirection="locale"
-            android:gravity="start"
-            />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:text="滚动+渐变 代码设置"
-            android:onClick="onTest5" />
-
-        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
             android:id="@+id/tv_test2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
             android:textSize="30sp"
@@ -82,8 +57,6 @@
             android:textAlignment="viewStart"
             android:textDirection="locale"
             android:gravity="start"
-
-            app:mode="scroll"
             />
 
         <Button
@@ -92,11 +65,67 @@
             android:layout_marginTop="10dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="不滚动+渐变 scroll方式"
-            android:onClick="onTest2"/>
+            android:text="滚动模式 滚动+渐变 代码设置"
+            android:onClick="onTest2" />
 
         <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
             android:id="@+id/tv_test3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"
+            android:background="#1fff0000"
+
+            android:maxLines="1"
+            android:ellipsize="end"
+
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:gravity="start"
+
+            app:mode="span"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+
+            android:gravity="center"
+            android:text="常规模式 超长显示... xml 设置"
+            android:onClick="onTest3"/>
+
+
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
+            android:id="@+id/tv_test4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"
+            android:background="#1fff0000"
+
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:gravity="start"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+
+            android:gravity="center"
+            android:text="常规模式 超长显示 ... 代码设置"
+            android:onClick="onTest4"/>
+
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
+            android:id="@+id/tv_test31"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
@@ -119,10 +148,10 @@
             android:textAllCaps="false"
             android:gravity="center"
             android:text="不滚动+渐变 normal方式"
-            android:onClick="onTest3"/>
+            android:onClick="onTest31"/>
 
         <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
-            android:id="@+id/tv_test4"
+            android:id="@+id/tv_test32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
@@ -149,7 +178,37 @@
 
             android:gravity="center"
             android:text="超长显示 ..."
-            android:onClick="onTest4"/>
+            android:onClick="onTest32"/>
+
+
+
+
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
+            android:id="@+id/tv_test30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"
+            android:background="#1fff0000"
+
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:gravity="start"
+
+            app:mode="scroll"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="不滚动+渐变 scroll方式"
+            android:onClick="onTest30"/>
 
     </LinearLayout>
 

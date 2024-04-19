@@ -14,15 +14,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="渐变滚动和非渐变滚动兼容"
+            android:text="TextView默认值测试"
             android:layout_marginTop="10dp" />
 
-        <com.example.textviewdemo.shader.gradientanimspan.test5.RainbowScrollTextView
+        <TextView
             android:id="@+id/tv_test1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:textSize="30sp"
             android:layout_marginTop="10dp"
             android:background="#1fff0000"
+
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:gravity="start"
             />
 
         <Button
@@ -31,35 +39,8 @@
             android:layout_marginTop="10dp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:text="彩虹滚动"
+            android:text="测试"
             android:onClick="onTest1" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:text="非彩虹滚动"
-            android:onClick="onTest2" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:text="彩虹不滚动"
-            android:onClick="onTest3" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:text="非彩虹不滚动"
-            android:onClick="onTest4" />
 
     </LinearLayout>
 

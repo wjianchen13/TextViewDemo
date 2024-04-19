@@ -2,11 +2,12 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
         android:id="@+id/tv"
         style="@style/textview_style_rtl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#ff0000"
         android:ellipsize="marquee"
         android:focusable="true"
         android:focusableInTouchMode="true"

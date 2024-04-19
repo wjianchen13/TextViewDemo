@@ -14,15 +14,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="渐变滚动和非渐变滚动兼容"
+            android:text="显示省略号"
             android:layout_marginTop="10dp" />
 
-        <com.example.textviewdemo.shader.gradientanimspan.test5.RainbowScrollTextView
+        <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
             android:id="@+id/tv_test1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="#1fff0000"
+
+            android:maxLines="1"
+            android:ellipsize="end"
             />
 
         <Button

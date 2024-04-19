@@ -11,19 +11,20 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView;
 
 
 /**
  * 彩虹字体
  *
  */
-public class RainbowTextView extends FrameLayout {
+public class RainbowScrollTextView extends FrameLayout {
 
     /**
      * 常规
@@ -41,7 +42,7 @@ public class RainbowTextView extends FrameLayout {
     public static final int TYPE_END = 2;
 
     private Context mContext;
-    private TextView tv;
+    private GradientAnimTextView tv;
 
     /**
      * 字体大小
@@ -85,24 +86,46 @@ public class RainbowTextView extends FrameLayout {
      */
     private int mMode;
 
-    public RainbowTextView(@NonNull Context context) {
+    public RainbowScrollTextView(@NonNull Context context) {
         super(context);
         this.mContext = context;
         init();
     }
 
-    public RainbowTextView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public RainbowScrollTextView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
         initAttrs(context, attrs);
         init();
     }
 
-    public RainbowTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RainbowScrollTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
         initAttrs(context, attrs);
         init();
+    }
+
+    /**
+     * 设置显示内容
+     * @param text 显示内容
+     * @param rainbow 是否有彩虹
+     * @param colors 彩虹颜色
+     */
+    public void setText(CharSequence text, boolean rainbow, @ColorInt int... colors) {
+        if(rainbow) {
+            if (tv != null) {
+                tv.setScrollMode();
+                tv.setGradientColor(colors);
+                tv.setText(text);
+            }
+        } else {
+            if (tv != null) {
+                tv.setNormalMode();
+                tv.setText(text);
+                tv.setSelected(true);
+            }
+        }
     }
 
     @Override

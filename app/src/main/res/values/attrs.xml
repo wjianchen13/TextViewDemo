@@ -64,7 +64,8 @@
         <attr name="text_color" format="color|reference" />
         <attr name="mode" format="enum">
             <enum name="normal" value="0" /> <!-- 正常模式 -->
-            <enum name="scroll" value="1" /> <!-- 滚动模式 -->
+            <enum name="span" value="1" /> <!-- span模式 -->
+            <enum name="scroll" value="2" /> <!-- 滚动模式 -->
         </attr>
     </declare-styleable>
 

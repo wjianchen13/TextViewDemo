@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradientanimspan.test3.GradientAnimSpanActivity3;
 import com.example.textviewdemo.shader.gradientanimspan.test5.GradientAnimSpanActivity5;
+import com.example.textviewdemo.shader.gradientanimspan.test6.GradientAnimSpanActivity6;
+import com.example.textviewdemo.shader.gradientanimspan.test7.GradientAnimSpanActivity7;
 
 /**
  * 支持渐变，动画TextView，使用BitmapShader
@@ -60,5 +62,22 @@ public class GradientAnimSpanActivity extends AppCompatActivity {
     public void onTest5(View v) {
         startActivity(new Intent(this, GradientAnimSpanActivity5.class));
     }
+
+    /**
+     * TextView默认值测试
+     * @param v
+     */
+    public void onTest6(View v) {
+        startActivity(new Intent(this, GradientAnimSpanActivity6.class));
+    }
+
+    /**
+     * 显示省略号
+     * @param v
+     */
+    public void onTest7(View v) {
+        startActivity(new Intent(this, GradientAnimSpanActivity7.class));
+    }
+
 
 }

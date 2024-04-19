@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradientanimspan.GradientSpan1;
@@ -19,7 +20,7 @@ import com.example.textviewdemo.shader.gradientanimspan.GradientSpan1;
  */
 public class GradientAnimSpanActivity5 extends AppCompatActivity {
 
-    private RainbowTextView tvTest1;
+    private RainbowScrollTextView tvTest1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +30,52 @@ public class GradientAnimSpanActivity5 extends AppCompatActivity {
     }
 
     /**
-     * 滚动+渐变
-     * 测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用
+     * 彩虹滚动
      * @param v
      */
     public void onTest1(View v) {
         String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
-        tvTest1.setContent(str);
+        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
+        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
+        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
+        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
+        tvTest1.setText(str, true, color1, color2, color3, color4);
     }
 
     /**
-     * 获得指定内容大小和颜色字符串
+     * 非彩虹滚动
+     * @param v
+     */
+    public void onTest2(View v) {
+        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
+        tvTest1.setText(str, false);
+    }
+
+
+    /**
+     * 彩虹不滚动
+     * @param v
+     */
+    public void onTest3(View v) {
+        String str = "测试滚动和渐变同时存在";
+        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
+        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
+        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
+        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
+        tvTest1.setText(str, true, color1, color2, color3, color4);
+    }
+
+    /**
+     * 非彩虹不滚动
+     * @param v
+     */
+    public void onTest4(View v) {
+        String str = "测试滚动和渐变同时存在的";
+        tvTest1.setText(str, false);
+    }
+
+    /**
+     *
      */
     public SpannableString getGradientText(Context context, String txt, int[] colors, int startIndex, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);

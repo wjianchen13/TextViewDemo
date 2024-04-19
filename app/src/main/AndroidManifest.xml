@@ -45,6 +45,8 @@
         <activity android:name=".shader.gradientanimspan.test3.GradientAnimSpanActivity3" />
         <activity android:name=".shader.gradientanimspan.GradientAnimSpanActivity4" />
         <activity android:name=".shader.gradientanimspan.test5.GradientAnimSpanActivity5" />
+        <activity android:name=".shader.gradientanimspan.test6.GradientAnimSpanActivity6" />
+        <activity android:name=".shader.gradientanimspan.test7.GradientAnimSpanActivity7" />
 
 
     </application>
