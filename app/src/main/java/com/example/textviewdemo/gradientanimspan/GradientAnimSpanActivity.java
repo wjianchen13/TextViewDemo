@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.gradientanimspan.test3.GradientAnimSpanActivity3;
+import com.example.textviewdemo.gradientanimspan.test5.GradientAnimSpanActivity5;
 
 /**
  * 支持渐变，动画TextView，使用BitmapShader
@@ -50,6 +51,14 @@ public class GradientAnimSpanActivity extends AppCompatActivity {
      */
     public void onTest4(View v) {
         startActivity(new Intent(this, GradientAnimSpanActivity4.class));
+    }
+
+    /**
+     * 彩虹滚动和常规滚动兼容
+     * @param v
+     */
+    public void onTest5(View v) {
+        startActivity(new Intent(this, GradientAnimSpanActivity5.class));
     }
 
 }

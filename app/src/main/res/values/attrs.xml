@@ -68,4 +68,14 @@
         </attr>
     </declare-styleable>
 
+    <!-- 自动滚动的textview -->
+    <declare-styleable name="rainbow_view">
+        <attr name="marquee_text_color" format="color|reference" /> <!-- id字体颜色 -->
+        <attr name="marquee_text_size" format="dimension" /> <!-- id字体大小 -->
+        <attr name="marquee_auto_width" format="boolean" /> <!-- 最大宽度 -->
+        <attr name="marquee_max_size" format="dimension" /> <!-- 最大宽度 -->
+        <attr name="marquee_layout_gravity" format="integer" /> <!-- 对齐方式 -->
+        <attr name="marquee_text_direction" format="integer" /> <!-- 滚动方向 -->
+    </declare-styleable>
+
 </resources>

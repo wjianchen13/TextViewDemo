@@ -108,12 +108,12 @@ public class GradientAnimTextView extends AppCompatTextView {
     /**
      * 正常模式 多行
      */
-    private static final int MODE_NORMAL = 0;
+    public static final int MODE_NORMAL = 0;
 
     /**
      * 彩虹字体滚动模式 单行
      */
-    private static final int MODE_SCROLL = 1;
+    public static final int MODE_SCROLL = 1;
 
     //滚动方向
     //不滚动
@@ -233,6 +233,15 @@ public class GradientAnimTextView extends AppCompatTextView {
             colors = new int[]{startColor, endColor, startColor};
             mSpace = 200;
         }
+    }
+
+    /**
+     * 设置显示模式
+     */
+    public void setMode(int mode) {
+        this.mMode = mode;
+        init();
+        initText();
     }
 
     private boolean isScrollMode() {
@@ -765,9 +774,9 @@ public class GradientAnimTextView extends AppCompatTextView {
     }
 
     private void initText() {
-        if(paint != null) {
+        if(getPaint() != null) {
             String text = getText().toString();
-            mTextWidth = paint.measureText(text);
+            mTextWidth = getPaint().measureText(text);
             if(mTextWidth < getMeasuredWidth()) { // 不滚动
                 scrollType = SCROLL_NO;
             } else { // 滚动
