@@ -65,16 +65,18 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="TextView Shader测试,字体颜色渐变"
+        android:text="TextView 滚动"
         android:onClick="onTest6"/>
-    
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="TextView 滚动"
-        android:onClick="onTest8"/>
+        android:text="TextView Shader测试,字体颜色渐变"
+        android:onClick="onTest7"/>
+    
+
 
 </LinearLayout>

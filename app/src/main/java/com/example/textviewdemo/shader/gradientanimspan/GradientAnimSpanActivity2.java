@@ -54,6 +54,23 @@ public class GradientAnimSpanActivity2 extends AppCompatActivity {
     }
 
     /**
+     * 滚动+渐变 代码设置
+     * 测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用
+     * @param v
+     */
+    public void onTest5(View v) {
+        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
+        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
+        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
+        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
+        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
+        tvTest5.setSingleLine();
+        tvTest5.setMode(GradientAnimTextView.MODE_SCROLL);
+        tvTest5.setGradientColor(color1, color2, color3, color4);
+        tvTest5.setText(str);
+    }
+
+    /**
      * 不滚动+渐变 scroll方式
      * @param v
      */
@@ -92,23 +109,6 @@ public class GradientAnimSpanActivity2 extends AppCompatActivity {
         };
         sContent.append(getGradientAnimText(this, "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用", colors, sContent.length(), 1800)); // 18  32
         tvTest4.setContent(sContent);
-    }
-
-    /**
-     * 滚动+渐变 代码设置
-     * 测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用
-     * @param v
-     */
-    public void onTest5(View v) {
-        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
-        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
-        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
-        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
-        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-        tvTest5.setSingleLine();
-        tvTest5.setMode(GradientAnimTextView.MODE_SCROLL);
-        tvTest5.setGradientColor(color1, color2, color3, color4);
-        tvTest5.setText(str);
     }
 
 

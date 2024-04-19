@@ -105,7 +105,6 @@
         android:text="渐变TextView 首尾相接"
         android:onClick="onTest10"/>
 
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

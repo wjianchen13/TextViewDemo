@@ -64,20 +64,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * TextView Shader测试，字体颜色渐变
-     * @param v
-     */
-    public void onTest6(View v) {
-        startActivity(new Intent(this, ShaderActivity.class));
-    }
-
-    /**
      * TextView 滚动
      * @param v
      */
-    public void onTest8(View v) {
+    public void onTest6(View v) {
         startActivity(new Intent(this, RandomTextActivity.class));
     }
+
+    /**
+     * TextView Shader测试，字体颜色渐变
+     * @param v
+     */
+    public void onTest7(View v) {
+        startActivity(new Intent(this, ShaderActivity.class));
+    }
+
 
 
 }
