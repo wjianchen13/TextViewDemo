@@ -1,81 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tv_gradient_anim"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="彩虹字体最终版本" />
+        android:layout_height="300dp"
+        android:background="#1f0000ff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="彩虹，支持滚动"
-        android:onClick="onTest1"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="渐变，渐变动画基础测试"
-        android:onClick="onTest2"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="渐变，渐变动画列表使用"
-        android:onClick="onTest3"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="生命周期测试"
-        android:onClick="onTest4"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="彩虹滚动和常规滚动兼容"
-        android:onClick="onTest5"/>
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="TextView默认值测试"
-        android:onClick="onTest6"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="显示省略号"
-        android:onClick="onTest7"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

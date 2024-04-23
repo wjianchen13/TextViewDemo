@@ -67,19 +67,19 @@ public class FinalGradientAnimActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * 测试控件
      * @param v
      */
     public void onTest6(View v) {
-
+        startActivity(new Intent(this, FinalTestViewActivity.class));
     }
 
     /**
-     *
+     * 基础测试
      * @param v
      */
     public void onTest7(View v) {
-
+        startActivity(new Intent(this, FinalTestActivity.class));
     }
 
 

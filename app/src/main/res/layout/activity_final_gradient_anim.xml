@@ -66,7 +66,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="TextView默认值测试"
+        android:text="测试控件"
         android:onClick="onTest6"/>
 
     <Button
@@ -75,7 +75,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="显示省略号"
+        android:text="基础测试"
         android:onClick="onTest7"/>
 
 </LinearLayout>
