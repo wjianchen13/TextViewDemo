@@ -11,6 +11,7 @@ import com.example.textviewdemo.shader.bitmap.TestViewActivity2;
 import com.example.textviewdemo.shader.bitmapshader.BitmapShaderActivity;
 import com.example.textviewdemo.shader.bitmapshaderspan.BitmapShaderSpanActivity;
 import com.example.textviewdemo.shader.canvas.TestViewActivity;
+import com.example.textviewdemo.shader.gradient_final.FinalGradientAnimActivity;
 import com.example.textviewdemo.shader.gradientanimspan.GradientAnimSpanActivity;
 import com.example.textviewdemo.shader.gradienttextview.GradientActivity2;
 import com.example.textviewdemo.shader.lineargradient.LinearGradientActivity;
@@ -115,5 +116,12 @@ public class ShaderActivity extends AppCompatActivity {
         startActivity(new Intent(this, GradientAnimSpanActivity.class));
     }
 
+    /**
+     * 支持渐变，动画TextView 最终版
+     * @param v
+     */
+    public void onTest12(View v) {
+        startActivity(new Intent(this, FinalGradientAnimActivity.class));
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.gradientanimspan;
+package com.example.textviewdemo.shader.gradient_final.view;
 
 
 import android.animation.Animator;
@@ -28,6 +28,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradientanimspan.IGradientAnimSpan;
+import com.example.textviewdemo.shader.gradientanimspan.IGradientSpan1;
 import com.example.textviewdemo.shader.textview_test.GradientInfo;
 import com.example.textviewdemo.thumb.Utils;
 
@@ -113,7 +115,7 @@ import com.example.textviewdemo.thumb.Utils;
  *
  *
  */
-public class GradientAnimTextView extends AppCompatTextView {
+public class GradientAnimTextViewV2 extends AppCompatTextView {
 
     /**
      * 正常模式 多行
@@ -218,11 +220,11 @@ public class GradientAnimTextView extends AppCompatTextView {
     private boolean isGradientCreate;
 
 
-    public GradientAnimTextView(Context context) {
+    public GradientAnimTextViewV2(Context context) {
         super(context);
     }
 
-    public GradientAnimTextView(Context context, @Nullable AttributeSet attrs) {
+    public GradientAnimTextViewV2(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
         initAttr(context, attrs);
@@ -231,7 +233,7 @@ public class GradientAnimTextView extends AppCompatTextView {
         }
     }
 
-    public GradientAnimTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public GradientAnimTextViewV2(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -368,6 +370,7 @@ public class GradientAnimTextView extends AppCompatTextView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        Utils.log("=====================> GradientAnimTextViewV2 onDraw1");
         if(isScrollMode()) {// 滚动相关处理
             String text = getText().toString();
             if (TextUtils.isEmpty(text)) {
@@ -450,6 +453,7 @@ public class GradientAnimTextView extends AppCompatTextView {
         } else {
             super.onDraw(canvas);
         }
+        Utils.log("=====================> GradientAnimTextViewV2 onDraw2");
     }
 
 
