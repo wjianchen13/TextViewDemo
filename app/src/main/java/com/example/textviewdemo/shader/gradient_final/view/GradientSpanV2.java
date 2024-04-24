@@ -129,9 +129,13 @@ public class GradientSpanV2 extends CharacterStyle implements UpdateAppearance, 
             mWidth = (int)Math.abs(end - start);
             if(mMaxWidth != 0 && mWidth > mMaxWidth)
                 mWidth = mMaxWidth;
-            bmp = ShaderUtils.createGradientBitmap(mWidth, mCreateBitmapHeight, mColors);
+            bmp = createShaderBitmap();
             mShader = new BitmapShader(bmp, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         }
+    }
+
+    protected Bitmap createShaderBitmap() {
+        return ShaderUtils.createGradientBitmap(mWidth, mCreateBitmapHeight, mColors);
     }
 
     @Override

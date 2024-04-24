@@ -57,7 +57,7 @@ public class FinalGradientAnimTestActivity41 extends AppCompatActivity {
         sContent.append(" ");
         sContent.append(getColorText(this, "可以", R.color.color_6200EE));
         sContent.append(" ");
-        sContent.append(getGradientText(this, "wo xiang", getColors(), sContent.length(), 1800)); // 43 51
+        sContent.append(getGradientAnimText(this, "wo xiang", getColors(), sContent.length(), 1800)); // 43 51
         sContent.append(" ");
         sContent.append(getColorText(this, "سجل معركة الفريق", R.color.color_6200EE));
         sContent.append("    ");
