@@ -136,6 +136,12 @@ public class RainbowScrollTextViewV2 extends FrameLayout {
     }
 
     @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        stopAnim();
+    }
+
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int expandSpec = widthMeasureSpec;
         if(mAutoSize && mMaxWidth > 0) {
