@@ -13,6 +13,11 @@ public class GradientAnimSpanV2 extends GradientSpanV2
     private int mProgress;
 
     /**
+     * 阿拉伯语反方向
+     */
+    private boolean isAr = true;
+
+    /**
      *
      * @param text
      * @param colors
@@ -37,10 +42,14 @@ public class GradientAnimSpanV2 extends GradientSpanV2
     @Override
     public void onAnim(int progress) {
         if(mProgress != progress) {
-            if(mTranslate > mWidth) { // 超出范围，重新开始
+            if(Math.abs(mTranslate) > mWidth) { // 超出范围，重新开始
                 mTranslate = 0;
             }
-            mTranslate += Utils.dip2px(BaseApp.getInstance(), 1);
+            if(isAr) {
+                mTranslate -= Utils.dip2px(BaseApp.getInstance(), 1);
+            } else {
+                mTranslate += Utils.dip2px(BaseApp.getInstance(), 1);
+            }
         }
         mProgress = progress;
     }

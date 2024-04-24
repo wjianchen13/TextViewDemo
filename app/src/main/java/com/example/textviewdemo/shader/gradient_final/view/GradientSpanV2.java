@@ -42,6 +42,8 @@ public class GradientSpanV2 extends CharacterStyle implements UpdateAppearance, 
 
     protected float mTranslate;
 
+    private boolean isAr = true;
+
     /**
      * 当前span 的渐变信息
      */
@@ -56,15 +58,36 @@ public class GradientSpanV2 extends CharacterStyle implements UpdateAppearance, 
      */
     public GradientSpanV2(String text, @ColorInt int[] colors, int startIndex, int maxWidth) {
         this.mText = text;
-//        this.mColors = colors;
         this.mStartIndex = startIndex;
         this.mMaxWidth = maxWidth;
         mMatrix = new Matrix();
         setGradientColor(colors);
     }
 
+    /**
+     * 这里面传入的color不能是统一对象，如果是同一个对象，当有多个GradientSpanV2时，会导致方向混乱
+     * @param color
+     */
     public void setGradientColor(@ColorInt int[] color) {
         mColors = color;
+        if(isAr) { // 阿拉伯语颜色反向
+            reverseArray(mColors);
+        }
+    }
+
+    private void reverseArray(int[] arr) {
+        if(arr == null || arr.length == 0)
+            return ;
+        for(int start = 0, end = arr.length - 1; start < end; start ++, end --) {
+            swap(arr, start, end);
+        }
+
+    }
+
+    private void swap(int arr[], int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
     }
 
     @Override
