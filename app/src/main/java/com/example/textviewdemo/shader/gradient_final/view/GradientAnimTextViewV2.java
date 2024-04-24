@@ -285,6 +285,8 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
         mOffset2 = 0;
         mLinearGradient = null;
         colors = null;
+        mGradientSpans = null;
+        mGradientAnimSpans = null;
     }
 
     /**

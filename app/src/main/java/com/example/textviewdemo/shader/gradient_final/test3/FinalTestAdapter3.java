@@ -8,38 +8,37 @@ import android.view.animation.LinearInterpolator;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.test2.FinalTestBean2;
-import com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2;
+import com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2;
 
 import java.util.List;
 
 /**
  * 测试
  */
-public class FinalTestAdapter3 extends BaseMultiItemQuickAdapter<FinalTestBean2, BaseViewHolder> {
+public class FinalTestAdapter3 extends BaseMultiItemQuickAdapter<FinalTestBean3, BaseViewHolder> {
 
     public static final int TYPE_TEXT = 0; // 普通类型
     public static final int TYPE_GRADIENT = 1; // 渐变类型
 
     private Context mContext;
 
-    public FinalTestAdapter3(Context context, List<FinalTestBean2> list) {
+    public FinalTestAdapter3(Context context, List<FinalTestBean3> list) {
         super(list);
         this.mContext = context;
-        addItemType(TYPE_TEXT, R.layout.item_final_test2_text);
-        addItemType(TYPE_GRADIENT, R.layout.item_final_test2_gradient);
+        addItemType(TYPE_TEXT, R.layout.item_final_test3_text);
+        addItemType(TYPE_GRADIENT, R.layout.item_final_test3_gradient);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, FinalTestBean2 item) {
+    protected void convert(BaseViewHolder helper, FinalTestBean3 item) {
         if (item == null) {
             return;
         }
         log("=============================> item: " + item.getContent());
         if (item.getItemType() == TYPE_GRADIENT) {
-            RainbowScrollTextViewV2 tvTest = helper.getView(R.id.tv_test);
+            GradientAnimTextViewV2 tvTest = helper.getView(R.id.tv_test);
 //            tvTest.setContent(item.getsContent());
-            tvTest.setContent(item.getContent(), item.isRainbow(), item.getColors());
+            tvTest.setContent(item.getsContent());
         } else if (item.getItemType() == TYPE_TEXT) {
             helper.setText(R.id.tv_name, item.getContent());
         }
@@ -54,7 +53,7 @@ public class FinalTestAdapter3 extends BaseMultiItemQuickAdapter<FinalTestBean2,
         return mData.size();
     }
 
-    public List<FinalTestBean2> getData() {
+    public List<FinalTestBean3> getData() {
         return mData;
     }
     

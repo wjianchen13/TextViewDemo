@@ -99,7 +99,8 @@ public class FinalGradientAnimTestActivity31 extends AppCompatActivity {
      * @param v
      */
     public void onTest5(View v) {
-        tvTest3.startAnim();
+//        tvTest3.startAnim();
+        tvTest3.setContent("hello");
     }
 
     /**

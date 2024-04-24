@@ -18,8 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.test2.FinalTestAdapter2;
-import com.example.textviewdemo.shader.gradient_final.test2.FinalTestBean2;
 import com.example.textviewdemo.shader.gradientanimspan.GradientAnimSpan;
 import com.example.textviewdemo.shader.gradientanimspan.GradientSpan1;
 import com.example.textviewdemo.shader.gradientanimspan.test3.GradientAnimSpanAdapter3;
@@ -33,7 +31,7 @@ import java.util.List;
 public class FinalGradientAnimTestActivity32 extends AppCompatActivity {
 
     private RecyclerView rvGradientAnim;
-    private List<FinalTestBean2> mList;
+    private List<FinalTestBean3> mList;
     private int[] colors = new int[] {
             ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
             ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
@@ -76,7 +74,7 @@ public class FinalGradientAnimTestActivity32 extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(RecyclerView.VERTICAL);
         rvGradientAnim.setLayoutManager(manager);
-        FinalTestAdapter2 adapter = new FinalTestAdapter2(this, mList);
+        FinalTestAdapter3 adapter = new FinalTestAdapter3(this, mList);
         rvGradientAnim.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
@@ -88,15 +86,15 @@ public class FinalGradientAnimTestActivity32 extends AppCompatActivity {
         rvGradientAnim.setAdapter(adapter);
     }
 
-    private FinalTestBean2 getTextBean() {
-        FinalTestBean2 bean = new FinalTestBean2();
+    private FinalTestBean3 getTextBean() {
+        FinalTestBean3 bean = new FinalTestBean3();
         bean.setContent("测试数据: " + (i ++));
-        bean.setItemType(FinalTestAdapter2.TYPE_TEXT);
+        bean.setItemType(FinalTestAdapter3.TYPE_TEXT);
         return bean;
     }
 
-    private FinalTestBean2 getTest1() {
-        FinalTestBean2 bean = new FinalTestBean2();
+    private FinalTestBean3 getTest1() {
+        FinalTestBean3 bean = new FinalTestBean3();
         SpannableStringBuilder sContent = new SpannableStringBuilder();
         sContent.append(getSizeText(this, "hello ni hao ya!!", R.dimen.dp_20));
         sContent.append(" ");
@@ -105,42 +103,51 @@ public class FinalGradientAnimTestActivity32 extends AppCompatActivity {
         sContent.append(" ");
         sContent.append(getColorText(this, "可以", R.color.color_6200EE));
         sContent.append(" ");
-        bean.setItemType(FinalTestAdapter2.TYPE_GRADIENT);
+        bean.setItemType(FinalTestAdapter3.TYPE_GRADIENT);
         bean.setsContent(sContent);
         return bean;
     }
 
-    private FinalTestBean2 getTest2() {
-        FinalTestBean2 bean = new FinalTestBean2();
+    private FinalTestBean3 getTest2() {
+        FinalTestBean3 bean = new FinalTestBean3();
         SpannableStringBuilder sContent = new SpannableStringBuilder();
         sContent.append(getGradientAnimText(this, "سجل ABمعركة BBالفريقCC", colors, sContent.length(), 1800)); // 18  32
 
         sContent.append(" ");
         sContent.append(getColorText(this, "可以", R.color.color_6200EE));
         sContent.append(" ");
-        bean.setItemType(FinalTestAdapter2.TYPE_GRADIENT);
+        bean.setItemType(FinalTestAdapter3.TYPE_GRADIENT);
         bean.setsContent(sContent);
         return bean;
     }
 
-    private FinalTestBean2 getTest3() {
-        FinalTestBean2 bean = new FinalTestBean2();
+    private FinalTestBean3 getTest3() {
+        FinalTestBean3 bean = new FinalTestBean3();
         bean.setItemType(GradientAnimSpanAdapter3.TYPE_GRADIENT);
-        bean.setRainbow(true);
-        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
-        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
-        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
-        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-        bean.setColors(new int[]{color1, color2, color3, color4});
-        bean.setContent("渐变，渐变动画列表使用 渐变，渐变动画列表使用1");
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(getGradientAnimText(this, "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用", colors, sContent.length(), 1800)); // 18  32
+        bean.setsContent(sContent);
         return bean;
     }
 
-    private FinalTestBean2 getTest4() {
-        FinalTestBean2 bean = new FinalTestBean2();
-        bean.setRainbow(false);
+    private FinalTestBean3 getTest4() {
+        FinalTestBean3 bean = new FinalTestBean3();
         bean.setItemType(GradientAnimSpanAdapter3.TYPE_GRADIENT);
-        bean.setContent("渐变，渐变动画列表使用 渐变，渐变动画列表使用1");
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(getGradientAnimText(this, "测试滚动和渐变", colors, sContent.length(), 1800)); // 18  32
+        bean.setsContent(sContent);
         return bean;
     }
 
