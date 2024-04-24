@@ -170,6 +170,11 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
     private boolean isShowTest = true;
 
     /**
+     * 滚动模式下，超长显示... 的方式
+     */
+    private boolean isScrollEllipsize;
+
+    /**
      * 显示模式 0 常规模式  1 滚动模式
      */
     private int mMode = 0;
@@ -300,6 +305,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
      */
     public void setScrollMode() {
         this.mMode = MODE_SCROLL;
+        this.isScrollEllipsize = false;
         stopAnim();
         setSingleLine();
         setEllipsize(TextUtils.TruncateAt.END);
@@ -308,6 +314,24 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
         init();
         initText();
     }
+
+    /**
+     * 设置显示模式 省略号显示
+     * xml 直接设置 android:singleLine="true" 不需要设置 android:ellipsize="end" 都可以实现省略号效果
+     * 但是在代码中 设置etSingleLine();必须要设置setEllipsize(TextUtils.TruncateAt.END)才可以实现省略号效果
+     */
+    public void setScrollModeEllipsize() {
+        this.mMode = MODE_SCROLL;
+        this.isScrollEllipsize = true;
+        stopAnim();
+        setSingleLine();
+        setEllipsize(TextUtils.TruncateAt.END);
+        setFocusable(false);
+        setFocusableInTouchMode(false);
+        init();
+        scrollType = SCROLL_RL;
+    }
+
 
     /**
      * 设置显示模式 省略号显示
@@ -924,12 +948,14 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
         if(mLinearGradient != null) {
             mLinearGradient.setLocalMatrix(mGradientMatrix);
         }
-        if(isAr) {
-            mOffset1 += horizontalSpeed;
-            mOffset2 += horizontalSpeed;
-        } else {
-            mOffset1 += horizontalSpeed;
-            mOffset2 += horizontalSpeed;
+        if(!isScrollEllipsize) {
+            if (isAr) {
+                mOffset1 += horizontalSpeed;
+                mOffset2 += horizontalSpeed;
+            } else {
+                mOffset1 += horizontalSpeed;
+                mOffset2 += horizontalSpeed;
+            }
         }
         invalidate();
     }
