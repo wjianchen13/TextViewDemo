@@ -12,7 +12,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="彩虹字体最终版本" />
+        android:text="富文本，渐变 单个使用" />
+
+    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        android:id="@+id/tv_test1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:background="#1fff0000"
+
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:gravity="start"
+
+        />
 
     <Button
         android:layout_width="match_parent"
@@ -20,8 +36,24 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="GradientAnimTextViewV2 彩虹，需要支持滚动"
-        android:onClick="onTest1"/>
+        android:text="超长显示..."
+        android:onClick="onTest1" />
+
+    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        android:id="@+id/tv_test2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:background="#1fff0000"
+
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:gravity="start"
+
+        />
 
     <Button
         android:layout_width="match_parent"
@@ -29,8 +61,24 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="RainbowScrollTextViewV2 彩虹，需要支持滚动"
-        android:onClick="onTest2"/>
+        android:text="没超长的情况"
+        android:onClick="onTest2" />
+
+    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        android:id="@+id/tv_test3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:background="#1fff0000"
+
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:gravity="start"
+
+        />
 
     <Button
         android:layout_width="match_parent"
@@ -38,8 +86,8 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="GradientAnimTextViewV2 渐变，超长显示..."
-        android:onClick="onTest3"/>
+        android:text="开始滚动"
+        android:onClick="onTest3" />
 
     <Button
         android:layout_width="match_parent"
@@ -47,8 +95,8 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="GradientAnimTextViewV2 渐变 富文本"
-        android:onClick="onTest4"/>
+        android:text="停止滚动"
+        android:onClick="onTest4" />
 
     <Button
         android:layout_width="match_parent"
@@ -56,26 +104,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="彩虹滚动和常规滚动兼容"
-        android:onClick="onTest5"/>
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="测试控件"
-        android:onClick="onTest6"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="基础测试"
-        android:onClick="onTest7"/>
+        android:text="设置新内容"
+        android:onClick="onTest5" />
 
 </LinearLayout>

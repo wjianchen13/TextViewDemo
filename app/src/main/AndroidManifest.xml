@@ -59,6 +59,9 @@
         <activity android:name=".shader.gradient_final.test3.FinalGradientAnimTestActivity3" />
         <activity android:name=".shader.gradient_final.test3.FinalGradientAnimTestActivity31" />
         <activity android:name=".shader.gradient_final.test3.FinalGradientAnimTestActivity32" />
+        <activity android:name=".shader.gradient_final.test4.FinalGradientAnimTestActivity4" />
+        <activity android:name=".shader.gradient_final.test4.FinalGradientAnimTestActivity41" />
+        <activity android:name=".shader.gradient_final.test4.FinalGradientAnimTestActivity42" />
 
     </application>
 
