@@ -1,45 +1,46 @@
-package com.example.textviewdemo.shader.gradient_final.test1;
+package com.example.textviewdemo.shader.gradient_final.test2;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+import androidx.core.content.ContextCompat;
+
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView;
-import com.example.textviewdemo.shader.gradientanimspan.test3.TestBean;
+import com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2;
 
 import java.util.List;
 
 /**
  * 测试
  */
-public class FinalTestAdapter1 extends BaseMultiItemQuickAdapter<TestBean, BaseViewHolder> {
+public class FinalTestAdapter2 extends BaseMultiItemQuickAdapter<FinalTestBean2, BaseViewHolder> {
 
     public static final int TYPE_TEXT = 0; // 普通类型
     public static final int TYPE_GRADIENT = 1; // 渐变类型
 
     private Context mContext;
 
-    public FinalTestAdapter1(Context context, List<TestBean> list) {
+    public FinalTestAdapter2(Context context, List<FinalTestBean2> list) {
         super(list);
         this.mContext = context;
-        addItemType(TYPE_TEXT, R.layout.item_final_test1_text);
-        addItemType(TYPE_GRADIENT, R.layout.item_final_test1_gradient);
+        addItemType(TYPE_TEXT, R.layout.item_final_test2_text);
+        addItemType(TYPE_GRADIENT, R.layout.item_final_test2_gradient);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, TestBean item) {
+    protected void convert(BaseViewHolder helper, FinalTestBean2 item) {
         if (item == null) {
             return;
         }
         log("=============================> item: " + item.getContent());
         if (item.getItemType() == TYPE_GRADIENT) {
-            GradientAnimTextView tvTest = helper.getView(R.id.tv_name);
+            RainbowScrollTextViewV2 tvTest = helper.getView(R.id.tv_test);
 //            tvTest.setContent(item.getsContent());
-            tvTest.setText(item.getContent());
+            tvTest.setContent(item.getContent(), item.isRainbow(), item.getColors());
         } else if (item.getItemType() == TYPE_TEXT) {
             helper.setText(R.id.tv_name, item.getContent());
         }
@@ -54,7 +55,7 @@ public class FinalTestAdapter1 extends BaseMultiItemQuickAdapter<TestBean, BaseV
         return mData.size();
     }
 
-    public List<TestBean> getData() {
+    public List<FinalTestBean2> getData() {
         return mData;
     }
     

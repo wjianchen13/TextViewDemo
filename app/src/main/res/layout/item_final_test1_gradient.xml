@@ -4,21 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#ffff00"
+    android:layout_marginTop="1dp"
     android:orientation="vertical">
 
-    <com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2
-        android:id="@+id/tv_test"
+    <com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView
+        android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="10dp"
+        android:paddingStart="50dp"
         android:paddingEnd="20dp"
-        android:textSize="80sp"
-        android:background="#1fff0000"
+        android:textSize="30sp"
 
         android:textAlignment="viewStart"
         android:textDirection="locale"
         android:gravity="start"
+
+        android:singleLine="true"
+        app:mode="scroll"
         />
 
 </LinearLayout>
