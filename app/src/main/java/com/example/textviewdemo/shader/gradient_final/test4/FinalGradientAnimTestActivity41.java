@@ -15,9 +15,9 @@ import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.view.GradientAnimSpanV2;
 import com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2;
-import com.example.textviewdemo.shader.gradientanimspan.GradientAnimSpan;
-import com.example.textviewdemo.shader.gradientanimspan.GradientSpan1;
+import com.example.textviewdemo.shader.gradient_final.view.GradientSpanV2;
 
 /**
  * 富文本，渐变 单个使用
@@ -147,7 +147,7 @@ public class FinalGradientAnimTestActivity41 extends AppCompatActivity {
     public SpannableString getGradientText(Context context, String txt, int[] colors, int startIndex, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);
         if (context != null && !TextUtils.isEmpty(spanString)) {
-            GradientSpan1 span = new GradientSpan1(txt, colors, startIndex, maxWidth);
+            GradientSpanV2 span = new GradientSpanV2(txt, colors, startIndex, maxWidth);
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;
@@ -183,7 +183,7 @@ public class FinalGradientAnimTestActivity41 extends AppCompatActivity {
     public SpannableString getGradientAnimText(Context context, String txt, int[] colors, int startIndex, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);
         if (context != null && !TextUtils.isEmpty(spanString)) {
-            GradientAnimSpan span = new GradientAnimSpan(txt, colors, startIndex, maxWidth);
+            GradientAnimSpanV2 span = new GradientAnimSpanV2(txt, colors, startIndex, maxWidth);
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;

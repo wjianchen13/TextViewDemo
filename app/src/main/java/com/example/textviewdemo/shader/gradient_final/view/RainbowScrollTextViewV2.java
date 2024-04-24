@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView;
 import com.example.textviewdemo.shader.gradientanimspan.test5.ScreenUtils;
 
 

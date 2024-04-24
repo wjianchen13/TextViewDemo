@@ -18,9 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradientanimspan.GradientAnimSpan;
-import com.example.textviewdemo.shader.gradientanimspan.GradientSpan1;
-import com.example.textviewdemo.shader.gradientanimspan.test3.GradientAnimSpanAdapter3;
+import com.example.textviewdemo.shader.gradient_final.view.GradientAnimSpanV2;
+import com.example.textviewdemo.shader.gradient_final.view.GradientSpanV2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,7 +122,7 @@ public class FinalGradientAnimTestActivity42 extends AppCompatActivity {
 
     private FinalTestBean4 getTest3() {
         FinalTestBean4 bean = new FinalTestBean4();
-        bean.setItemType(GradientAnimSpanAdapter3.TYPE_GRADIENT);
+        bean.setItemType(FinalTestAdapter4.TYPE_GRADIENT);
         SpannableStringBuilder sContent = new SpannableStringBuilder();
         sContent.append(getSizeText(this, "hello ni hao ya!!", R.dimen.dp_20));
         int[] colors = new int[] {
@@ -149,7 +148,7 @@ public class FinalGradientAnimTestActivity42 extends AppCompatActivity {
 
     private FinalTestBean4 getTest4() {
         FinalTestBean4 bean = new FinalTestBean4();
-        bean.setItemType(GradientAnimSpanAdapter3.TYPE_GRADIENT);
+        bean.setItemType(FinalTestAdapter4.TYPE_GRADIENT);
         SpannableStringBuilder sContent = new SpannableStringBuilder();
         sContent.append(getSizeText(this, "hello ni hao ya!!", R.dimen.dp_20));
         int[] colors = new int[] {
@@ -187,7 +186,7 @@ public class FinalGradientAnimTestActivity42 extends AppCompatActivity {
     public SpannableString getGradientText(Context context, String txt, int[] colors, int startIndex, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);
         if (context != null && !TextUtils.isEmpty(spanString)) {
-            GradientSpan1 span = new GradientSpan1(txt, colors, startIndex, maxWidth);
+            GradientSpanV2 span = new GradientSpanV2(txt, colors, startIndex, maxWidth);
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;
@@ -230,7 +229,7 @@ public class FinalGradientAnimTestActivity42 extends AppCompatActivity {
     public SpannableString getGradientAnimText(Context context, String txt, int[] colors, int startIndex, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);
         if (context != null && !TextUtils.isEmpty(spanString)) {
-            GradientAnimSpan span = new GradientAnimSpan(txt, colors, startIndex, maxWidth);
+            GradientAnimSpanV2 span = new GradientAnimSpanV2(txt, colors, startIndex, maxWidth);
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;

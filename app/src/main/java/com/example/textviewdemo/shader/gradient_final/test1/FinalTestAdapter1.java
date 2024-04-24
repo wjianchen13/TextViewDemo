@@ -9,21 +9,20 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradientanimspan.GradientAnimTextView;
-import com.example.textviewdemo.shader.gradientanimspan.test3.TestBean;
 
 import java.util.List;
 
 /**
  * 测试
  */
-public class FinalTestAdapter1 extends BaseMultiItemQuickAdapter<TestBean, BaseViewHolder> {
+public class FinalTestAdapter1 extends BaseMultiItemQuickAdapter<FinalTestBean1, BaseViewHolder> {
 
     public static final int TYPE_TEXT = 0; // 普通类型
     public static final int TYPE_GRADIENT = 1; // 渐变类型
 
     private Context mContext;
 
-    public FinalTestAdapter1(Context context, List<TestBean> list) {
+    public FinalTestAdapter1(Context context, List<FinalTestBean1> list) {
         super(list);
         this.mContext = context;
         addItemType(TYPE_TEXT, R.layout.item_final_test1_text);
@@ -31,7 +30,7 @@ public class FinalTestAdapter1 extends BaseMultiItemQuickAdapter<TestBean, BaseV
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, TestBean item) {
+    protected void convert(BaseViewHolder helper, FinalTestBean1 item) {
         if (item == null) {
             return;
         }
@@ -54,7 +53,7 @@ public class FinalTestAdapter1 extends BaseMultiItemQuickAdapter<TestBean, BaseV
         return mData.size();
     }
 
-    public List<TestBean> getData() {
+    public List<FinalTestBean1> getData() {
         return mData;
     }
     

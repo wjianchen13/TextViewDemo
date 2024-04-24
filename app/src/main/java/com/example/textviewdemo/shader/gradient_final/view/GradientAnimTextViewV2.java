@@ -1,8 +1,6 @@
 package com.example.textviewdemo.shader.gradient_final.view;
 
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -28,8 +26,6 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradientanimspan.IGradientAnimSpan;
-import com.example.textviewdemo.shader.gradientanimspan.IGradientSpan1;
 import com.example.textviewdemo.shader.textview_test.GradientInfo;
 import com.example.textviewdemo.thumb.Utils;
 
@@ -147,8 +143,8 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
     /**
      * 渐变
      */
-    private IGradientSpan1[] mGradientSpans;
-    private IGradientAnimSpan[] mGradientAnimSpans;
+    private IGradientSpanV2[] mGradientSpans;
+    private IGradientAnimSpanV2[] mGradientAnimSpans;
 
     private boolean isAr = false;
 
@@ -566,13 +562,13 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
             return ;
         if(text != null && text instanceof SpannedString) {
             SpannedString sb = (SpannedString)text;
-            mGradientSpans = sb.getSpans(0, sb.length(), IGradientSpan1.class);
-            mGradientAnimSpans = sb.getSpans(0, sb.length(), IGradientAnimSpan.class);
+            mGradientSpans = sb.getSpans(0, sb.length(), IGradientSpanV2.class);
+            mGradientAnimSpans = sb.getSpans(0, sb.length(), IGradientAnimSpanV2.class);
         }
 
         if(mGradientSpans != null && mGradientSpans.length > 0) {
             for(int i = 0; i < mGradientSpans.length; i ++) {
-                IGradientSpan1 gradientSpan = mGradientSpans[i];
+                IGradientSpanV2 gradientSpan = mGradientSpans[i];
                 if(gradientSpan != null) {
                     String spanStr = gradientSpan.getSpanText();
                     if (spanStr != null) {
@@ -591,7 +587,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
             return ;
         if(mGradientSpans != null && mGradientSpans.length > 0) {
             for(int i = 0; i < mGradientSpans.length; i ++) {
-                IGradientSpan1 gradientSpan = mGradientSpans[i];
+                IGradientSpanV2 gradientSpan = mGradientSpans[i];
                 if(gradientSpan != null) {
                     String spanStr = gradientSpan.getSpanText();
                     if (spanStr != null) {
@@ -668,13 +664,13 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
             return ;
         if(text != null && text instanceof SpannedString) {
             SpannedString sb = (SpannedString)text;
-            mGradientSpans = sb.getSpans(0, sb.length(), IGradientSpan1.class);
-            mGradientAnimSpans = sb.getSpans(0, sb.length(), IGradientAnimSpan.class);
+            mGradientSpans = sb.getSpans(0, sb.length(), IGradientSpanV2.class);
+            mGradientAnimSpans = sb.getSpans(0, sb.length(), IGradientAnimSpanV2.class);
         }
 
         if(mGradientSpans != null && mGradientSpans.length > 0) {
             for(int i = 0; i < mGradientSpans.length; i ++) {
-                IGradientSpan1 gradientSpan = mGradientSpans[i];
+                IGradientSpanV2 gradientSpan = mGradientSpans[i];
                 if(gradientSpan != null) {
                     String spanStr = gradientSpan.getSpanText();
                     if (spanStr != null) {
@@ -693,7 +689,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
             return ;
         if(mGradientSpans != null && mGradientSpans.length > 0) {
             for(int i = 0; i < mGradientSpans.length; i ++) {
-                IGradientSpan1 gradientSpan = mGradientSpans[i];
+                IGradientSpanV2 gradientSpan = mGradientSpans[i];
                 if(gradientSpan != null) {
                     String spanStr = gradientSpan.getSpanText();
                     if (spanStr != null) {

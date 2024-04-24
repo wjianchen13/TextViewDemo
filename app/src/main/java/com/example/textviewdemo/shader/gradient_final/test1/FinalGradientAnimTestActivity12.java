@@ -18,10 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradientanimspan.GradientAnimSpan;
-import com.example.textviewdemo.shader.gradientanimspan.GradientSpan1;
-import com.example.textviewdemo.shader.gradientanimspan.test3.GradientAnimSpanAdapter3;
-import com.example.textviewdemo.shader.gradientanimspan.test3.TestBean;
+import com.example.textviewdemo.shader.gradient_final.view.GradientAnimSpanV2;
+import com.example.textviewdemo.shader.gradient_final.view.GradientSpanV2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +30,7 @@ import java.util.List;
 public class FinalGradientAnimTestActivity12 extends AppCompatActivity {
 
     private RecyclerView rvGradientAnim;
-    private List<TestBean> mList;
+    private List<FinalTestBean1> mList;
     private int[] colors = new int[] {
             ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
             ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
@@ -87,15 +85,15 @@ public class FinalGradientAnimTestActivity12 extends AppCompatActivity {
         rvGradientAnim.setAdapter(adapter);
     }
 
-    private TestBean getTextBean() {
-        TestBean bean = new TestBean();
+    private FinalTestBean1 getTextBean() {
+        FinalTestBean1 bean = new FinalTestBean1();
         bean.setContent("测试数据: " + (i ++));
         bean.setItemType(FinalTestAdapter1.TYPE_TEXT);
         return bean;
     }
 
-    private TestBean getTest1() {
-        TestBean bean = new TestBean();
+    private FinalTestBean1 getTest1() {
+        FinalTestBean1 bean = new FinalTestBean1();
         SpannableStringBuilder sContent = new SpannableStringBuilder();
         sContent.append(getSizeText(this, "hello ni hao ya!!", R.dimen.dp_20));
         sContent.append(" ");
@@ -109,8 +107,8 @@ public class FinalGradientAnimTestActivity12 extends AppCompatActivity {
         return bean;
     }
 
-    private TestBean getTest2() {
-        TestBean bean = new TestBean();
+    private FinalTestBean1 getTest2() {
+        FinalTestBean1 bean = new FinalTestBean1();
         SpannableStringBuilder sContent = new SpannableStringBuilder();
         sContent.append(getGradientAnimText(this, "سجل ABمعركة BBالفريقCC", colors, sContent.length(), 1800)); // 18  32
 
@@ -122,9 +120,9 @@ public class FinalGradientAnimTestActivity12 extends AppCompatActivity {
         return bean;
     }
 
-    private TestBean getTest3() {
-        TestBean bean = new TestBean();
-        bean.setItemType(GradientAnimSpanAdapter3.TYPE_GRADIENT);
+    private FinalTestBean1 getTest3() {
+        FinalTestBean1 bean = new FinalTestBean1();
+        bean.setItemType(FinalTestAdapter1.TYPE_GRADIENT);
         bean.setContent("渐变，渐变动画列表使用 渐变，渐变动画列表使用1");
         return bean;
     }
@@ -143,7 +141,7 @@ public class FinalGradientAnimTestActivity12 extends AppCompatActivity {
     public SpannableString getGradientText(Context context, String txt, int[] colors, int startIndex, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);
         if (context != null && !TextUtils.isEmpty(spanString)) {
-            GradientSpan1 span = new GradientSpan1(txt, colors, startIndex, maxWidth);
+            GradientSpanV2 span = new GradientSpanV2(txt, colors, startIndex, maxWidth);
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;
@@ -186,7 +184,7 @@ public class FinalGradientAnimTestActivity12 extends AppCompatActivity {
     public SpannableString getGradientAnimText(Context context, String txt, int[] colors, int startIndex, int maxWidth) {
         SpannableString spanString = new SpannableString(txt);
         if (context != null && !TextUtils.isEmpty(spanString)) {
-            GradientAnimSpan span = new GradientAnimSpan(txt, colors, startIndex, maxWidth);
+            GradientAnimSpanV2 span = new GradientAnimSpanV2(txt, colors, startIndex, maxWidth);
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;

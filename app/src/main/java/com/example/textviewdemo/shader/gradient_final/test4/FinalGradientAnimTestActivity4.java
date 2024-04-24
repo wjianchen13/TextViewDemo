@@ -7,8 +7,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.test3.FinalGradientAnimTestActivity31;
-import com.example.textviewdemo.shader.gradient_final.test3.FinalGradientAnimTestActivity32;
 
 /**
  * GradientAnimTextViewV2 渐变 富文本
