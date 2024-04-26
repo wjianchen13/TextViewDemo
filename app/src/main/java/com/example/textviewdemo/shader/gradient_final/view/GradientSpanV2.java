@@ -92,7 +92,7 @@ public class GradientSpanV2 extends CharacterStyle implements UpdateAppearance, 
 
     @Override
     public void updateDrawState(TextPaint tp) {
-        Utils.log("LinearGradientSpan updateDrawState");
+//        Utils.log("LinearGradientSpan updateDrawState");
         if(tp != null && mShader != null) {
             mMatrix.setTranslate(mTranslate, 0);
             mShader.setLocalMatrix(mMatrix);

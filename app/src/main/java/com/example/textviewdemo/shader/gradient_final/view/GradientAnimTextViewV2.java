@@ -521,7 +521,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      * 开始动画
      */
     public void startAnim() {
-        Utils.log("GradientAnimTextViewV2 startAnim1");
+//        Utils.log("GradientAnimTextViewV2 startAnim1");
         if(hasAnim && !isStartAnim) {
             Utils.log("GradientAnimTextViewV2 startAnim2");
 //            if(mAnimator != null) {

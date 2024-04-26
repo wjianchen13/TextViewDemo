@@ -13,6 +13,7 @@ import com.example.textviewdemo.shader.gradient_final.test2.FinalGradientAnimTes
 import com.example.textviewdemo.shader.gradient_final.test3.FinalGradientAnimTestActivity3;
 import com.example.textviewdemo.shader.gradient_final.test4.FinalGradientAnimTestActivity4;
 import com.example.textviewdemo.shader.gradient_final.test5.FinalGradientAnimTestActivity5;
+import com.example.textviewdemo.shader.gradient_final.test6.FinalGradientAnimTestActivity6;
 
 /**
  * 彩虹字体最终版本
@@ -69,14 +70,21 @@ public class FinalGradientAnimActivity extends AppCompatActivity {
      */
     public void onTest5(View v) {
         startActivity(new Intent(this, FinalGradientAnimTestActivity5.class));
-//        AnimManager.getInstance().logAllView();
+    }
+
+    /**
+     * GradientAnimTextViewV2 使用，检查生命周期，是否回收
+     * @param v
+     */
+    public void onTest6(View v) {
+        startActivity(new Intent(this, FinalGradientAnimTestActivity6.class));
     }
 
     /**
      * 测试控件
      * @param v
      */
-    public void onTest6(View v) {
+    public void onTest7(View v) {
         startActivity(new Intent(this, FinalTestViewActivity.class));
     }
 
@@ -84,7 +92,7 @@ public class FinalGradientAnimActivity extends AppCompatActivity {
      * 基础测试
      * @param v
      */
-    public void onTest7(View v) {
+    public void onTest8(View v) {
         startActivity(new Intent(this, FinalTestActivity.class));
     }
 
