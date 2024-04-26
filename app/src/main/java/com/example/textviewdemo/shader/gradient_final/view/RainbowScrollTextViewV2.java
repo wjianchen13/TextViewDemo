@@ -136,28 +136,6 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
         }
     }
 
-    /**
-     * 设置显示内容
-     * @param text 显示内容
-     * @param rainbow 是否有彩虹
-     * @param colors 彩虹颜色
-     */
-    public void setContentEllipsize(CharSequence text, boolean rainbow, @ColorInt int... colors) {
-        if(rainbow) {
-            if (tv != null) {
-                tv.setScrollModeEllipsize();
-                tv.setContent(text, colors);
-                tv.setSelected(false);
-            }
-        } else {
-            if (tv != null) {
-                tv.setNormalMode();
-                tv.setContent(text);
-                tv.setSelected(true);
-            }
-        }
-    }
-
     public void stopAnim() {
         if(tv != null) {
             tv.stopAnim();
@@ -236,7 +214,8 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
     }
 
     public void setViewTag(String viewTag) {
-        this.mViewTag = viewTag;
+        if(tv != null)
+            tv.setViewTag(viewTag);
     }
 
     //    public void setContent(String str) {

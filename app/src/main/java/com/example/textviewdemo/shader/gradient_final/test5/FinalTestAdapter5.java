@@ -35,7 +35,7 @@ public class FinalTestAdapter5 extends BaseMultiItemQuickAdapter<FinalTestBean5,
         if (item == null) {
             return;
         }
-        log("=============================> item: " + item.getContent());
+//        log("=============================> item: " + item.getContent());
         if (item.getItemType() == TYPE_GRADIENT) {
             RainbowScrollTextViewV2 tvTest = helper.getView(R.id.tv_test);
 //            tvTest.setContent(item.getsContent());

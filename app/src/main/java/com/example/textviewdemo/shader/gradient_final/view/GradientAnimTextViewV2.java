@@ -182,8 +182,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
 
     private int scrollType;
 
-    private Paint paint;
-
     private float  mTextWidth;
 
     /**
@@ -301,6 +299,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         colors = null;
         mGradientSpans = null;
         mGradientAnimSpans = null;
+        scrollType = SCROLL_NO;
     }
 
     /**

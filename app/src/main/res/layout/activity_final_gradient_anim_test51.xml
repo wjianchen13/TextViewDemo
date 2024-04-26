@@ -41,6 +41,15 @@
         android:text="滚动模式 滚动+渐变 xml设置"
         android:onClick="onTest1" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="回收测试"
+        android:onClick="onTest2"/>
+
    <!-- <com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2
         android:id="@+id/tv_test2"
         android:layout_width="match_parent"

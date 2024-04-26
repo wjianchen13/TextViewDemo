@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.utils.Constants;
+import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
 import com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2;
 import com.example.textviewdemo.thumb.Utils;
 
@@ -15,8 +15,6 @@ import com.example.textviewdemo.thumb.Utils;
  * 1.彩虹，需要支持滚动
  */
 public class FinalGradientAnimTestActivity51 extends AppCompatActivity {
-
-
 
     private RainbowScrollTextViewV2 tvTest1;
 //    private RainbowScrollTextViewV2 tvTest2;
@@ -46,10 +44,19 @@ public class FinalGradientAnimTestActivity51 extends AppCompatActivity {
     }
 
     /**
-     * 滚动模式 滚动+渐变 代码设置
+     * 回收测试
      * @param v
      */
     public void onTest2(View v) {
+        AnimManager.getInstance().logAllView();
+    }
+
+
+    /**
+     * 滚动模式 滚动+渐变 代码设置
+     * @param v
+     */
+    public void onTest21(View v) {
         String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
         int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);

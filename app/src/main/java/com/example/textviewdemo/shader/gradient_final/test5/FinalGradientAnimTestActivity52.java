@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
 import com.example.textviewdemo.shader.gradient_final.view.GradientAnimSpanV2;
 import com.example.textviewdemo.shader.gradient_final.view.GradientSpanV2;
 
@@ -54,7 +55,7 @@ public class FinalGradientAnimTestActivity52 extends AppCompatActivity {
         mList = new ArrayList<>();
         mList.add(getTextBean());
         mList.add(getTest3());
-        mList.add(getTest4());
+//        mList.add(getTest4());
         mList.add(getTextBean());
         mList.add(getTextBean());
         mList.add(getTextBean());
@@ -142,12 +143,24 @@ public class FinalGradientAnimTestActivity52 extends AppCompatActivity {
     }
 
     /**
+     * 回收测试
+     * @param v
+     */
+    public void onTest2(View v) {
+        AnimManager.getInstance().logAllView();
+    }
+
+
+
+    /**
      * 渐变测试 IGradientSpan
      * @param v
      */
     public void onTest1(View v) {
 
     }
+
+
 
     /**
      * 获得指定内容大小和颜色字符串
@@ -188,7 +201,7 @@ public class FinalGradientAnimTestActivity52 extends AppCompatActivity {
      * 渐变动画测试 IGradientAnimSpan
      * @param v
      */
-    public void onTest2(View v) {
+    public void onTest21(View v) {
 
     }
 
