@@ -12,25 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="测试控件" />
-
-    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
-        android:id="@+id/tv_test1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="10dp"
-        android:paddingEnd="20dp"
-        android:textSize="30sp"
-        android:layout_marginTop="10dp"
-        android:background="#1fff0000"
-
-        android:textAlignment="viewStart"
-        android:textDirection="locale"
-        android:gravity="start"
-
-        android:singleLine="true"
-        app:gradient_anim_mode="scroll"
-        />
+        android:text="RainbowScrollTextViewV2 使用，检查生命周期，是否回收" />
 
     <Button
         android:layout_width="match_parent"
@@ -38,7 +20,25 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="滚动模式 滚动+渐变 xml设置"
-        android:onClick="onTest1" />
+        android:text="单个使用"
+        android:onClick="onTest1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="列表使用"
+        android:onClick="onTest2"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="回收测试"
+        android:onClick="onTest3"/>
 
 </LinearLayout>

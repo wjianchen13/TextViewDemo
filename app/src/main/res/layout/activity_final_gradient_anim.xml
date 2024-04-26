@@ -56,7 +56,7 @@
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:text="彩虹滚动和常规滚动兼容"
+        android:text="RainbowScrollTextViewV2 使用，检查生命周期，是否回收"
         android:onClick="onTest5"/>
 
 

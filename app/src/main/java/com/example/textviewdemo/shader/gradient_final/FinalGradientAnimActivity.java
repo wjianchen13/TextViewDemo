@@ -7,10 +7,12 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
 import com.example.textviewdemo.shader.gradient_final.test1.FinalGradientAnimTestActivity1;
 import com.example.textviewdemo.shader.gradient_final.test2.FinalGradientAnimTestActivity2;
 import com.example.textviewdemo.shader.gradient_final.test3.FinalGradientAnimTestActivity3;
 import com.example.textviewdemo.shader.gradient_final.test4.FinalGradientAnimTestActivity4;
+import com.example.textviewdemo.shader.gradient_final.test5.FinalGradientAnimTestActivity5;
 
 /**
  * 彩虹字体最终版本
@@ -62,11 +64,12 @@ public class FinalGradientAnimActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * RainbowScrollTextViewV2 使用，检查生命周期，是否回收
      * @param v
      */
     public void onTest5(View v) {
-
+        startActivity(new Intent(this, FinalGradientAnimTestActivity5.class));
+//        AnimManager.getInstance().logAllView();
     }
 
     /**

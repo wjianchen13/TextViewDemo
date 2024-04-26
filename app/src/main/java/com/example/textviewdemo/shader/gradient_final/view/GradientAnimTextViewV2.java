@@ -26,6 +26,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
 import com.example.textviewdemo.shader.textview_test.GradientInfo;
 import com.example.textviewdemo.thumb.Utils;
 
@@ -111,7 +112,7 @@ import com.example.textviewdemo.thumb.Utils;
  *
  *
  */
-public class GradientAnimTextViewV2 extends AppCompatTextView {
+public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradientView {
 
     /**
      * 正常模式 多行
@@ -223,6 +224,13 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
      */
     private boolean isGradientCreate;
 
+    /**
+     * view 的唯一标记，用于调试
+     */
+    private String mViewTag;
+
+    private int mType;
+
 
     public GradientAnimTextViewV2(Context context) {
         super(context);
@@ -241,11 +249,17 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
         super(context, attrs, defStyleAttr);
     }
 
+    public void setType(int type) {
+        this.mType = type;
+    }
+
     private void initAttr(@NonNull Context context, @Nullable AttributeSet attrs) {
         if(context != null && attrs != null) {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.GradientAnimTextView);
-            mMode = a.getInt(R.styleable.GradientAnimTextView_mode, MODE_SPAN);
-            color = a.getColor(R.styleable.GradientAnimTextView_text_color, 0x000000);
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.GradientAnimTextViewV2);
+            mMode = a.getInt(R.styleable.GradientAnimTextViewV2_gradient_anim_mode, MODE_SPAN);
+            color = a.getColor(R.styleable.GradientAnimTextViewV2_gradient_anim_text_color, 0x000000);
+            mType = a.getInt(R.styleable.GradientAnimTextViewV2_gradient_anim_textview_type, 0);
+            mViewTag = a.getString(R.styleable.GradientAnimTextViewV2_gradient_anim_textview_tag);
             a.recycle();
         }
     }
@@ -259,6 +273,10 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
             colors = new int[]{startColor, endColor, startColor};
             mSpace = 200;
         }
+    }
+
+    public void setViewTag(String viewTag) {
+        this.mViewTag = viewTag;
     }
 
     /***********************************************************************************************
@@ -390,12 +408,19 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
         super.onLayout(changed, left, top, right, bottom);
     }
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        AnimManager.getInstance().addView(mType, this);
+    }
+
     /**
      * 在View从窗口中移除的时候被调用
      */
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        AnimManager.getInstance().removeView(mType, this);
         if(isScrollMode() || isSpanMode())
             stopAnim();
     }
@@ -956,6 +981,11 @@ public class GradientAnimTextViewV2 extends AppCompatTextView {
             }
         }
         invalidate();
+    }
+
+    @Override
+    public String getViewTag() {
+        return mViewTag;
     }
 
 }

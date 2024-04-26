@@ -24,7 +24,7 @@ import com.example.textviewdemo.shader.gradientanimspan.test5.ScreenUtils;
  * 彩虹字体
  *
  */
-public class RainbowScrollTextViewV2 extends FrameLayout {
+public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientView {
 
     /**
      * 常规
@@ -85,6 +85,14 @@ public class RainbowScrollTextViewV2 extends FrameLayout {
      * 2: 省略号
      */
     private int mMode;
+
+    /**
+     * view 的唯一标记，用于调试
+     */
+    private String mViewTag;
+    
+    private int mType;
+    
 
     public RainbowScrollTextViewV2(@NonNull Context context) {
         super(context);
@@ -157,8 +165,15 @@ public class RainbowScrollTextViewV2 extends FrameLayout {
     }
 
     @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+//        AnimManager.getInstance().addView(1, this);
+    }
+
+    @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+//        AnimManager.getInstance().removeView(1, this);
         stopAnim();
     }
 
@@ -182,13 +197,15 @@ public class RainbowScrollTextViewV2 extends FrameLayout {
      * @param attrs
      */
     private void initAttrs(Context context, AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.rainbow_view);
-        textColor = a.getColor(R.styleable.rainbow_view_marquee_text_color, 0);
-        textSize = a.getDimensionPixelOffset(R.styleable.rainbow_view_marquee_text_size, 0);
-        mAutoSize = a.getBoolean(R.styleable.rainbow_view_marquee_auto_width, false);
-        mGravity = a.getInt(R.styleable.rainbow_view_marquee_layout_gravity, 0);
-        mTextDirection = a.getInt(R.styleable.rainbow_view_marquee_text_direction, 0);
-        mMaxWidth = a.getDimensionPixelOffset(R.styleable.rainbow_view_marquee_max_size, ScreenUtils.getScreenWidth(mContext));
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RainbowScrollTextViewV2);
+        textColor = a.getColor(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_text_color, 0);
+        textSize = a.getDimensionPixelOffset(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_text_size, 0);
+        mAutoSize = a.getBoolean(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_auto_width, false);
+        mGravity = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_layout_gravity, 0);
+        mTextDirection = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_text_direction, 0);
+        mMaxWidth = a.getDimensionPixelOffset(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_max_size, ScreenUtils.getScreenWidth(mContext));
+        mType = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_textview_type, 0);
+        mViewTag = a.getString(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_textview_tag);
         a.recycle();
     }
 
@@ -209,6 +226,8 @@ public class RainbowScrollTextViewV2 extends FrameLayout {
                 tv.setLayoutParams(layoutParams);
             }
         }
+        tv.setType(mType);
+        tv.setViewTag(mViewTag);
 //        if(mTextDirection == 1) {
 //            tv.setTextDirection(View.TEXT_DIRECTION_LTR);
 //        }
@@ -216,7 +235,11 @@ public class RainbowScrollTextViewV2 extends FrameLayout {
 
     }
 
-//    public void setContent(String str) {
+    public void setViewTag(String viewTag) {
+        this.mViewTag = viewTag;
+    }
+
+    //    public void setContent(String str) {
 //        if (tv != null) {
 //            tv.setText(str);
 //            tv.setSelected(true);
@@ -256,5 +279,10 @@ public class RainbowScrollTextViewV2 extends FrameLayout {
             //tv.setSingleLine(true);
             tv.setShadowLayer(1.0f, 1.0f, 1.0f,0xFF000000);
         }
+    }
+
+    @Override
+    public String getViewTag() {
+        return mViewTag;
     }
 }

@@ -79,4 +79,26 @@
         <attr name="marquee_text_direction" format="integer" /> <!-- 滚动方向 -->
     </declare-styleable>
 
+    <declare-styleable name="RainbowScrollTextViewV2">
+        <attr name="rainbow_scroll_textview_type" format="integer" /> <!-- 类型 -->
+        <attr name="rainbow_scroll_textview_tag" format="string" /> <!-- view tag -->
+        <attr name="rainbow_scroll_text_color" format="color|reference" /> <!-- id字体颜色 -->
+        <attr name="rainbow_scroll_text_size" format="dimension" /> <!-- id字体大小 -->
+        <attr name="rainbow_scroll_auto_width" format="boolean" /> <!-- 最大宽度 -->
+        <attr name="rainbow_scroll_max_size" format="dimension" /> <!-- 最大宽度 -->
+        <attr name="rainbow_scroll_layout_gravity" format="integer" /> <!-- 对齐方式 -->
+        <attr name="rainbow_scroll_text_direction" format="integer" /> <!-- 滚动方向 -->
+    </declare-styleable>
+
+    <declare-styleable name="GradientAnimTextViewV2">
+        <attr name="gradient_anim_text_color" format="color|reference" />
+        <attr name="gradient_anim_mode" format="enum">
+            <enum name="normal" value="0" /> <!-- 正常模式 -->
+            <enum name="span" value="1" /> <!-- span模式 -->
+            <enum name="scroll" value="2" /> <!-- 滚动模式 -->
+        </attr>
+        <attr name="gradient_anim_textview_type" format="integer" /> <!-- 类型 -->
+        <attr name="gradient_anim_textview_tag" format="string" /> <!-- view tag -->
+    </declare-styleable>
+
 </resources>
