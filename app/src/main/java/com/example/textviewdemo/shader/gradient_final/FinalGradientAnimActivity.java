@@ -26,6 +26,8 @@ import com.example.textviewdemo.shader.gradient_final.test6.FinalGradientAnimTes
  */
 public class FinalGradientAnimActivity extends AppCompatActivity {
 
+    public static final boolean isAr = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

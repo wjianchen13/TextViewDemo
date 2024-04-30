@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="TextView getBound 测试"
+        android:layout_marginTop="10dp" />
+
+    <com.example.textviewdemo.shader.textview_test.TestTextViewV2
+        android:id="@+id/tv_test"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:background="#ff00ff00"
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:gravity="start"
+        />
+
+<!--    android:textAlignment="viewStart"
+    android:textDirection="locale"
+    android:gravity="start"-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="test"
+        android:onClick="onTest1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="test2"
+        android:onClick="onTest2"/>
+
+</LinearLayout>

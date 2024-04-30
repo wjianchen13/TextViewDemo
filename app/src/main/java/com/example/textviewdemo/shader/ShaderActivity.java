@@ -18,6 +18,7 @@ import com.example.textviewdemo.shader.lineargradient.LinearGradientActivity;
 import com.example.textviewdemo.shader.lineargradientspan.LinearGradientSpanActivity;
 import com.example.textviewdemo.shader.mix.MixSpanActivity;
 import com.example.textviewdemo.shader.textview_test.TextViewTestActivity;
+import com.example.textviewdemo.shader.textview_test.TextViewTestActivityV2;
 import com.example.textviewdemo.shader.utils.shaderanim.BitmapShaderAnimActivity;
 
 public class ShaderActivity extends AppCompatActivity {
@@ -97,7 +98,7 @@ public class ShaderActivity extends AppCompatActivity {
      * @param v
      */
     public void onTest9(View v) {
-        startActivity(new Intent(this, TextViewTestActivity.class));
+        startActivity(new Intent(this, TextViewTestActivityV2.class));
     }
 
     /**

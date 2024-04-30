@@ -23,7 +23,6 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
@@ -137,18 +136,33 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     /**
      *  MODE_SCROLL 模式下，如果字体长度大于控件长度，则滚动
      */
-    public static final int SCROLL_RL = 3;
+    public static final int SCROLL_ANIM = 2;
 
     private Context mContext;
 
     /**
-     * 渐变
+     * 支持滚动的情况下，是否滚动 SCROLL_NO:不滚动  SCROLL_RL：滚动
+     */
+    private int scrollType;
+
+    /**
+     * 渐变span
      */
     private IGradientSpanV2[] mGradientSpans;
+
+    /**
+     * 彩虹渐变span
+     */
     private IGradientAnimSpanV2[] mGradientAnimSpans;
 
+    /**
+     * 是否是从右向左显示
+     */
     private boolean isAr = false;
 
+    /**
+     * 彩虹渐变动画，包括滚动
+     */
     private ValueAnimator mAnimator;
 
     /**
@@ -176,13 +190,20 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      */
     private int mMode = 0;
 
+    /**
+     * 滚动渐变Shader
+     */
     private LinearGradient mLinearGradient = null;
-    private Matrix mGradientMatrix = new Matrix();
-    private int[] colors = new int[]{};
 
-    private int scrollType;
+    /**
+     * 滚动渐变
+     */
+    private Matrix mGradientMatrix;
 
-    private float  mTextWidth;
+    /**
+     * 渐变颜色数组
+     */
+    private int[] mGradientColors;
 
     /**
      * 计算字体宽度
@@ -200,21 +221,12 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      */
     private int mSpace;
 
-
     /**
-     *
+     * 水平滚动需要的距离
      */
-    private @ColorInt int startColor = 0;
-
-
-    private @ColorInt int endColor = 0;
-
-    //水平滚动需要的数据
     private float horizontalSpeed = 2f;
 
     private int color;
-
-    private float translate = 0f;
 
     /**
      * 渐变Shader是否已经创建
@@ -227,6 +239,9 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      */
     private String mViewTag;
 
+    /**
+     * 标记是滚动类型还是常规类型，用于测试
+     */
     private int mType;
 
 
@@ -266,9 +281,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         if(isScrollMode()) {
             setSpeed(1f);
             mTextRect = new Rect();
-            startColor = ContextCompat.getColor(mContext, R.color.color_03DAC5);
-            endColor = ContextCompat.getColor(mContext, R.color.cffde3d32);
-            colors = new int[]{startColor, endColor, startColor};
             mSpace = 200;
         }
     }
@@ -296,9 +308,10 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         mOffset1 = 0;
         mOffset2 = 0;
         mLinearGradient = null;
-        colors = null;
+        mGradientColors = null;
         mGradientSpans = null;
         mGradientAnimSpans = null;
+        isGradientCreate = false;
         scrollType = SCROLL_NO;
     }
 
@@ -344,7 +357,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         setFocusable(false);
         setFocusableInTouchMode(false);
         init();
-        scrollType = SCROLL_RL;
+        scrollType = SCROLL_ANIM;
     }
 
 
@@ -441,9 +454,10 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
 
             switch (scrollType) {
                 case SCROLL_NO:
+                    stopAnim();
                     super.onDraw(canvas);
                     break;
-                case SCROLL_RL:
+                case SCROLL_ANIM:
                     if(!isStartAnim) {
                         startAnim();
                     }
@@ -913,24 +927,24 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      */
     public void setGradientColor(@ColorInt int... color) {
         if(color.length > 0) {
-            colors = new int[color.length * 2 - 1];
+            mGradientColors = new int[color.length * 2 - 1];
             int i = 0;
             for (int c : color) {
-                colors[i] = c;
-                colors[2 * color.length - 2 - i] = c;
+                mGradientColors[i] = c;
+                mGradientColors[2 * color.length - 2 - i] = c;
                 i ++;
             }
             isGradientCreate = false;
         } else {
-            colors = null;
+            mGradientColors = null;
             isGradientCreate = true;
         }
     }
 
     private void initShader() {
-        if(colors != null) { // 有渐变
+        if(mGradientColors != null) { // 有渐变
             if(!isGradientCreate) {
-                mLinearGradient = new LinearGradient(0f, 0f, getMeasuredWidth(), 0f, colors, null, Shader.TileMode.MIRROR);
+                mLinearGradient = new LinearGradient(0f, 0f, getMeasuredWidth(), 0f, mGradientColors, null, Shader.TileMode.MIRROR);
                 isGradientCreate = true;
                 getPaint().setShader(mLinearGradient);
             }
@@ -948,11 +962,11 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     private void initText() {
         if(getPaint() != null) {
             String text = getText().toString();
-            mTextWidth = getPaint().measureText(text);
-            if(mTextWidth <= getMeasuredWidth()) { // 不滚动
+            float textWidth = getPaint().measureText(text);
+            if(textWidth <= getMeasuredWidth()) { // 不滚动
                 scrollType = SCROLL_NO;
             } else { // 滚动
-                scrollType = SCROLL_RL;
+                scrollType = SCROLL_ANIM;
             }
         }
     }
@@ -965,7 +979,10 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
             return;
         }
         int value = (int) animation.getAnimatedValue();
-        translate = value - getMeasuredWidth();
+        int translate = value - getMeasuredWidth();
+        if(mGradientMatrix == null) {
+            mGradientMatrix = new Matrix();
+        }
         mGradientMatrix.setTranslate(translate, 0f);
         if(mLinearGradient != null) {
             mLinearGradient.setLocalMatrix(mGradientMatrix);

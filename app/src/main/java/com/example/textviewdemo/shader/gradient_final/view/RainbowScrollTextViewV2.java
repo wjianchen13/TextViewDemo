@@ -21,7 +21,7 @@ import com.example.textviewdemo.shader.gradientanimspan.test5.ScreenUtils;
 
 
 /**
- * 彩虹字体
+ * 彩虹字体，需要滚动的用这个
  *
  */
 public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientView {
