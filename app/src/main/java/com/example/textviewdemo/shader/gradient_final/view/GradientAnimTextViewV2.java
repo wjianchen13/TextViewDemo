@@ -116,17 +116,12 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     /**
      * 正常模式 多行
      */
-    public static final int MODE_NORMAL = 0;
-
-    /**
-     * 正常模式 多行
-     */
-    public static final int MODE_SPAN = 1;
+    public static final int MODE_SPAN = 0;
 
     /**
      * 彩虹字体滚动模式 单行
      */
-    public static final int MODE_SCROLL = 2;
+    public static final int MODE_SCROLL = 1;
 
     /**
      * MODE_SCROLL 模式下，如果字体长度小于控件长度，则不滚动
@@ -319,7 +314,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      * 系统TextView滚动模式
      */
     public void setNormalMode() {
-        this.mMode = MODE_NORMAL;
+        this.mMode = MODE_SPAN;
         stopAnim();
         setSingleLine();
         setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -329,7 +324,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     }
     
     /**
-     * 设置显示模式
+     * 设置滚动模式
      */
     public void setScrollMode() {
         this.mMode = MODE_SCROLL;

@@ -1,12 +1,15 @@
 package com.example.textviewdemo.shader.gradient_final.test2;
 
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.utils.GradientUtils;
 import com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2;
 import com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2;
 import com.example.textviewdemo.thumb.Utils;
@@ -23,7 +26,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_final_gradient_anim_test51);
+        setContentView(R.layout.activity_final_gradient_anim_test21);
         tvTest1 = findViewById(R.id.tv_test1);
         tvTest2 = findViewById(R.id.tv_test2);
         tvTest3 = findViewById(R.id.tv_test3);
@@ -86,19 +89,19 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
     }
 
     /**
-     *
+     * 设置渐变内容
      * @param v
      */
     public void onTest6(View v) {
-
-    }
-
-    /**
-     *
-     * @param v
-     */
-    public void onTest7(View v) {
-
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientText(this, "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用", colors, sContent.length(), 0));
+        tvTest3.setContent(sContent, false);
     }
 
 

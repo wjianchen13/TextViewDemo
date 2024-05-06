@@ -19,10 +19,15 @@ import com.example.textviewdemo.shader.gradient_final.test6.FinalGradientAnimTes
  * 彩虹字体最终版本
  * 使用例子
  * 1.彩虹，需要支持滚动
+ * 使用RainbowScrollTextViewV2
  *   单个控件
  *   RecyclerView中使用
  * 2.彩虹，超出显示...
+ * 使用GradientAnimTextViewV2
+ * android:singleLine="true"
  * 3.彩虹，换行
+ * 使用GradientAnimTextViewV2
+ * 不设置android:singleLine="true"
  */
 public class FinalGradientAnimActivity extends AppCompatActivity {
 

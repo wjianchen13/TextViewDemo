@@ -13,6 +13,8 @@ import com.example.textviewdemo.thumb.Utils;
 
 /**
  * 1.彩虹，需要支持滚动
+ * 单单使用GradientAnimTextViewV2可以实现渐变滚动，但是不能实现常规字体超长滚动，所以需要在改TextView外面再套一层FrameLayout
+ * 也就是RainbowScrollTextViewV2
  */
 public class FinalGradientAnimTestActivity11 extends AppCompatActivity {
 

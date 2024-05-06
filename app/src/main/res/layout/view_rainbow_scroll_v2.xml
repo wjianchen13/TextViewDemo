@@ -7,7 +7,6 @@
         style="@style/textview_style_rtl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#ff0000"
         android:ellipsize="marquee"
         android:focusable="true"
         android:focusableInTouchMode="true"

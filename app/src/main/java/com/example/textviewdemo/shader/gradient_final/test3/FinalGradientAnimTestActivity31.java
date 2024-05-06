@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.utils.GradientUtils;
 import com.example.textviewdemo.shader.gradient_final.view.GradientAnimSpanV2;
 import com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2;
 import com.example.textviewdemo.shader.gradient_final.view.GradientSpanV2;
@@ -99,15 +100,23 @@ public class FinalGradientAnimTestActivity31 extends AppCompatActivity {
      */
     public void onTest5(View v) {
 //        tvTest3.startAnim();
-        tvTest3.setContent("hello");
+        tvTest3.setContent("测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用");
     }
 
     /**
-     *
+     * 设置渐变内容
      * @param v
      */
     public void onTest6(View v) {
-
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientText(this, "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用", colors, sContent.length(), 0));
+        tvTest3.setContent(sContent);
     }
 
     /**
