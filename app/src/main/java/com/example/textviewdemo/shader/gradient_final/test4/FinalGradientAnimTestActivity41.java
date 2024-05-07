@@ -252,6 +252,16 @@ public class FinalGradientAnimTestActivity41 extends AppCompatActivity {
     }
 
 
+    private @ColorInt int[] getColors() {
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        return colors;
+    }
+
     /**
      * 获得指定内容大小和颜色字符串
      */
@@ -262,16 +272,6 @@ public class FinalGradientAnimTestActivity41 extends AppCompatActivity {
             spanString.setSpan(span, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spanString;
-    }
-
-    private @ColorInt int[] getColors() {
-        int[] colors = new int[] {
-                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
-                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
-                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
-                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
-        };
-        return colors;
     }
 
 }

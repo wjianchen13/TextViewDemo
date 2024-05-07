@@ -1,6 +1,5 @@
 package com.example.textviewdemo.shader.gradient_final.view;
 
-
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -114,14 +113,19 @@ import com.example.textviewdemo.thumb.Utils;
 public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradientView {
 
     /**
-     * 正常模式 多行
+     * 正常模式
      */
-    public static final int MODE_SPAN = 0;
+    public static final int MODE_NORMAL = 0;
+
+    /**
+     * 支持渐变动画模式 多行
+     */
+    public static final int MODE_SPAN = 1;
 
     /**
      * 彩虹字体滚动模式 单行
      */
-    public static final int MODE_SCROLL = 1;
+    public static final int MODE_SCROLL = 2;
 
     /**
      * MODE_SCROLL 模式下，如果字体长度小于控件长度，则不滚动
@@ -136,6 +140,20 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     private Context mContext;
 
     /**
+     * 是否是从右向左显示
+     */
+    private boolean isAr = false;
+
+    /**
+     * 显示模式 0 常规模式  1 滚动模式
+     */
+    private int mMode = 0;
+
+    /***********************************************************************************************
+     * 滚动相关
+     ***********************************************************************************************/
+    /**
+     * mMode == MODE_SCROLL，这个字段才起作用
      * 支持滚动的情况下，是否滚动 SCROLL_NO:不滚动  SCROLL_RL：滚动
      */
     private int scrollType;
@@ -151,39 +169,9 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     private IGradientAnimSpanV2[] mGradientAnimSpans;
 
     /**
-     * 是否是从右向左显示
-     */
-    private boolean isAr = false;
-
-    /**
      * 彩虹渐变动画，包括滚动
      */
     private ValueAnimator mAnimator;
-
-    /**
-     * 是否有动画
-     */
-    private boolean hasAnim = true;
-
-    /**
-     * 是否开始了动画，开始了动画说明已经初始化了span的信息
-     */
-    private boolean isStartAnim;
-
-    /**
-     * 是否显示计算的span区域，用于调试使用
-     */
-    private boolean isShowTest = true;
-
-    /**
-     * 滚动模式下，超长显示... 的方式
-     */
-    private boolean isScrollEllipsize;
-
-    /**
-     * 显示模式 0 常规模式  1 滚动模式
-     */
-    private int mMode = 0;
 
     /**
      * 滚动渐变Shader
@@ -201,14 +189,13 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     private int[] mGradientColors;
 
     /**
-     * 计算字体宽度
-     */
-    private Rect mTextRect;
-
-    /**
-     * 字体滚动偏移
+     * 字体滚动偏移1
      */
     private int mOffset1;
+
+    /**
+     * 字体滚动偏移1
+     */
     private int mOffset2;
 
     /**
@@ -217,17 +204,45 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     private int mSpace;
 
     /**
-     * 水平滚动需要的距离
+     * 水平滚动需要的距离，可以用来调整滚动快慢
      */
     private float horizontalSpeed = 2f;
-
-    private int color;
 
     /**
      * 渐变Shader是否已经创建
      * 动态设置颜色时，如果是第一次，还没有设置好内容，通过getMeasureWidth()获取的宽度时0，所以需要在onMeasure里面重新创建Shader
      */
     private boolean isGradientCreate;
+
+    /***********************************************************************************************
+     * 彩虹字体颜色动画
+     ***********************************************************************************************/
+    /**
+     * 是否有彩虹渐变动画
+     */
+    private boolean hasGradientAnim = true;
+
+    /**
+     * 是否开始了动画，开始了动画说明已经初始化了span的信息
+     */
+    private boolean isStartAnim;
+
+    /**
+     * 滚动模式下，超长显示... 的方式
+     */
+    private boolean isScrollEllipsize;
+
+    /**
+     * 计算字体宽度
+     */
+    private Rect mTextRect;
+
+    private int color;
+
+    /**
+     * 是否显示计算的span区域，用于调试使用
+     */
+    private boolean isShowTest = true;
 
     /**
      * view 的唯一标记，用于调试
@@ -239,7 +254,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      */
     private int mType;
 
-
     public GradientAnimTextViewV2(Context context) {
         super(context);
     }
@@ -248,9 +262,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         super(context, attrs);
         this.mContext = context;
         initAttr(context, attrs);
-        if(isScrollMode() || isSpanMode()) {
-            init();
-        }
     }
 
     public GradientAnimTextViewV2(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -268,16 +279,30 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
             color = a.getColor(R.styleable.GradientAnimTextViewV2_gradient_anim_text_color, 0x000000);
             mType = a.getInt(R.styleable.GradientAnimTextViewV2_gradient_anim_textview_type, 0);
             mViewTag = a.getString(R.styleable.GradientAnimTextViewV2_gradient_anim_textview_tag);
+            horizontalSpeed = a.getFloat(R.styleable.GradientAnimTextViewV2_gradient_anim_scroll_speed, 1.0f);
+            mSpace = a.getDimensionPixelOffset(R.styleable.GradientAnimTextViewV2_gradient_anim_scroll_space, 200);
             a.recycle();
         }
     }
 
-    private void init() {
-        if(isScrollMode()) {
-            setSpeed(1f);
-            mTextRect = new Rect();
-            mSpace = 200;
-        }
+//    /**
+//     *
+//     * @param text
+//     */
+//    public void setContent(CharSequence text) {
+//        setContent(text);
+//    }
+
+    /**
+     * 设置显示内容
+     * 如果有渐变和滚动效果，需要加上colors参数
+     * @param text
+     * @param colors
+     */
+    public void setContent(CharSequence text, @ColorInt int... colors) {
+        reset();
+        setGradientColor(colors);
+        setText(text);
     }
 
     public void setViewTag(String viewTag) {
@@ -287,27 +312,19 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     /***********************************************************************************************
      * 滚动相关
      **********************************************************************************************/
-    /**
-     * 设置显示内容，如果有渐变，需要加上colors参数
-     * @param text
-     * @param colors
-     */
-    public void setContent(CharSequence text, @ColorInt int... colors) {
-        reset();
-        stopAnim();
-        setGradientColor(colors);
-        setText(text);
-    }
-
     private void reset() {
-        mOffset1 = 0;
-        mOffset2 = 0;
-        mLinearGradient = null;
-        mGradientColors = null;
+        stopAnim();
+        scrollType = SCROLL_NO;
         mGradientSpans = null;
         mGradientAnimSpans = null;
+        mLinearGradient = null;
+        mGradientMatrix = null;
+        mGradientColors = null;
+        mOffset1 = 0;
+        mOffset2 = 0;
         isGradientCreate = false;
-        scrollType = SCROLL_NO;
+        hasGradientAnim = false;
+        isScrollEllipsize = false;
     }
 
     /**
@@ -334,7 +351,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         setEllipsize(TextUtils.TruncateAt.END);
         setFocusable(false);
         setFocusableInTouchMode(false);
-        init();
         initText();
     }
 
@@ -351,7 +367,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         setEllipsize(TextUtils.TruncateAt.END);
         setFocusable(false);
         setFocusableInTouchMode(false);
-        init();
         scrollType = SCROLL_ANIM;
     }
 
@@ -394,7 +409,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     /**
      * 设置滚动速度
      */
-    private void setSpeed(float speed) {
+    public void setSpeed(float speed) {
         if(isScrollMode()) {
             horizontalSpeed = speed;
             invalidate();
@@ -411,14 +426,11 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     }
 
     @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-    }
-
-    @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        AnimManager.getInstance().addView(mType, this);
+        if(isScrollMode() || isSpanMode()) {
+            AnimManager.getInstance().addView(mType, this);
+        }
     }
 
     /**
@@ -427,9 +439,10 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        AnimManager.getInstance().removeView(mType, this);
-        if(isScrollMode() || isSpanMode())
+        if(isScrollMode() || isSpanMode()) {
+            AnimManager.getInstance().removeView(mType, this);
             stopAnim();
+        }
     }
 
     @Override
@@ -438,8 +451,12 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     }
 
     @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
-//        Utils.log("=====================> GradientAnimTextViewV2 onDraw1");
         if(isScrollMode()) {// 滚动相关处理
             String text = getText().toString();
             if (TextUtils.isEmpty(text)) {
@@ -456,45 +473,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
                     if(!isStartAnim) {
                         startAnim();
                     }
-                    if(isAr) {
-                        getPaint().getTextBounds(text, 0, text.length(), getTextRect());
-                        int textWidth = getTextRect().width();
-                        float textWidth1 = getPaint().measureText(text);
-//                        Utils.log("=================> textWidth: " + textWidth + "   textWidth1: " + textWidth1 + "   getWidth(): " + getWidth());
-                        int distance = textWidth + mSpace;
-                        float currentX = (getWidth() - getPaddingRight()) - textWidth + mOffset1;
-                        Paint.FontMetrics fontMetrics = getPaint().getFontMetrics();
-                        canvas.drawText(text, currentX, getHeight() / 2 + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent, getPaint());
-                        if (mOffset1 > distance) {
-//                            Utils.log("=========================================> getWidth(): " + getWidth() + "   getPaddingRight(): " + getPaddingRight() + "   textWidth: " + textWidth + "   distance: " + distance);
-                            mOffset1 = -distance;
-                        }
-                        float currentX2 = (getWidth() - getPaddingRight()) - textWidth - distance + mOffset2;
-//                        Utils.log("=================> currentX: " + currentX + "   currentX2: " + currentX2);
-                        canvas.drawText(text, currentX2, getHeight() / 2 + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent, getPaint());
-                        if (mOffset2 > 2 * distance) {
-                            mOffset2 = 0;
-                        }
-                    } else {
-                        //从右向左滚动，首次不显示文字，后续每次往左偏移speed像素
-                        getPaint().getTextBounds(text, 0, text.length(), getTextRect());
-                        int textWidth = getTextRect().width();
-                        float textWidth1 = getPaint().measureText(text);
-//                        Utils.log("=================> textWidth: " + textWidth + "   textWidth1: " + textWidth1);
-                        int distance = textWidth + mSpace;
-                        float currentX = getPaddingLeft() - mOffset1;
-                        Paint.FontMetrics fontMetrics = getPaint().getFontMetrics();
-                        canvas.drawText(text, currentX, getHeight() / 2 + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent, getPaint());
-                        if (mOffset1 > distance) {
-                            mOffset1 = -(distance);
-                        }
-                        float currentX2 = getPaddingLeft() + distance - mOffset2;
-//                        canvas.drawText("hello", 0, 30, paint);
-                        canvas.drawText(text, currentX2, getHeight() / 2 + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent, getPaint());
-                        if (mOffset2 > 2 * distance) {
-                            mOffset2 = 0;
-                        }
-                    }
+                    onScrollText(canvas, text);
                     break;
                 default:
                     break;
@@ -508,7 +487,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
                     initSpans1(canvas);
                 }
                 if (mGradientAnimSpans != null && mGradientAnimSpans.length > 0) {
-                    hasAnim = true;
+                    hasGradientAnim = true;
                 }
                 startAnim();
             }
@@ -523,20 +502,14 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         } else {
             super.onDraw(canvas);
         }
-//        Utils.log("=====================> GradientAnimTextViewV2 onDraw2");
     }
 
     /**
      * 开始动画
      */
     public void startAnim() {
-//        Utils.log("GradientAnimTextViewV2 startAnim1");
-        if(hasAnim && !isStartAnim) {
+        if(!isStartAnim && (hasGradientAnim || isScrollAnim())) {
             Utils.log("GradientAnimTextViewV2 startAnim2");
-//            if(mAnimator != null) {
-//                mAnimator.cancel();
-//                mAnimator = null;
-//            }
             if(mAnimator == null) {
                 mAnimator = ValueAnimator.ofInt(0, getMeasuredWidth());
                 mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -554,17 +527,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
                 mAnimator.setRepeatCount(ValueAnimator.INFINITE);
                 mAnimator.setRepeatMode(ValueAnimator.RESTART);
                 mAnimator.setInterpolator(new LinearInterpolator());
-//            mAnimator.addListener(new AnimatorListenerAdapter() {
-//                @Override
-//                public void onAnimationEnd(Animator animation) {
-//
-//                }
-//
-//                @Override
-//                public void onAnimationStart(Animator animation) {
-//
-//                }
-//            });
             }
             mAnimator.start();
             isStartAnim = true;
@@ -587,8 +549,64 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     }
 
     /***********************************************************************************************
+     * 滚动
+     ***********************************************************************************************/
+    /**
+     * 是否需要支持滚动
+     * @return
+     */
+    private boolean isScrollAnim() {
+        return scrollType == SCROLL_ANIM;
+    }
+
+    private void onScrollText(Canvas canvas, String text) {
+        if(canvas == null  || TextUtils.isEmpty(text)) {
+            return ;
+        }
+        if(isAr) {
+            getPaint().getTextBounds(text, 0, text.length(), getTextRect());
+            int textWidth = getTextRect().width();
+            float textWidth1 = getPaint().measureText(text);
+//                        Utils.log("=================> textWidth: " + textWidth + "   textWidth1: " + textWidth1 + "   getWidth(): " + getWidth());
+            int distance = textWidth + mSpace;
+            float currentX = (getWidth() - getPaddingRight()) - textWidth + mOffset1;
+            Paint.FontMetrics fontMetrics = getPaint().getFontMetrics();
+            canvas.drawText(text, currentX, getHeight() / 2 + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent, getPaint());
+            if (mOffset1 > distance) {
+//                            Utils.log("=========================================> getWidth(): " + getWidth() + "   getPaddingRight(): " + getPaddingRight() + "   textWidth: " + textWidth + "   distance: " + distance);
+                mOffset1 = -distance;
+            }
+            float currentX2 = (getWidth() - getPaddingRight()) - textWidth - distance + mOffset2;
+//                        Utils.log("=================> currentX: " + currentX + "   currentX2: " + currentX2);
+            canvas.drawText(text, currentX2, getHeight() / 2 + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent, getPaint());
+            if (mOffset2 > 2 * distance) {
+                mOffset2 = 0;
+            }
+        } else {
+            //从右向左滚动，首次不显示文字，后续每次往左偏移speed像素
+            getPaint().getTextBounds(text, 0, text.length(), getTextRect());
+            int textWidth = getTextRect().width();
+            float textWidth1 = getPaint().measureText(text);
+//                        Utils.log("=================> textWidth: " + textWidth + "   textWidth1: " + textWidth1);
+            int distance = textWidth + mSpace;
+            float currentX = getPaddingLeft() - mOffset1;
+            Paint.FontMetrics fontMetrics = getPaint().getFontMetrics();
+            canvas.drawText(text, currentX, getHeight() / 2 + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent, getPaint());
+            if (mOffset1 > distance) {
+                mOffset1 = -(distance);
+            }
+            float currentX2 = getPaddingLeft() + distance - mOffset2;
+//                        canvas.drawText("hello", 0, 30, paint);
+            canvas.drawText(text, currentX2, getHeight() / 2 + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent, getPaint());
+            if (mOffset2 > 2 * distance) {
+                mOffset2 = 0;
+            }
+        }
+    }
+
+    /***********************************************************************************************
      * 渐变
-     ************************************************************************************************/
+     ***********************************************************************************************/
     private void initSpans(Canvas canvas) {
         CharSequence text = getText();
         if(TextUtils.isEmpty(text) || canvas == null)
@@ -973,16 +991,16 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         if(animation == null) {
             return;
         }
-        int value = (int) animation.getAnimatedValue();
-        int translate = value - getMeasuredWidth();
-        if(mGradientMatrix == null) {
-            mGradientMatrix = new Matrix();
-        }
-        mGradientMatrix.setTranslate(translate, 0f);
-        if(mLinearGradient != null) {
-            mLinearGradient.setLocalMatrix(mGradientMatrix);
-        }
         if(!isScrollEllipsize) {
+            int value = (int) animation.getAnimatedValue();
+            int translate = value - getMeasuredWidth();
+            if(mGradientMatrix == null) {
+                mGradientMatrix = new Matrix();
+            }
+            mGradientMatrix.setTranslate(translate, 0f);
+            if(mLinearGradient != null) {
+                mLinearGradient.setLocalMatrix(mGradientMatrix);
+            }
             if (isAr) {
                 mOffset1 += horizontalSpeed;
                 mOffset2 += horizontalSpeed;

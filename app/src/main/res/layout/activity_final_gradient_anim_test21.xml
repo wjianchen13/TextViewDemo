@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="彩虹字体滚动单个使用" />
+        android:text="RainbowScrollTextViewV2 彩虹，需要支持滚动 单独使用" />
 
     <com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2
         android:id="@+id/tv_test1"

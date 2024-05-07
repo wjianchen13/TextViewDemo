@@ -93,11 +93,14 @@
     <declare-styleable name="GradientAnimTextViewV2">
         <attr name="gradient_anim_text_color" format="color|reference" />
         <attr name="gradient_anim_mode" format="enum">
-            <enum name="span" value="0" /> <!-- span模式 -->
-            <enum name="scroll" value="1" /> <!-- 滚动模式 -->
+            <enum name="normal" value="0" /> <!-- 正常模式 -->
+            <enum name="span" value="1" /> <!-- span模式 -->
+            <enum name="scroll" value="2" /> <!-- 滚动模式 -->
         </attr>
         <attr name="gradient_anim_textview_type" format="integer" /> <!-- 类型 -->
         <attr name="gradient_anim_textview_tag" format="string" /> <!-- view tag -->
+        <attr name="gradient_anim_scroll_speed" format="float" /> <!-- 滚动速度，值越大，滚动越快，默认是1 -->
+        <attr name="gradient_anim_scroll_space" format="dimension" /> <!-- 前后字体滚动间隔 -->
     </declare-styleable>
 
 </resources>

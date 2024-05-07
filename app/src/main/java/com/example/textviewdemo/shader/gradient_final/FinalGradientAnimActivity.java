@@ -7,7 +7,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
 import com.example.textviewdemo.shader.gradient_final.test1.FinalGradientAnimTestActivity1;
 import com.example.textviewdemo.shader.gradient_final.test2.FinalGradientAnimTestActivity2;
 import com.example.textviewdemo.shader.gradient_final.test3.FinalGradientAnimTestActivity3;
@@ -28,10 +27,13 @@ import com.example.textviewdemo.shader.gradient_final.test6.FinalGradientAnimTes
  * 3.彩虹，换行
  * 使用GradientAnimTextViewV2
  * 不设置android:singleLine="true"
+ *
+ * 明天需要实现下面功能
+ * 统一接口，和svip字体颜色统一，统一调用
+ * 默认文字的颜色，比如设置一个基础字体，设置字体颜色和字体大小.
+ * 各种自定义属性支持。
  */
 public class FinalGradientAnimActivity extends AppCompatActivity {
-
-    public static final boolean isAr = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
