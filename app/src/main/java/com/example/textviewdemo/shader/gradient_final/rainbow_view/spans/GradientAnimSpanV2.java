@@ -7,8 +7,7 @@ import androidx.annotation.ColorInt;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientAnimSpanV2;
-import com.example.textviewdemo.shader.utils.ShaderUtils;
-import com.example.textviewdemo.thumb.Utils;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.GradientUtils;
 
 public class GradientAnimSpanV2 extends GradientSpanV2
         implements UpdateAppearance, IGradientAnimSpanV2 {
@@ -30,7 +29,7 @@ public class GradientAnimSpanV2 extends GradientSpanV2
     /**
      * 固定shader的宽度
      */
-    private int mShaderWidth = Utils.dip2px(BaseApp.getInstance(), 100);
+    private int mShaderWidth = GradientUtils.dip2px(BaseApp.getInstance(), 100);
 
     /**
      *
@@ -61,9 +60,9 @@ public class GradientAnimSpanV2 extends GradientSpanV2
                 mTranslate = 0;
             }
             if(isAr) {
-                mTranslate -= Utils.dip2px(BaseApp.getInstance(), 1);
+                mTranslate -= GradientUtils.dip2px(BaseApp.getInstance(), 1);
             } else {
-                mTranslate += Utils.dip2px(BaseApp.getInstance(), 1);
+                mTranslate += GradientUtils.dip2px(BaseApp.getInstance(), 1);
             }
         }
         mProgress = progress;
@@ -71,7 +70,7 @@ public class GradientAnimSpanV2 extends GradientSpanV2
 
     @Override
     protected Bitmap createShaderBitmap() {
-        return ShaderUtils.createGradientBitmap(getRealWidth(), mCreateBitmapHeight, mColors);
+        return GradientUtils.createGradientBitmap(getRealWidth(), mCreateBitmapHeight, mColors);
     }
 
     private int getRealWidth() {

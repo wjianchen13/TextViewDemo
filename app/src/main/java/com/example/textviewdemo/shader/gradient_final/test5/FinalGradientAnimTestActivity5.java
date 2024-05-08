@@ -7,9 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
-import com.example.textviewdemo.shader.gradient_final.test2.FinalGradientAnimTestActivity21;
-import com.example.textviewdemo.shader.gradient_final.test2.FinalGradientAnimTestActivity22;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.manager.AnimManager;
 
 /**
  * RainbowScrollTextViewV2 使用，检查生命周期，是否回收

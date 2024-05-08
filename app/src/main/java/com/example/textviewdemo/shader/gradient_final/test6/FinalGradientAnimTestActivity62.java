@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.manager.AnimManager;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.spans.GradientAnimSpanV2;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.spans.GradientSpanV2;
 

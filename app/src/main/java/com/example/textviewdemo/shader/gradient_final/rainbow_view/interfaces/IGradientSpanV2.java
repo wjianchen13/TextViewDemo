@@ -2,7 +2,8 @@ package com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces;
 
 import android.graphics.Bitmap;
 
-import com.example.textviewdemo.shader.textview_test.GradientInfo;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.bean.GradientInfo;
+
 
 public interface IGradientSpanV2 {
 

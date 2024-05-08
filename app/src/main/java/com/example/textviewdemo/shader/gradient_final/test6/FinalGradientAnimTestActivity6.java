@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.manager.AnimManager;
 
 /**
  * GradientAnimTextViewV2 渐变，超长显示...

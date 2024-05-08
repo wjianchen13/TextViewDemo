@@ -13,9 +13,9 @@ import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.bean.GradientInfo;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientSpanV2;
-import com.example.textviewdemo.shader.textview_test.GradientInfo;
-import com.example.textviewdemo.shader.utils.ShaderUtils;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.GradientUtils;
 
 public class GradientSpanV2 extends CharacterStyle implements UpdateAppearance, IGradientSpanV2 {
 
@@ -135,7 +135,7 @@ public class GradientSpanV2 extends CharacterStyle implements UpdateAppearance, 
     }
 
     protected Bitmap createShaderBitmap() {
-        return ShaderUtils.createGradientBitmap(mWidth, mCreateBitmapHeight, mColors);
+        return GradientUtils.createGradientBitmap(mWidth, mCreateBitmapHeight, mColors);
     }
 
     @Override

@@ -1,7 +1,7 @@
-package com.example.textviewdemo.shader.gradient_final.manager;
+package com.example.textviewdemo.shader.gradient_final.rainbow_view.manager;
 
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientView;
-import com.example.textviewdemo.thumb.Utils;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.GradientUtils;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +37,7 @@ public class AnimManager {
         if(isDebug) {
             if (gradientView != null) {
                 getViewSet().add(gradientView);
-                Utils.log("addView type: " + type + "  viewTag: " + gradientView.getViewTag());
+                GradientUtils.log("addView type: " + type + "  viewTag: " + gradientView.getViewTag());
             }
         }
     }
@@ -51,7 +51,7 @@ public class AnimManager {
         if(isDebug) {
             if (gradientView != null) {
                 getViewSet().remove(gradientView);
-                Utils.log("removeView type: " + type + "  viewTag: " + gradientView.getViewTag());
+                GradientUtils.log("removeView type: " + type + "  viewTag: " + gradientView.getViewTag());
             }
         }
     }
@@ -59,13 +59,13 @@ public class AnimManager {
     public void logAllView() {
         if(isDebug) {
             if(getViewSet().size() == 0) {
-                Utils.log("getViewSet() empty");
+                GradientUtils.log("getViewSet() empty");
             }
             for (IGradientView gradientView : getViewSet()) {
                 if (gradientView != null) {
-                    Utils.log("gradientView: " + gradientView + "  tag: " + gradientView.getViewTag());
+                    GradientUtils.log("gradientView: " + gradientView + "  tag: " + gradientView.getViewTag());
                 } else {
-                    Utils.log("gradientView == null");
+                    GradientUtils.log("gradientView == null");
                 }
             }
         }
