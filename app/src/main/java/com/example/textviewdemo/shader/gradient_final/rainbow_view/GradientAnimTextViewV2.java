@@ -461,7 +461,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      */
     public void startAnim() {
         if(!isStartAnim && (hasGradientAnim || isSupportAnim())) {
-            Utils.log("GradientAnimTextViewV2 startAnim2");
+            GradientUtils.log("GradientAnimTextViewV2 startAnim2");
             if(mAnimator == null) {
                 mAnimator = ValueAnimator.ofInt(0, RainbowConstants.mAnimWidth);
                 mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -626,7 +626,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
                         Bitmap bitmap = gradientSpan.getGradientBitmap();
                         if(bitmap != null) {
                             canvas.save(); // 这里只是在一定的偏移绘制出原来的Bitmap，方便对比效果
-                            canvas.translate(rectF.left + getPaddingStart(), Utils.dip2px(mContext, 38 + rectF.sLineNum * 45));
+                            canvas.translate(rectF.left + getPaddingStart(), GradientUtils.dip2px(mContext, 38 + rectF.sLineNum * 45));
                             canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()), new RectF(0, 0, bitmap.getWidth(), 50), getPaint());
                             canvas.restore();
                         }
@@ -728,7 +728,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
                         Bitmap bitmap = gradientSpan.getGradientBitmap();
                         if(bitmap != null) {
                             canvas.save(); // 这里只是在一定的偏移绘制出原来的Bitmap，方便对比效果
-                            canvas.translate(rectF.left + getPaddingEnd(), Utils.dip2px(mContext, 38 + rectF.sLineNum * 45));
+                            canvas.translate(rectF.left + getPaddingEnd(), GradientUtils.dip2px(mContext, 38 + rectF.sLineNum * 45));
                             canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()), new RectF(0, 0, bitmap.getWidth(), 50), getPaint());
                             canvas.restore();
                         }
