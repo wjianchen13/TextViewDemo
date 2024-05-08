@@ -2,6 +2,7 @@ package com.example.textviewdemo.shader.gradient_final.rainbow_view.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
@@ -106,6 +107,24 @@ public class GradientUtils {
     }
 
     /**
+     * 创建一个BitmapShader
+     * @param width
+     * @param height
+     * @param colors
+     * @return
+     */
+    public static BitmapShader createBitmapShader(int width, int height, int[] colors) {
+        try {
+            Bitmap bmp = GradientUtils.createGradientBitmap(width, height, colors);
+            BitmapShader bitmapShader = new BitmapShader(bmp, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+            return bitmapShader;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * 根据传入的尺寸和图片，生成新的Bitmap
      * @param width
      * @param height
@@ -113,6 +132,9 @@ public class GradientUtils {
      * @return
      */
     public static Bitmap createGradientBitmap(int width, int height, int[] colors) {
+        if(colors == null) {
+            return null;
+        }
         if(width == 0)
             width = 100;
         if(height == 0)

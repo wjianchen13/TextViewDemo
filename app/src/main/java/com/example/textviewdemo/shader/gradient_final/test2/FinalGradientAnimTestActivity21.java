@@ -63,7 +63,8 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
      * @param v`
      */
     public void onTest3(View v) {
-        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
+//        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
+        String str = "测试滚动和渐变";
         int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
