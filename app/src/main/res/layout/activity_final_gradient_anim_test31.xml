@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="GradientAnimTextViewV2 渐变，超长显示... 单独使用" />
 
-    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+    <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
         android:id="@+id/tv_test1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         android:text="超长显示..."
         android:onClick="onTest1" />
 
-    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+    <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
         android:id="@+id/tv_test2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         android:text="没超长的情况"
         android:onClick="onTest2" />
 
-    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+    <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
         android:id="@+id/tv_test3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

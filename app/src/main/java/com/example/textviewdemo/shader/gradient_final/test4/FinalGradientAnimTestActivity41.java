@@ -16,9 +16,9 @@ import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.view.GradientAnimSpanV2;
-import com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2;
-import com.example.textviewdemo.shader.gradient_final.view.GradientSpanV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.spans.GradientAnimSpanV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.spans.GradientSpanV2;
 
 /**
  * 富文本，渐变 单个使用

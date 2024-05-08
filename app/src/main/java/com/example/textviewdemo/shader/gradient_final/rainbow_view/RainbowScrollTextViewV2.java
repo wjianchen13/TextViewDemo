@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.gradient_final.view;
+package com.example.textviewdemo.shader.gradient_final.rainbow_view;
 
 import static android.view.Gravity.CENTER;
 
@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientView;
 import com.example.textviewdemo.shader.gradientanimspan.test5.ScreenUtils;
 
 

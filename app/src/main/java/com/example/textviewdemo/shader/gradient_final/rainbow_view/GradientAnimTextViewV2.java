@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.gradient_final.view;
+package com.example.textviewdemo.shader.gradient_final.rainbow_view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -25,89 +25,26 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradient_final.manager.AnimManager;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientAnimSpanV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientSpanV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientView;
 import com.example.textviewdemo.shader.textview_test.GradientInfo;
 import com.example.textviewdemo.thumb.Utils;
 
 /**
- * name: GradientAnimTextView
- * desc: 支持渐变，动画TextView，使用BitmapShader
- *
- * 实现：
- * 1.渐变Span使用动态计算每个字符的位置的方式，计算出实际字符串的显示位置，
- * 其中阿语模式下的计算有坑，因为显示纯阿语，纯英语，以及阿语和英语混合拿到的位置都是不对的
- * 2.渐变span使用Shader动态更新，绘制文字，通过颜色数组，动态生成BitmapShader，然后平移BitmapShader实现字体渐变
- * 3.isAr在测试的时候使用，用到项目，每次使用isRtl标志进行设置，测试的时候要根据实际的语言修改标志，RTL的时候需要改成true
- * 4.只有有动画的时候才会启动Animator，静态显示渐变不会启动动画
- * 5.渐变通过改变translate实现，当滚动的偏移大于span的宽度时，translate重新设置成0
- * 6.滚动通过平移x坐标实现，当平移大于一定宽度时，重新初始化偏移量，因为滚动涉及绘制2部分的text，所以初始化的偏移是不一样的，动态改变偏移的计算过程也不一样
- * 只有需要滚动效果的，才使用Scroll模式
- *      如果有彩虹字体的，使用自定义逻辑
- *      如果没有彩虹字体，使用TextView默认滚动逻辑
- * 需要显示省略号
- * 使用normal模式
- * 需要span渐变
- * 使用normal模式
- *
- *
- *
- *
- * 需要测试的项目
- * 1.超长显示。。。
- * 2.超长滚动
- * 3.RecyclerView使用
- *
- *
- * detach事停止动画
- * 不显示时停止动画 显示时重新开始
- * 可能出现的异常捕获
- * isScrollMode 就开启了动画，实际上如果文字比宽度小，不需要动画？应该也是需要的，因为有渐变动画
- * 看是否需要将LinearGradient改成BitmapShader，应该用LinearGradient比较好，因为BitmapShader需要创建bitmap，拉低性能
- * 把输入颜色的方法编写出来，是使用Mirror还是CLAMP
- * 单纯的渐变Shader和彩虹Shader应该要分开，渐变Shader使用BitmapShader也可以，彩虹的需要使用LinearGradient，因为要使用Mirror实现首尾颜色看起来连续。
- * 需要封装传入颜色数组的接口
- * 需要处理不显示时动画暂停，显示时动画开始
- * 内存泄漏处理
- * 如果是彩虹渐变模式，即使不滚动，也需要使用彩虹模式的方法设置，因为最开始不知道字体的宽度，无法确定是否需要滚动
- * 在xml使用的时候就知道是滚动模式，还是非滚动模式，如果是滚动模式，设置app:mode="scroll"，否则设置app:mode="normal"
- * 设置了app:mode="scroll"，但不是彩虹模式？这个应该动态设置，如果不是彩虹，使用默认的TextView流程
- * 区分2中TextView，一种是能换行的支持富文本的，一种是单行，支持滚动的,一句话，一种是单行，一种是多行
- * 单行的存在2种情况，一种是彩虹渐变，彩虹渐变是自己实现的， 一种是非彩虹渐变非彩虹渐变使用系统的
- *
- * 提供启动动画，暂停动画相关方法
- *
- * 单行情况下，
- *      需要滚动：彩虹的都用这个GradientAnimTextView MODE_SCROLL模式，非彩虹的都用系统默认的TextView
- *      不需要滚动:超出显示... 彩虹动画和非动画都使用GradientAnimTextView MODE_NORMAL的逻辑就可以了，
- * 多行情况下，使用GradientAnimTextView MODE_NORMAL
- *
- *
- *
- *
- * 注意
- * 1.设置是指定是正常模式还是滚动模式
- * 2.如果是正常模式，使用span自动启动动画，根据IGradientSpan1(单独就是渐变的功能)和IGradientAnimSpan(渐变动画功能)
- * 3.如果是滚动模式，滚动模式下如果是渐变 + 滚动或者，则走滚动逻辑，如果非渐变，则走普通的span逻辑（第2步的逻辑)
- * 4.注意只是有渐变动画的才走渐变的流程，其他的都走TextView默认流程
- *
- * 使用方法
- *
- * 1.MODE_SCROLL 滚动+渐变 xml设置
+ * 彩虹字体
+ * 使用例子
+ * 1.彩虹，需要支持滚动
+ * 使用RainbowScrollTextViewV2
+ * 调用setContent(CharSequence text, boolean rainbow, @ColorInt int[] colors)方法
+ * 2.彩虹，超出显示...
+ * 使用GradientAnimTextViewV2
  * android:singleLine="true"
- * app:mode="scroll"
- * 2.MODE_NORMAL 渐变
- * xml去掉android:singleLine="true"
- * app:mode="normal"
+ * 3.彩虹，换行
+ * 使用GradientAnimTextViewV2
+ * 不设置android:singleLine="true"
  *
- *
- * 遇到问题
- * 1.paint.setColor(0) 当mode = MODE_SCROLL时，单个view使用时没问题，但是放到RecyclerView中使用时，却什么都不显示
- * 解决办法paint.setColor()设置成存在的颜色是，或者不设置，但是不能设置成0 paint.setColor(0)
- *
- *
- *
- *
- *
- *
+ * 明天需要实现下面功能
  *
  */
 public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradientView {

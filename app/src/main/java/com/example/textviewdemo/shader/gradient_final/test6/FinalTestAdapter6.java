@@ -8,7 +8,7 @@ import android.view.animation.LinearInterpolator;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2;
 
 import java.util.List;
 

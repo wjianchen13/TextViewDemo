@@ -9,7 +9,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradient_final.utils.Constants;
-import com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.RainbowScrollTextViewV2;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="彩虹字体滚动单个使用" />
 
-    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+    <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
         android:id="@+id/tv_test1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:text="滚动模式 滚动+渐变 xml设置"
         android:onClick="onTest1" />
 
-    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+    <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
         android:id="@+id/tv_test2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         android:text="滚动模式 滚动+渐变 代码设置"
         android:onClick="onTest2" />
 
-    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+    <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
         android:id="@+id/tv_test3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

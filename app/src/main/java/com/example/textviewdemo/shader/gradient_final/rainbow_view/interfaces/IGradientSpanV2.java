@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.gradient_final.view;
+package com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces;
 
 import android.graphics.Bitmap;
 

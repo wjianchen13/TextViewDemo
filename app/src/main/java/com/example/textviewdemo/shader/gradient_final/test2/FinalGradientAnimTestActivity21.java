@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat;
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradient_final.utils.GradientUtils;
-import com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextViewV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.RainbowScrollTextViewV2;
 import com.example.textviewdemo.thumb.Utils;
 
 /**

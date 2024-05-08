@@ -20,7 +20,7 @@
             android:gravity="center"
             android:text="富文本，渐变 单个使用" />
 
-        <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
             android:id="@+id/tv_test1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:text="超长显示..."
             android:onClick="onTest1" />
 
-        <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
             android:id="@+id/tv_test2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:text="没超长的情况"
             android:onClick="onTest2" />
 
-        <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
             android:id="@+id/tv_test3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
             android:text="设置新内容"
             android:onClick="onTest5" />
 
-        <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
             android:id="@+id/tv_test4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
             android:text="设置渐变字体"
             android:onClick="onTest6" />
 
-        <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
             android:id="@+id/tv_test5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             android:text="单纯显示英语渐变"
             android:onClick="onTest7" />
 
-        <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+        <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
             android:id="@+id/tv_test6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

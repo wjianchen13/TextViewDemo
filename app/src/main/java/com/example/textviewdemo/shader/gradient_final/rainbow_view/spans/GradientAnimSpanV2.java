@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.gradient_final.view;
+package com.example.textviewdemo.shader.gradient_final.rainbow_view.spans;
 
 import android.graphics.Bitmap;
 import android.text.style.UpdateAppearance;
@@ -6,6 +6,7 @@ import android.text.style.UpdateAppearance;
 import androidx.annotation.ColorInt;
 
 import com.example.textviewdemo.BaseApp;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientAnimSpanV2;
 import com.example.textviewdemo.shader.utils.ShaderUtils;
 import com.example.textviewdemo.thumb.Utils;
 

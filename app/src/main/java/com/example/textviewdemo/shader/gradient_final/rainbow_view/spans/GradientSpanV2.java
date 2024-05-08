@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.gradient_final.view;
+package com.example.textviewdemo.shader.gradient_final.rainbow_view.spans;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
@@ -13,9 +13,9 @@ import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientSpanV2;
 import com.example.textviewdemo.shader.textview_test.GradientInfo;
 import com.example.textviewdemo.shader.utils.ShaderUtils;
-import com.example.textviewdemo.thumb.Utils;
 
 public class GradientSpanV2 extends CharacterStyle implements UpdateAppearance, IGradientSpanV2 {
 

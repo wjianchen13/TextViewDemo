@@ -1,6 +1,6 @@
 package com.example.textviewdemo.shader.gradient_final.manager;
 
-import com.example.textviewdemo.shader.gradient_final.view.IGradientView;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientView;
 import com.example.textviewdemo.thumb.Utils;
 
 import java.util.HashSet;

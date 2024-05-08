@@ -2,7 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.example.textviewdemo.shader.gradient_final.view.GradientAnimTextViewV2
+    <com.example.textviewdemo.shader.gradient_final.rainbow_view.GradientAnimTextViewV2
         android:id="@+id/tv"
         style="@style/textview_style_rtl"
         android:layout_width="wrap_content"
