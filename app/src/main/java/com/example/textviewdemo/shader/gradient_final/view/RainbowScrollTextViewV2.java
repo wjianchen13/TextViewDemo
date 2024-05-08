@@ -118,9 +118,18 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
      * 设置显示内容
      * @param text 显示内容
      * @param rainbow 是否有彩虹
+     */
+    public void setContent(CharSequence text, boolean rainbow) {
+        setContent(text, rainbow, null);
+    }
+
+    /**
+     * 设置显示内容
+     * @param text 显示内容
+     * @param rainbow 是否有彩虹
      * @param colors 彩虹颜色
      */
-    public void setContent(CharSequence text, boolean rainbow, @ColorInt int... colors) {
+    public void setContent(CharSequence text, boolean rainbow, @ColorInt int[] colors) {
         if(rainbow) {
             if (tv != null) {
                 tv.setScrollMode();

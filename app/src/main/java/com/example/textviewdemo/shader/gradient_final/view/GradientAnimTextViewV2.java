@@ -285,13 +285,13 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         }
     }
 
-//    /**
-//     *
-//     * @param text
-//     */
-//    public void setContent(CharSequence text) {
-//        setContent(text);
-//    }
+    /**
+     *
+     * @param text
+     */
+    public void setContent(CharSequence text) {
+        setContent(text, null);
+    }
 
     /**
      * 设置显示内容
@@ -299,7 +299,19 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      * @param text
      * @param colors
      */
-    public void setContent(CharSequence text, @ColorInt int... colors) {
+    public void setContent(CharSequence text, @ColorInt int[] colors) {
+        reset();
+        setGradientColor(colors);
+        setText(text);
+    }
+
+    /**
+     * 设置显示内容
+     * 如果有渐变和滚动效果，需要加上colors参数
+     * @param text
+     * @param colors
+     */
+    public void setContentV2(CharSequence text, @ColorInt int... colors) {
         reset();
         setGradientColor(colors);
         setText(text);
@@ -936,15 +948,15 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      ***********************************************************************************************/
     /**
      * 设置渐变颜色
-     * @param color
+     * @param colors
      */
-    public void setGradientColor(@ColorInt int... color) {
-        if(color.length > 0) {
-            mGradientColors = new int[color.length * 2 - 1];
+    public void setGradientColor(@ColorInt int[] colors) {
+        if(colors != null && colors.length > 0) {
+            mGradientColors = new int[colors.length * 2 - 1];
             int i = 0;
-            for (int c : color) {
+            for (int c : colors) {
                 mGradientColors[i] = c;
-                mGradientColors[2 * color.length - 2 - i] = c;
+                mGradientColors[2 * colors.length - 2 - i] = c;
                 i ++;
             }
             isGradientCreate = false;

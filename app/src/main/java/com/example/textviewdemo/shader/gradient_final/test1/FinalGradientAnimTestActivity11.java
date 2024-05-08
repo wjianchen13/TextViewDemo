@@ -41,7 +41,7 @@ public class FinalGradientAnimTestActivity11 extends AppCompatActivity {
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-        tvTest1.setContent(str, color1, color2, color3, color4);
+        tvTest1.setContent(str, new int[]{color1, color2, color3, color4});
         Utils.log("onTest1");
     }
 
@@ -56,7 +56,7 @@ public class FinalGradientAnimTestActivity11 extends AppCompatActivity {
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
         tvTest2.setScrollMode();
-        tvTest2.setContent(str, color1, color2, color3, color4);
+        tvTest2.setContent(str, new int[]{color1, color2, color3, color4});
     }
 
     /**
@@ -70,7 +70,7 @@ public class FinalGradientAnimTestActivity11 extends AppCompatActivity {
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
         tvTest3.setScrollMode();
-        tvTest3.setContent(str, color1, color2, color3, color4);
+        tvTest3.setContent(str, new int[]{color1, color2, color3, color4});
     }
 
     /**

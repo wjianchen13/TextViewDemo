@@ -41,7 +41,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-        tvTest1.setContent(str, true, color1, color2, color3, color4);
+        tvTest1.setContent(str, true, new int[]{color1, color2, color3, color4});
         Utils.log("onTest1");
     }
 
@@ -68,7 +68,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-        tvTest3.setContent(str, true, color1, color2, color3, color4);
+        tvTest3.setContent(str, true, new int[]{color1, color2, color3, color4});
     }
 
     /**
@@ -103,5 +103,28 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         tvTest3.setContent(sContent, false);
     }
 
+    /**
+     * 设置新内容 短
+     * @param v
+     */
+    public void onTest7(View v) {
+        tvTest3.setContent("测试滚动和渐变", false);
+    }
+
+    /**
+     * 设置渐变内容 短
+     * @param v
+     */
+    public void onTest8(View v) {
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientText(this, "测试滚动和渐", colors, sContent.length(), 0));
+        tvTest3.setContent(sContent, false);
+    }
 
 }
