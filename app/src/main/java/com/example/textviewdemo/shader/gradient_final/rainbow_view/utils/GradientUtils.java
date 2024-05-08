@@ -1,4 +1,4 @@
-package com.example.textviewdemo.shader.gradient_final.utils;
+package com.example.textviewdemo.shader.gradient_final.rainbow_view.utils;
 
 import android.content.Context;
 import android.text.Spannable;

@@ -20,27 +20,12 @@ import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientView;
 import com.example.textviewdemo.shader.gradientanimspan.test5.ScreenUtils;
 
-
 /**
  * 彩虹字体，需要滚动的用这个
- *
+ * 1.xml定义RainbowScrollTextViewV2
+ * 2.调用setContent(CharSequence text, boolean rainbow, @ColorInt int[] colors)方法
  */
 public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientView {
-
-    /**
-     * 常规
-     */
-    public static final int TYPE_NORMAL = 0;
-
-    /**
-     * 滚动
-     */
-    public static final int TYPE_SCROLL = 1;
-
-    /**
-     * 不滚动，结尾显示省略号
-     */
-    public static final int TYPE_END = 2;
 
     private Context mContext;
     private GradientAnimTextViewV2 tv;
@@ -74,26 +59,11 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
     private int mGravity;
 
     /**
-     * 文字方向
-     * 0 默认，不设置
-     * 1 左向右
-     */
-    private int mTextDirection;
-
-    /**
-     * 0：常规模式
-     * 1：滚动模式
-     * 2: 省略号
-     */
-    private int mMode;
-
-    /**
      * view 的唯一标记，用于调试
      */
     private String mViewTag;
     
     private int mType;
-    
 
     public RainbowScrollTextViewV2(@NonNull Context context) {
         super(context);
@@ -118,20 +88,18 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
     /**
      * 设置显示内容
      * @param text 显示内容
-     * @param rainbow 是否有彩虹
      */
-    public void setContent(CharSequence text, boolean rainbow) {
-        setContent(text, rainbow, null);
+    public void setContent(CharSequence text) {
+        setContent(text, null);
     }
 
     /**
      * 设置显示内容
      * @param text 显示内容
-     * @param rainbow 是否有彩虹
-     * @param colors 彩虹颜色
+     * @param colors 滚动彩虹效果颜色
      */
-    public void setContent(CharSequence text, boolean rainbow, @ColorInt int[] colors) {
-        if(rainbow) {
+    public void setContent(CharSequence text, @ColorInt int[] colors) {
+        if(colors != null && colors.length > 0) {
             if (tv != null) {
                 tv.setScrollMode();
                 tv.setContent(text, colors);
@@ -139,7 +107,7 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
             }
         } else {
             if (tv != null) {
-                tv.setNormalMode();
+                tv.setSpanMode();
                 tv.setContent(text);
                 tv.setSelected(true);
             }
@@ -190,7 +158,6 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
         textSize = a.getDimensionPixelOffset(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_text_size, 0);
         mAutoSize = a.getBoolean(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_auto_width, false);
         mGravity = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_layout_gravity, 0);
-        mTextDirection = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_text_direction, 0);
         mMaxWidth = a.getDimensionPixelOffset(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_max_size, ScreenUtils.getScreenWidth(mContext));
         mType = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_textview_type, 0);
         mViewTag = a.getString(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_textview_tag);

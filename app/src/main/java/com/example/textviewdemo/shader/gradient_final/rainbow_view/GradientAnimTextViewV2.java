@@ -33,19 +33,21 @@ import com.example.textviewdemo.thumb.Utils;
 
 /**
  * 彩虹字体
- * 使用例子
- * 1.彩虹，需要支持滚动
- * 使用RainbowScrollTextViewV2
- * 调用setContent(CharSequence text, boolean rainbow, @ColorInt int[] colors)方法
- * 2.彩虹，超出显示...
- * 使用GradientAnimTextViewV2
- * android:singleLine="true"
- * 3.彩虹，换行
- * 使用GradientAnimTextViewV2
+ * 超出显示...
+ * 1.xml定义GradientAnimTextViewV2
+ *  设置android:singleLine="true"
+ * 2.调用setContent(CharSequence text)方法
+ * 普通字体效果，直接设置setContent(CharSequence text)
+ * 渐变字体效果，使用GradientSpanV2
+ * 动态渐变字体效果，使用GradientAnimSpanV2
+ *
+ * 彩虹，换行
+ * 1.使用GradientAnimTextViewV2
  * 不设置android:singleLine="true"
- *
- * 明天需要实现下面功能
- *
+ * 2.调用setContent(CharSequence text)
+ * 普通字体效果，直接设置setContent(CharSequence text)
+ * 渐变字体效果，使用GradientSpanV2
+ * 动态渐变字体效果，使用GradientAnimSpanV2
  */
 public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradientView {
 
@@ -174,8 +176,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      */
     private Rect mTextRect;
 
-    private int color;
-
     /**
      * 是否显示计算的span区域，用于调试使用
      */
@@ -213,7 +213,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         if(context != null && attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.GradientAnimTextViewV2);
             mMode = a.getInt(R.styleable.GradientAnimTextViewV2_gradient_anim_mode, MODE_SPAN);
-            color = a.getColor(R.styleable.GradientAnimTextViewV2_gradient_anim_text_color, 0x000000);
             mType = a.getInt(R.styleable.GradientAnimTextViewV2_gradient_anim_textview_type, 0);
             mViewTag = a.getString(R.styleable.GradientAnimTextViewV2_gradient_anim_textview_tag);
             horizontalSpeed = a.getFloat(R.styleable.GradientAnimTextViewV2_gradient_anim_scroll_speed, 1.0f);
@@ -279,7 +278,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     /**
      * 系统TextView滚动模式
      */
-    public void setNormalMode() {
+    public void setSpanMode() {
         this.mMode = MODE_SPAN;
         stopAnim();
         setSingleLine();
@@ -334,19 +333,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         setFocusableInTouchMode(false);
     }
 
-    /**
-     * 设置显示模式 省略号显示
-     * xml 直接设置 android:singleLine="true" 不需要设置 android:ellipsize="end" 都可以实现省略号效果
-     * 但是在代码中 设置etSingleLine();必须要设置setEllipsize(TextUtils.TruncateAt.END)才可以实现省略号效果
-     */
-    public void setSpanMode() {
-        this.mMode = MODE_SPAN;
-        stopAnim();
-        setEllipsize(TextUtils.TruncateAt.END);
-        setFocusable(false);
-        setFocusableInTouchMode(false);
-    }
-
     private boolean isScrollMode() {
         return mMode == MODE_SCROLL;
     }
@@ -371,6 +357,8 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         if(isScrollMode()) {
             initText();
             initShader();
+        } else {
+            getPaint().setShader(null);
         }
     }
 

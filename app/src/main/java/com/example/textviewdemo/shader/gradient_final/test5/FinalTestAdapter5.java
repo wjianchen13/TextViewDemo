@@ -40,7 +40,7 @@ public class FinalTestAdapter5 extends BaseMultiItemQuickAdapter<FinalTestBean5,
             RainbowScrollTextViewV2 tvTest = helper.getView(R.id.tv_test);
 //            tvTest.setContent(item.getsContent());
             tvTest.setViewTag(Constants.TAG4);
-            tvTest.setContent(item.getContent(), item.isRainbow(), item.getColors());
+            tvTest.setContent(item.getContent(), item.getColors());
         } else if (item.getItemType() == TYPE_TEXT) {
             helper.setText(R.id.tv_name, item.getContent());
         }

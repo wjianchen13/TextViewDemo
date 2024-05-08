@@ -87,7 +87,6 @@
         <attr name="rainbow_scroll_auto_width" format="boolean" /> <!-- 最大宽度 -->
         <attr name="rainbow_scroll_max_size" format="dimension" /> <!-- 最大宽度 -->
         <attr name="rainbow_scroll_layout_gravity" format="integer" /> <!-- 对齐方式 -->
-        <attr name="rainbow_scroll_text_direction" format="integer" /> <!-- 滚动方向 -->
     </declare-styleable>
 
     <declare-styleable name="GradientAnimTextViewV2">

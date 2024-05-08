@@ -85,7 +85,7 @@ public class FinalGradientAnimTestActivity11 extends AppCompatActivity {
      * @param v
      */
     public void onTest5(View v) {
-        tvTest3.setNormalMode();
+        tvTest3.setSpanMode();
         tvTest3.setContent("测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用");
     }
 

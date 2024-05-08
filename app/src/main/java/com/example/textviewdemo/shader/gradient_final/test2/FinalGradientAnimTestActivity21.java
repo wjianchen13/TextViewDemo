@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.utils.GradientUtils;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.GradientUtils;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.RainbowScrollTextViewV2;
 import com.example.textviewdemo.thumb.Utils;
 
@@ -41,7 +41,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-        tvTest1.setContent(str, true, new int[]{color1, color2, color3, color4});
+        tvTest1.setContent(str, new int[]{color1, color2, color3, color4});
         Utils.log("onTest1");
     }
 
@@ -55,7 +55,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-        tvTest2.setContent(str, false);
+        tvTest2.setContent(str);
     }
 
     /**
@@ -68,7 +68,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
-        tvTest3.setContent(str, true, new int[]{color1, color2, color3, color4});
+        tvTest3.setContent(str, new int[]{color1, color2, color3, color4});
     }
 
     /**
@@ -84,7 +84,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
      * @param v
      */
     public void onTest5(View v) {
-        tvTest3.setContent("测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用", false);
+        tvTest3.setContent("测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用");
     }
 
     /**
@@ -100,7 +100,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
         };
         sContent.append(GradientUtils.getGradientText(this, "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用", colors, sContent.length(), 0));
-        tvTest3.setContent(sContent, false);
+        tvTest3.setContent(sContent);
     }
 
     /**
@@ -108,7 +108,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
      * @param v
      */
     public void onTest7(View v) {
-        tvTest3.setContent("测试滚动和渐变", false);
+        tvTest3.setContent("测试滚动和渐变");
     }
 
     /**
@@ -124,7 +124,7 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
         };
         sContent.append(GradientUtils.getGradientText(this, "测试滚动和渐", colors, sContent.length(), 0));
-        tvTest3.setContent(sContent, false);
+        tvTest3.setContent(sContent);
     }
 
 }
