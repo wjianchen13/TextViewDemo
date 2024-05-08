@@ -13,6 +13,7 @@ import com.example.textviewdemo.shader.gradient_final.test3.FinalGradientAnimTes
 import com.example.textviewdemo.shader.gradient_final.test4.FinalGradientAnimTestActivity4;
 import com.example.textviewdemo.shader.gradient_final.test5.FinalGradientAnimTestActivity5;
 import com.example.textviewdemo.shader.gradient_final.test6.FinalGradientAnimTestActivity6;
+import com.example.textviewdemo.shader.gradient_final.test9.FinalGradientAnimTestActivity9;
 
 /**
  * 彩虹字体最终版本
@@ -103,6 +104,14 @@ public class FinalGradientAnimActivity extends AppCompatActivity {
      */
     public void onTest8(View v) {
         startActivity(new Intent(this, FinalTestActivity.class));
+    }
+
+    /**
+     * 测试GradientAnimTextViewV2获取Span的实际位置
+     * @param v
+     */
+    public void onTest9(View v) {
+        startActivity(new Intent(this, FinalGradientAnimTestActivity9.class));
     }
 
 

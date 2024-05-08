@@ -12,7 +12,7 @@ import com.example.textviewdemo.shader.gradient_final.view.RainbowScrollTextView
 import com.example.textviewdemo.thumb.Utils;
 
 /**
- * 1.彩虹，需要支持滚动
+ * RainbowScrollTextViewV2 使用，检查生命周期，是否回收
  */
 public class FinalGradientAnimTestActivity51 extends AppCompatActivity {
 

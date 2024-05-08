@@ -12,6 +12,7 @@ import com.example.textviewdemo.thumb.Utils;
 
 /**
  * 基础测试
+ * 滚动模式 滚动+渐变 需要使用RainbowScrollTextViewV2，因为还要考虑非彩虹动画字体的滚动，飞彩虹滚动使用的是系统TextView默认行为
  */
 public class FinalTestViewActivity extends AppCompatActivity {
 
