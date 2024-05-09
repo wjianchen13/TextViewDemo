@@ -41,8 +41,8 @@ public class GradientAnimSpanV2 extends GradientSpanV2
         super(text, colors, startIndex, maxWidth);
     }
 
-    public void setGradientColor(@ColorInt int[] color) {
-        if(color.length > 0) {
+    protected void setGradientColor(@ColorInt int[] color) {
+        if(color != null && color.length > 0) {
             mColors = new int[color.length * 2 - 1];
             int i = 0;
             for (int c : color) {

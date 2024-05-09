@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.textviewdemo.R;
 import com.example.textviewdemo.shader.gradient_final.test1.FinalGradientAnimTestActivity1;
+import com.example.textviewdemo.shader.gradient_final.test10.FinalGradientAnimTestActivity10;
 import com.example.textviewdemo.shader.gradient_final.test2.FinalGradientAnimTestActivity2;
 import com.example.textviewdemo.shader.gradient_final.test3.FinalGradientAnimTestActivity3;
 import com.example.textviewdemo.shader.gradient_final.test4.FinalGradientAnimTestActivity4;
@@ -114,5 +115,12 @@ public class FinalGradientAnimActivity extends AppCompatActivity {
         startActivity(new Intent(this, FinalGradientAnimTestActivity9.class));
     }
 
+    /**
+     * 测试GradientAnimTextViewV2 显示隐藏相关状态，回调
+     * @param v
+     */
+    public void onTest10(View v) {
+        startActivity(new Intent(this, FinalGradientAnimTestActivity10.class));
+    }
 
 }

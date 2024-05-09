@@ -68,7 +68,7 @@ public class GradientSpanV2 extends CharacterStyle implements UpdateAppearance, 
      * 这里面传入的color不能是统一对象，如果是同一个对象，当有多个GradientSpanV2时，会导致方向混乱
      * @param color
      */
-    public void setGradientColor(@ColorInt int[] color) {
+    protected void setGradientColor(@ColorInt int[] color) {
         mColors = color;
         if(isAr) { // 阿拉伯语颜色反向
             reverseArray(mColors);

@@ -54,7 +54,7 @@ public class FinalGradientAnimTestActivity42 extends AppCompatActivity {
         mList = new ArrayList<>();
         mList.add(getTextBean());
         mList.add(getTest3());
-        mList.add(getTest4());
+//        mList.add(getTest4());
         mList.add(getTextBean());
         mList.add(getTextBean());
         mList.add(getTextBean());
