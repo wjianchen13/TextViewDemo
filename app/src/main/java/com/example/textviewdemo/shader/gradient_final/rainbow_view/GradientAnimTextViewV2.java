@@ -176,7 +176,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     /**
      * 是否有彩虹渐变动画
      */
-    private boolean hasGradientAnim = true;
+    private boolean hasGradientAnim = false;
 
     /**
      * 是否开始了动画，开始了动画说明已经初始化了span的信息
@@ -467,10 +467,14 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
                 mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
-                        if (isScrollMode()) {
-                            updateScrollAnim(animation);
-                        } else {
-                            updateGradientAnim(animation);
+                        // 这里必须是显示才进行刷新，因为GradientAnimSpanV2只有一个实例时，房间聊天区如果显示软键盘，
+                        // 会导致2个ValueAnimator同时操作一个GradientAnimSpanV2实例，渐变速度会变快
+                        if(isShown()) {
+                            if (isScrollMode()) {
+                                updateScrollAnim(animation);
+                            } else {
+                                updateGradientAnim(animation);
+                            }
                         }
                     }
                 });
