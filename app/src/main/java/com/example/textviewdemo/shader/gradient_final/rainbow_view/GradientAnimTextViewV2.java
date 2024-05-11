@@ -31,7 +31,6 @@ import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IG
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces.IGradientView;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.GradientUtils;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.RainbowConstants;
-import com.example.textviewdemo.thumb.Utils;
 
 /**
  * 彩虹字体
@@ -105,16 +104,6 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     private int scrollType;
 
     /**
-     * 渐变span
-     */
-    private IGradientSpanV2[] mGradientSpans;
-
-    /**
-     * 彩虹渐变span
-     */
-    private IGradientAnimSpanV2[] mGradientAnimSpans;
-
-    /**
      * 彩虹渐变动画，包括滚动
      */
     private ValueAnimator mAnimator;
@@ -168,11 +157,31 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     /**
      * 当前字体滚动的偏移
      */
-    private int mProgress;
+    private int mScrollProgress;
 
     /***********************************************************************************************
      * 彩虹字体颜色动画
      ***********************************************************************************************/
+    /**
+     * 渐变span
+     */
+    private IGradientSpanV2[] mGradientSpans;
+
+    /**
+     * 彩虹渐变span
+     */
+    private IGradientAnimSpanV2[] mGradientAnimSpans;
+
+    /**
+     * span的渐变偏移，需要在这里计算好了传给各个span实例，否则多个View引用同一个span会导致动画变快
+     */
+    private float mSpanTranslate;
+
+    /**
+     * span动画统一进度
+     */
+    private int mSpanProgress;
+
     /**
      * 是否有彩虹渐变动画
      */
@@ -291,7 +300,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
         hasGradientAnim = false;
         isScrollEllipsize = false;
         mTranslate = 0;
-        mProgress = 0;
+        mScrollProgress = 0;
     }
 
     /**
@@ -903,11 +912,22 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     private void updateGradientAnim(ValueAnimator animation) {
         if(animation == null)
             return ;
-        if(mGradientAnimSpans != null) {
+        if(mGradientAnimSpans != null && mGradientAnimSpans.length > 0) {
             int value = (int) animation.getAnimatedValue();
             for(int i = 0; i < mGradientAnimSpans.length; i ++) {
                 if(mGradientAnimSpans[i] != null) {
-                    mGradientAnimSpans[i].onAnim(value);
+                    if(mSpanProgress != value) {
+                        if(Math.abs(mSpanTranslate) > mGradientAnimSpans[i].getRealWidth()) { // 超出范围，重新开始
+                            mSpanTranslate = 0;
+                        }
+                        if(isAr) {
+                            mSpanTranslate -= GradientUtils.dip2px(BaseApp.getInstance(), 1);
+                        } else {
+                            mSpanTranslate += GradientUtils.dip2px(BaseApp.getInstance(), 1);
+                        }
+                    }
+                    mSpanProgress = value;
+                    mGradientAnimSpans[i].onAnim(mSpanTranslate);
                 }
             }
             invalidate();
@@ -985,7 +1005,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
 //            translate = -translate;
 //        }
 
-        if(mProgress != value) {
+        if(mScrollProgress != value) {
             if(Math.abs(mTranslate) > RainbowConstants.getShaderRealWidth(getMeasuredWidth())) { // 超出范围，重新开始
                 mTranslate = 0;
             }
@@ -995,7 +1015,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
                 mTranslate += GradientUtils.dip2px(BaseApp.getInstance(), 1);
             }
         }
-        mProgress = value;
+        mScrollProgress = value;
 
         if(mGradientMatrix == null) {
             mGradientMatrix = new Matrix();

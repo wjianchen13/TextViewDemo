@@ -12,8 +12,6 @@ import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.Gradien
 public class GradientAnimSpanV2 extends GradientSpanV2
         implements UpdateAppearance, IGradientAnimSpanV2 {
 
-    private int mProgress;
-
     /**
      * 阿拉伯语反方向
      */
@@ -54,18 +52,8 @@ public class GradientAnimSpanV2 extends GradientSpanV2
     }
 
     @Override
-    public void onAnim(int progress) {
-        if(mProgress != progress) {
-            if(Math.abs(mTranslate) > getRealWidth()) { // 超出范围，重新开始
-                mTranslate = 0;
-            }
-            if(isAr) {
-                mTranslate -= GradientUtils.dip2px(BaseApp.getInstance(), 1);
-            } else {
-                mTranslate += GradientUtils.dip2px(BaseApp.getInstance(), 1);
-            }
-        }
-        mProgress = progress;
+    public void onAnim(float translate) {
+        mTranslate = translate;
     }
 
     @Override
@@ -73,7 +61,8 @@ public class GradientAnimSpanV2 extends GradientSpanV2
         return GradientUtils.createGradientBitmap(getRealWidth(), mCreateBitmapHeight, mColors);
     }
 
-    private int getRealWidth() {
+    @Override
+    public int getRealWidth() {
         return isShaderWidthFix ? mShaderWidth : mWidth;
     }
 }

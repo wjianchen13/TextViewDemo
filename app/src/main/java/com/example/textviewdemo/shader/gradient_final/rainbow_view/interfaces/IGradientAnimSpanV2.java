@@ -5,6 +5,6 @@ package com.example.textviewdemo.shader.gradient_final.rainbow_view.interfaces;
  */
 public interface IGradientAnimSpanV2 extends IGradientSpanV2 {
 
-    void onAnim(int progress);
-
+    void onAnim(float translate);
+    int getRealWidth();
 }

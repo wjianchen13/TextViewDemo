@@ -104,4 +104,14 @@
         android:text="测试GradientAnimTextViewV2 显示隐藏相关状态，回调"
         android:onClick="onTest10"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="多个TextView使用同一个span实例"
+        android:onClick="onTest11"/>
+
+
 </LinearLayout>

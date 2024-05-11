@@ -71,7 +71,7 @@ public class GradientUtils {
     }
 
 
-    private static @ColorInt int[] getColors() {
+    public static @ColorInt int[] getColors() {
         int[] colors = new int[] {
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
                 ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
