@@ -62,6 +62,11 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
      * view 的唯一标记，用于调试
      */
     private String mViewTag;
+
+    /**
+     * 字体设置，加粗，常规
+     */
+    private int mTextStyle;
     
     private int mType;
 
@@ -159,6 +164,7 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
         mAutoSize = a.getBoolean(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_auto_width, false);
         mGravity = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_layout_gravity, 0);
         mMaxWidth = a.getDimensionPixelOffset(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_max_size, ScreenUtils.getScreenWidth(mContext));
+        mTextStyle = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_text_style, 0);
         mType = a.getInt(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_textview_type, 0);
         mViewTag = a.getString(R.styleable.RainbowScrollTextViewV2_rainbow_scroll_textview_tag);
         a.recycle();
@@ -186,8 +192,8 @@ public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientVie
 //        if(mTextDirection == 1) {
 //            tv.setTextDirection(View.TEXT_DIRECTION_LTR);
 //        }
-
-
+        if(mTextStyle > 0)
+            tv.setTypeface(Typeface.defaultFromStyle(mTextStyle));
     }
 
     public void setViewTag(String viewTag) {

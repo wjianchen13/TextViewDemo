@@ -9,8 +9,8 @@ import androidx.core.content.ContextCompat;
 
 import com.example.textviewdemo.BaseApp;
 import com.example.textviewdemo.R;
-import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.GradientUtils;
 import com.example.textviewdemo.shader.gradient_final.rainbow_view.RainbowScrollTextViewV2;
+import com.example.textviewdemo.shader.gradient_final.rainbow_view.utils.GradientUtils;
 import com.example.textviewdemo.thumb.Utils;
 
 /**
@@ -21,6 +21,8 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
     private RainbowScrollTextViewV2 tvTest1;
     private RainbowScrollTextViewV2 tvTest2;
     private RainbowScrollTextViewV2 tvTest3;
+    private RainbowScrollTextViewV2 tvTest4;
+    private RainbowScrollTextViewV2 tvTest5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         tvTest1 = findViewById(R.id.tv_test1);
         tvTest2 = findViewById(R.id.tv_test2);
         tvTest3 = findViewById(R.id.tv_test3);
+        tvTest4 = findViewById(R.id.tv_test4);
+        tvTest5 = findViewById(R.id.tv_test5);
     }
 
     /**
@@ -126,6 +130,33 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         };
         sContent.append(GradientUtils.getGradientText(this, "测试滚动和渐", colors, sContent.length(), 0));
         tvTest3.setContent(sContent);
+    }
+
+    /**
+     * 常规字体式样
+     * @param v
+     */
+    public void onTest9(View v) {
+        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
+        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
+        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
+        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
+        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
+        tvTest4.setContent(str, new int[]{color1, color2, color3, color4});
+    }
+
+
+    /**
+     * 加粗字体式样
+     * @param v
+     */
+    public void onTest10(View v) {
+        String str = "测试滚动和渐变同时";
+        int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
+        int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
+        int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
+        int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
+        tvTest5.setContent(str, new int[]{color1, color2, color3, color4});
     }
 
 }
