@@ -22,8 +22,19 @@ import com.example.textviewdemo.shader.gradientanimspan.test5.ScreenUtils;
 
 /**
  * 彩虹字体，需要滚动的用这个
+ * 使用自定义滚动
  * 1.xml定义RainbowScrollTextViewV2
  * 2.调用setContent(CharSequence text, boolean rainbow, @ColorInt int[] colors)方法
+ *
+ * 使用系统滚动
+ * 1.xml定义RainbowScrollTextViewV2
+ * 2.代码设置，这样系统超过控件长度就会自动滚动，使用的TextView滚动方式，动态修改span的shader颜色值
+ * sContent.append(GradientUtils.getGradientAnimText(this, "使用RainbowScrollTextViewV2时，普通字体", colors, sContent.length(), 0));
+ * tvTest6.setContent(sContent);
+ *
+ *
+ * 发现滚动时候使用RainbowScrollTextViewV2，彩虹动画使用getGradientAnimText也可以实现滚动，彩虹动画效果
+ * TextView getPaint().setShader() 滚动的时候会失效，但是span里面设置的shader不会失效。
  */
 public class RainbowScrollTextViewV2 extends FrameLayout implements IGradientView {
 

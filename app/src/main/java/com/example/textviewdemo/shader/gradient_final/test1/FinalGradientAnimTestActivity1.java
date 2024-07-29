@@ -10,6 +10,8 @@ import com.example.textviewdemo.R;
 
 /**
  * 1.彩虹，需要支持滚动
+ * 因为考虑到需要支持非渐变，普通字体也需要滚动，所以要使用普通字体渐变的方式，外层嵌套一层ViewGroup，使用RainbowScrollTextViewV2代替
+ * 查看FinalGradientAnimTestActivity2的实现
  */
 public class FinalGradientAnimTestActivity1 extends AppCompatActivity {
 

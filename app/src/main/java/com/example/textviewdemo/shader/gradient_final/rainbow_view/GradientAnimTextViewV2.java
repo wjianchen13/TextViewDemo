@@ -82,6 +82,9 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      */
     public static final int SCROLL_ANIM = 2;
 
+    /**
+     * context
+     */
     private Context mContext;
 
     /**
@@ -91,6 +94,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
 
     /**
      * 显示模式 0 常规模式  1 滚动模式
+     * MODE_NORMAL  MODE_SPAN  MODE_SCROLL
      */
     private int mMode = 0;
 
@@ -99,7 +103,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
      ***********************************************************************************************/
     /**
      * mMode == MODE_SCROLL，这个字段才起作用
-     * 支持滚动的情况下，是否滚动 SCROLL_NO:不滚动  SCROLL_RL：滚动
+     * 支持滚动的情况下，是否滚动 SCROLL_NO:不滚动  SCROLL_GRADIENT：滚动渐变 SCROLL_ANIM：滚动渐变动画
      */
     private int scrollType;
 
@@ -907,7 +911,7 @@ public class GradientAnimTextViewV2 extends AppCompatTextView implements IGradie
     }
 
     /**
-     * 渐变动画
+     * 滚动渐变动画
      */
     private void updateGradientAnim(ValueAnimator animation) {
         if(animation == null)

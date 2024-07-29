@@ -37,5 +37,13 @@ public class FinalGradientAnimTestActivity2 extends AppCompatActivity {
         startActivity(new Intent(this, FinalGradientAnimTestActivity22.class));
     }
 
+    /**
+     * 列表综合使用
+     * @param v
+     */
+    public void onTest3(View v) {
+        startActivity(new Intent(this, FinalGradientAnimTestActivity23.class));
+    }
+
 
 }

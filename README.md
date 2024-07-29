@@ -52,7 +52,7 @@ if(GlobalConfig.isTest()) {
    app:rainbow_scroll_text_styl="bold"
 3. 改变代码的引用类型 RainbowScrollTextViewV2
 
-5. 代码调用下面方法kotlin
+4. 代码调用下面方法kotlin
 if(GlobalConfig.isTest()) {
                 val rainbow = true
                 if (rainbow) {
@@ -70,7 +70,7 @@ if(GlobalConfig.isTest()) {
                 }
             }
 
-4.代码设置下卖弄方法 Java
+5. 代码设置下面方法 Java
 if(GlobalConfig.isTest()) {
     boolean rainbow = true;
     if(rainbow) {
@@ -79,6 +79,11 @@ if(GlobalConfig.isTest()) {
         tvName.setContent(RainbowUtils.getGradientSpan(false, info.getNick(), info.getNobleId(), R.color.ccbcbcb, GradientUtils.getColors()));
     }
 }
+
+6. 渐变滚动统一使用这个方法，使用的是系统的滚动，但是是通过动态刷新渐变span的translate实现的。
+   sContent.append(GradientUtils.getGradientAnimText(this, "测试滚动和渐使用RainbowScrollTextViewV2时，渐变不滚动支持，测试这种情况", colors, sContent.length(), 0));
+   tvTest6.setContent(sContent);
+
 
 统一调用方法
 可点击

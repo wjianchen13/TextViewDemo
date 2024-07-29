@@ -32,4 +32,13 @@
         android:text="列表使用"
         android:onClick="onTest2"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="列表综合使用"
+        android:onClick="onTest3"/>
+
 </LinearLayout>

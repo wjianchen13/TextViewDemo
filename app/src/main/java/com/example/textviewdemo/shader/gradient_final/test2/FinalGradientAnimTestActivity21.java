@@ -23,16 +23,18 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
     private RainbowScrollTextViewV2 tvTest3;
     private RainbowScrollTextViewV2 tvTest4;
     private RainbowScrollTextViewV2 tvTest5;
+    private RainbowScrollTextViewV2 tvTest6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_gradient_anim_test21);
-        tvTest1 = findViewById(R.id.tv_test1);
-        tvTest2 = findViewById(R.id.tv_test2);
-        tvTest3 = findViewById(R.id.tv_test3);
-        tvTest4 = findViewById(R.id.tv_test4);
-        tvTest5 = findViewById(R.id.tv_test5);
+//        tvTest1 = findViewById(R.id.tv_test1);
+//        tvTest2 = findViewById(R.id.tv_test2);
+//        tvTest3 = findViewById(R.id.tv_test3);
+//        tvTest4 = findViewById(R.id.tv_test4);
+//        tvTest5 = findViewById(R.id.tv_test5);
+        tvTest6 = findViewById(R.id.tv_test6);
     }
 
     /**
@@ -67,8 +69,8 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
      * @param v`
      */
     public void onTest3(View v) {
-//        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
-        String str = "测试滚动和渐变";
+        String str = "测试滚动和渐变同时存在的情况，需要设置singleLine=true，设置之后Shader不起作用";
+//        String str = "测试滚动和渐变";
         int color1 = ContextCompat.getColor(this, R.color.cffde3d32);
         int color2 = ContextCompat.getColor(this, R.color.cfffeb702);
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
@@ -157,6 +159,102 @@ public class FinalGradientAnimTestActivity21 extends AppCompatActivity {
         int color3 = ContextCompat.getColor(this, R.color.cff80ff00);
         int color4 = ContextCompat.getColor(this, R.color.cff00bfcb);
         tvTest5.setContent(str, new int[]{color1, color2, color3, color4});
+    }
+
+    /**
+     * 使用RainbowScrollTextViewV2时，系统滚动和彩虹动画
+     * @param v
+     */
+    public void onTest11(View v) {
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientAnimText(this, "使用RainbowScrollTextViewV2时，系统滚动和彩虹动画，2.使用RainbowScrollTextViewV2时，系统滚动和彩虹动画", colors, sContent.length(), 0));
+        tvTest6.setContent(sContent);
+    }
+
+    /**
+     * 使用RainbowScrollTextViewV2时，彩虹动画
+     * @param v
+     */
+    public void onTest12(View v) {
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientAnimText(this, "使用RainbowScrollTextViewV2时，彩虹动画", colors, sContent.length(), 0));
+        tvTest6.setContent(sContent);
+    }
+
+    /**
+     * 使用RainbowScrollTextViewV2时，系统滚动和渐变
+     * @param v
+     */
+    public void onTest13(View v) {
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientText(this, "使用RainbowScrollTextViewV2时，系统滚动和渐变，2.使用RainbowScrollTextViewV2时，系统滚动和渐变", colors, sContent.length(), 0));
+        tvTest6.setContent(sContent);
+    }
+
+    /**
+     * 使用RainbowScrollTextViewV2时，渐变
+     * @param v
+     */
+    public void onTest14(View v) {
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientText(this, "使用RainbowScrollTextViewV2时，渐变", colors, sContent.length(), 0));
+        tvTest6.setContent(sContent);
+    }
+
+    /**
+     * 使用RainbowScrollTextViewV2时，系统滚动
+     * @param v
+     */
+    public void onTest15(View v) {
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientAnimText(this, "使用RainbowScrollTextViewV2时，系统滚动,2.使用RainbowScrollTextViewV2时，系统滚动", colors, sContent.length(), 0));
+        tvTest6.setContent(sContent);
+    }
+
+    /**
+     * 使用RainbowScrollTextViewV2时，彩虹动画
+     * @param v
+     */
+    public void onTest16(View v) {
+        SpannableStringBuilder sContent = new SpannableStringBuilder();
+        int[] colors = new int[] {
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cffde3d32),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cfffeb702),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff80ff00),
+                ContextCompat.getColor(BaseApp.getInstance(), R.color.cff00bfcb)
+        };
+        sContent.append(GradientUtils.getGradientAnimText(this, "使用RainbowScrollTextViewV2时，普通字体", colors, sContent.length(), 0));
+        tvTest6.setContent(sContent);
     }
 
 }
