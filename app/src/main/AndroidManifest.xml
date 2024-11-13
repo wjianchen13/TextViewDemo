@@ -73,6 +73,7 @@
         <activity android:name=".shader.gradient_final.test9.FinalGradientAnimTestActivity9" />
         <activity android:name=".shader.gradient_final.test10.FinalGradientAnimTestActivity10" />
         <activity android:name=".shader.gradient_final.test11.FinalGradientAnimTestActivity011" />
+        <activity android:name=".ellipsise.EllipsizeActivity" />
 
     </application>
 

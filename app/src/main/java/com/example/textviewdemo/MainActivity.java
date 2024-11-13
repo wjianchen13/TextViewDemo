@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.textviewdemo.ellipsise.EllipsizeActivity;
 import com.example.textviewdemo.gradient.GradientActivity;
 import com.example.textviewdemo.gradient1.GradientActivity1;
 import com.example.textviewdemo.gradient_vertical.GradientVerticalActivity;
@@ -79,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, ShaderActivity.class));
     }
 
+
+    /**
+     * 超长显示省略号
+     * @param v
+     */
+    public void onTest8(View v) {
+        startActivity(new Intent(this, EllipsizeActivity.class));
+    }
 
 
 }
