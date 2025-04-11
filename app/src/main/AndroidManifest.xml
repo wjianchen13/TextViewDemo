@@ -74,6 +74,7 @@
         <activity android:name=".shader.gradient_final.test10.FinalGradientAnimTestActivity10" />
         <activity android:name=".shader.gradient_final.test11.FinalGradientAnimTestActivity011" />
         <activity android:name=".ellipsise.EllipsizeActivity" />
+        <activity android:name=".gradient_textview.TestGradientActivity" />
 
     </application>
 
